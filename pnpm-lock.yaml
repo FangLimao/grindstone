@@ -18,6 +18,12 @@ importers:
         specifier: ^1.16.0
         version: 1.16.0
 
+  components/grindstone-utils:
+    dependencies:
+      '@minecraft/server':
+        specifier: ^1.16.0
+        version: 1.16.0
+
   grindstone-mc:
     dependencies:
       '@grindstone/core':
