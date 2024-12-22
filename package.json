@@ -5,7 +5,6 @@
     "prettier": "^3.3.3"
   },
   "scripts": {
-    "docs:build": "pnpm -r docs:build",
     "pack:publish": "pnpm publish -r"
   }
 }

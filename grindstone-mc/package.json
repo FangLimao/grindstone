@@ -1,5 +1,5 @@
 {
-  "name": "grindstone-kit",
+  "name": "@grindstone/devkit",
   "version": "0.1.0",
   "description": "Grindstone Devkit for Minecraft Bedrock Edition",
   "main": "src/index.ts",
