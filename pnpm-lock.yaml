@@ -1,0 +1,48 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      prettier:
+        specifier: ^3.3.3
+        version: 3.4.2
+
+  components/grindstone-core:
+    dependencies:
+      '@minecraft/server':
+        specifier: ^1.16.0
+        version: 1.16.0
+
+  grindstone-mc:
+    dependencies:
+      '@grindstone/core':
+        specifier: workspace:0.1.0
+        version: link:../components/grindstone-core
+
+packages:
+
+  '@minecraft/common@1.2.0':
+    resolution: {integrity: sha512-JdmEq4P3Z/FtoBzhLijFgMSVFnFRrUoLwY8DHHrgtFo0mfLTOLTB1RErYjLMsA6b7BGVNxkX/pfFRiH7QZ0XwQ==}
+
+  '@minecraft/server@1.16.0':
+    resolution: {integrity: sha512-Rm4lVM8/T8+QLIyAer3tPz1P5FAvJc5MhFrYzIt+sdd6y4DVENu4y9/Vucb19mBXJB/+Dt7uDb8RQG/xAWVExA==}
+
+  prettier@3.4.2:
+    resolution: {integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==}
+    engines: {node: '>=14'}
+    hasBin: true
+
+snapshots:
+
+  '@minecraft/common@1.2.0': {}
+
+  '@minecraft/server@1.16.0':
+    dependencies:
+      '@minecraft/common': 1.2.0
+
+  prettier@3.4.2: {}

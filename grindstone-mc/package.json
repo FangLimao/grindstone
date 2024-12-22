@@ -1,0 +1,22 @@
+{
+  "name": "grindstone-kit",
+  "version": "0.1.0",
+  "description": "Grindstone Devkit for Minecraft Bedrock Edition",
+  "main": "src/index.ts",
+  "keywords": [
+    "Minecraft",
+    "sapi",
+    "mcbe"
+  ],
+  "contributors": [
+    "FangLimao <mucigames@outlook.com>",
+    "RawDiamondMC <RawDiamondMC@outlook.com>"
+  ],
+  "scripts": {
+  },
+  "license": "MIT",
+  "author": "CTN Studios",
+  "dependencies": {
+    "@grindstone/core": "workspace:0.1.0"
+  }
+}
