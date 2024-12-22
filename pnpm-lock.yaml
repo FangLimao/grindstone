@@ -29,6 +29,9 @@ importers:
       '@grindstone/core':
         specifier: workspace:0.1.0
         version: link:../components/grindstone-core
+      '@grindstone/utils':
+        specifier: workspace:0.1.0
+        version: link:../components/grindstone-utils
 
 packages:
 
