@@ -1,6 +1,6 @@
 {
   "name": "@grindstone/utils",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Grindstone utils",
   "main": "src/index.ts",
   "keywords": [
