@@ -49,6 +49,37 @@ findBlocks(
 - `dimension`：搜寻方块的维度
 - `radius`：搜寻方块的半径
 
+## 数学函数
+### randomInteger
+~~~ts
+randomInteger(max: number, min: number = 0, inclusive: boolean = true): number
+~~~
+生成范围内的随机整数：
+
+- `max`：随机数的最大值
+- `min`：随机数的最小值，默认为0
+- `inclusive`：生成的随机数是否包含min和max
+
+注意：**若max < min，该函数会抛出RangeError。**
+
+### randomDecimal
+~~~ts
+randomDecimal(
+  max: number,
+  min: number = 0,
+  fixed: number = 2,
+  inclusive: boolean = true
+): number
+~~~
+生成范围内的随机小数：
+
+- `max`：随机数的最大值
+- `min`：随机数的最小值，默认为0
+- `fixed`：小数点后保留的位数，默认为2
+- `inclusive`：生成的随机数是否包含min和max
+
+注意：**若max < min，该函数会抛出RangeError。**
+
 ## 其他函数
 ### generateUUID
 ~~~ts
@@ -76,13 +107,3 @@ descendingSort(arr: Array<number>): void
 ~~~
 升序排列给定的数组。
 
-### randomInteger
-~~~ts
-randomInteger(max: number, min: number = 0): number
-~~~
-生成范围内的随机整数：
-
-- `max`：随机数的最大值
-- `min`：随机数的最小值，默认为0
-
-注意：**若max < min，该函数会抛出RangeError。**

@@ -46,23 +46,3 @@ export function descendingSort (arr: Array<number>): void{
   });
 }
 
-/**
- * Generate a random integer.
- * @param max The maximum value (inclusive). Decimals will be parsed as integers.
- * @param min The minimum value (inclusive). Decimals will be parsed as integers. Default value is 0.
- * @return A random integer between min and max (inclusive).
- * @throws RangeError if max < min
- */
-export function randomInteger(max: number, min: number = 0): number {
-  // Parse inputs as integers
-  max = Math.ceil(max);
-  min = Math.ceil(min);
-  // Validate the range
-  if (max < min) {
-    throw new RangeError(
-      `randomInteger() is used incorrectly! Expect: any number higher than ${min}. Current: ${max}`,
-    );
-  }
-  // Generate a random integer between min (inclusive) and max (inclusive)
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
