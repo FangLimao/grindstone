@@ -120,6 +120,19 @@ pushLore(loreText: string, item: ItemStack): ItemStack
 ~~~
 把文本添加到原有物品Lore的末尾，这将返回一个新的物品。
 
+## 玩家函数
+### getExpCost
+~~~ts
+getExpCost(level: number): number
+~~~
+获取玩家升级至给定等级所需的经验。
+
+### getAllExp
+~~~ts
+getAllExp(player: Player): number
+~~~
+获取玩家当前的总经验值。
+
 ## 数学函数
 ### randomInteger
 ~~~ts
