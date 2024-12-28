@@ -48,3 +48,41 @@ findBlocks(
 - `location`：坐标原点
 - `dimension`：搜寻方块的维度
 - `radius`：搜寻方块的半径
+
+## 其他函数
+### generateUUID
+~~~ts
+generateUUID(): string 
+~~~
+
+生成一个随机的UUID。
+
+### ensureNamespace
+~~~ts
+ensureNamespace(str: string): string
+~~~
+
+确保字符串含有命名空间，若没有，则会自动加上`minecraft`命名空间。
+
+### ascendingSort
+~~~ts
+ascendingSort(arr: Array<number>): void
+~~~
+升序排列给定的数组。
+
+### descendingSort
+~~~ts
+descendingSort(arr: Array<number>): void
+~~~
+升序排列给定的数组。
+
+### randomInteger
+~~~ts
+randomInteger(max: number, min: number = 0): number
+~~~
+生成范围内的随机整数：
+
+- `max`：随机数的最大值
+- `min`：随机数的最小值，默认为0
+
+注意：**若max < min，该函数会抛出RangeError。**
