@@ -16,6 +16,7 @@
   "license": "MIT",
   "author": "CTN Studios",
   "dependencies": {
-    "@minecraft/server": "^1.16.0"
+    "@minecraft/server": "^1.16.0",
+    "@minecraft/server-ui": "^1.3.0"
   }
 }
