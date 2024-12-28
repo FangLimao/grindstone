@@ -1,6 +1,6 @@
 {
   "name": "@grindstone/devkit",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Grindstone Devkit for Minecraft Bedrock Edition",
   "main": "src/index.ts",
   "keywords": [
@@ -18,6 +18,6 @@
   "author": "CTN Studios",
   "dependencies": {
     "@grindstone/core": "workspace:0.2.0",
-    "@grindstone/utils": "workspace:0.4.0"
+    "@grindstone/utils": "workspace:0.5.0"
   }
 }
