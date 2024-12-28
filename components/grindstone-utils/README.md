@@ -49,6 +49,77 @@ findBlocks(
 - `dimension`：搜寻方块的维度
 - `radius`：搜寻方块的半径
 
+## 物品函数
+### replaceItemStack
+~~~ts
+replaceItemStack(
+  item: ItemStack | string | undefined,
+  newItem: ItemStack | string | undefined,
+  container: Container
+): number
+~~~
+替换容器中的物品：
+
+- `item`:替换前的物品，如果不设置，则将会替换所有空格子
+- `newItem`：替换后的物品，如果不设置，将会清空所有匹配的物品
+- `container`：进行替换操作的容器
+
+### consumeDurability
+~~~ts
+consumeDurability(
+  item: ItemStack,
+  value: number,
+  entity?: Entity
+): ItemStack | undefined
+~~~
+消耗物品的耐久：
+
+- `item`：要消耗耐久的物品
+- `value`：消耗的耐久值
+- `entity`：手持物品的实体，如果指定，则物品因耐久损坏时将会播放音效
+
+### consumeAmount
+~~~ts
+consumeAmount(
+  item: ItemStack,
+  value: number
+): ItemStack | undefined
+~~~
+消耗物品的数量：
+
+- `item`：要消耗数量的物品
+- `value`：消耗的数量
+
+注意：**若给定物品的数量少于消耗的数量，将会抛出错误**
+
+### getItemAmountInContainer
+~~~ts
+getItemAmountInContainer(
+  container: Container,
+  item: string
+): number
+~~~
+获取容器内指定物品的数量：
+
+- `container`：指定的容器
+- `item`：指定的物品
+
+### removeItemInContainer
+~~~ts
+removeItemInContainer(
+  container: Container,
+  itemId: string,
+  amount: number
+): void
+~~~
+移除容器中的物品。
+
+### pushLore
+~~~ts
+pushLore(loreText: string, item: ItemStack): ItemStack
+~~~
+把文本添加到原有物品Lore的末尾，这将返回一个新的物品。
+
 ## 数学函数
 ### randomInteger
 ~~~ts
