@@ -2,7 +2,9 @@ import { Player, world, RawMessage } from "@minecraft/server";
 import {
   ActionFormData,
   MessageFormData,
+  MessageFormResponse,
   ModalFormData,
+  ModalFormResponse,
 } from "@minecraft/server-ui";
 import { getModId, getModName } from "@grindstone/core";
 
@@ -98,7 +100,10 @@ export function modAlert(
  * @param player The player to watch the confirm dialog.
  * @return A Promise when player confirms or cancels the dialog.
  */
-export function modConfirm(message: string | RawMessage, player: Player) {
+export function modConfirm(
+  message: string | RawMessage,
+  player: Player
+): Promise<MessageFormResponse> {
   const confirmForm = new MessageFormData()
     .title({
       translate: "createWorld.customize.custom.confirmTitle",
@@ -125,9 +130,9 @@ export function modPrompt(
   placeholderText: string | RawMessage,
   player: Player,
   defaultText?: string
-) {
+): Promise<ModalFormResponse> {
   const promptForm = new ModalFormData()
     .title(getModName())
     .textField(message, placeholderText, defaultText);
-  return promptForm.show(player)
+  return promptForm.show(player);
 }
