@@ -96,7 +96,7 @@ export function modAlert(
  * The `window.confirm()` function in game.
  * @param message A message you want to display in the confirmation dialog.
  * @param player The player to watch the confirm dialog.
- * @return A boolean indicating whether OK (true) or Cancel (false) was selected.
+ * @return A Promise when player confirms or cancels the dialog.
  */
 export function modConfirm(message: string | RawMessage, player: Player) {
   const confirmForm = new MessageFormData()
@@ -110,21 +110,15 @@ export function modConfirm(message: string | RawMessage, player: Player) {
     .button2({
       translate: "gui.cancel",
     });
-  confirmForm.show(player).then((response) => {
-    if (response.selection === 0) {
-      return true;
-    } else {
-      return false;
-    }
-  });
+  return confirmForm.show(player);
 }
 
 /**
  * The `window.prompt` function in game.
- * @param message 
- * @param placeholderText 
- * @param player 
- * @param defaultText 
+ * @param message
+ * @param placeholderText
+ * @param player
+ * @param defaultText
  */
 export function modPrompt(
   message: string | RawMessage,
@@ -135,7 +129,5 @@ export function modPrompt(
   const promptForm = new ModalFormData()
     .title(getModName())
     .textField(message, placeholderText, defaultText);
-  promptForm.show(player).then((response) => {
-    return response.formValues;
-  });
+  return promptForm.show(player)
 }
