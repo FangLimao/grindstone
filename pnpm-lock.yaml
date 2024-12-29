@@ -60,7 +60,7 @@ importers:
         specifier: workspace:0.2.0
         version: link:../components/grindstone-core
       '@grindstone/debugger-kit':
-        specifier: workspace:0.1.0
+        specifier: workspace:0.1.1
         version: link:../components/debugger-kit
       '@grindstone/message-kit':
         specifier: workspace:0.1.0
