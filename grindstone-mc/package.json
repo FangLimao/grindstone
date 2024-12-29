@@ -1,6 +1,6 @@
 {
   "name": "@grindstone/devkit",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Grindstone Devkit for Minecraft Bedrock Edition",
   "main": "src/index.ts",
   "keywords": [
@@ -19,6 +19,7 @@
     "@grindstone/core": "workspace:0.2.0",
     "@grindstone/utils": "workspace:0.5.0",
     "@grindstone/message-kit": "workspace:0.1.0",
+    "@grindstone/debugger-kit": "workspace:0.1.0",
     "@minecraft/server-ui": "^1.3.0"
   }
 }
