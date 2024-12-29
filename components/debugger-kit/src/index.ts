@@ -114,6 +114,7 @@ export class LoggerManager {
   debug(message: string, players?: Player[]): void {
     const content = `§b§l[${this.id}]§r§p§o[DEBUG]§r ${message}`;
     addToLogHistory(content);
+    console.debug(content);
     if (players !== undefined) {
       players.forEach((player: Player) => {
         player.sendMessage(content);
@@ -131,6 +132,7 @@ export class LoggerManager {
   info(message: string, players?: Player[]): void {
     const content = `§b§l[${this.id}]§r§9§o[INFO]§r ${message}`;
     addToLogHistory(content);
+    console.info(content);
     if (players !== undefined) {
       players.forEach((player: Player) => {
         player.sendMessage(content);
