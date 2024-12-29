@@ -88,6 +88,9 @@ export function sendUpdateMessage(
     if (version === "0.0.0") {
       throw new Error("Invalid mod version!");
     }
+    if (getModId() === "default") {
+      throw new Error("Invaild mod id!");
+    }
     if (version !== getModVersion()) {
       event.player.sendMessage(message);
       event.player.setDynamicProperty(`${getModId()}:version`, getModVersion());

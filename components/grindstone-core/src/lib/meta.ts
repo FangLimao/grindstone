@@ -2,8 +2,8 @@
  * Metadata of the mod.
  */
 export let modData: ModBaseData = {
-  id: "ldk",
-  name: "Lazuli Development Kit",
+  id: "default",
+  name: "Default Mod Name",
 };
 
 /**
