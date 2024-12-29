@@ -15,7 +15,7 @@ importers:
   components/debugger-kit:
     dependencies:
       '@grindstone/core':
-        specifier: workspace:0.2.0
+        specifier: workspace:0.3.0
         version: link:../grindstone-core
       '@minecraft/server':
         specifier: ^1.16.0
@@ -45,7 +45,7 @@ importers:
   components/message-kit:
     dependencies:
       '@grindstone/core':
-        specifier: workspace:0.2.0
+        specifier: workspace:0.3.0
         version: link:../grindstone-core
       '@minecraft/server':
         specifier: ^1.16.0
@@ -57,13 +57,13 @@ importers:
   grindstone-mc:
     dependencies:
       '@grindstone/core':
-        specifier: workspace:0.2.0
+        specifier: workspace:0.3.0
         version: link:../components/grindstone-core
       '@grindstone/debugger-kit':
         specifier: workspace:0.1.1
         version: link:../components/debugger-kit
       '@grindstone/message-kit':
-        specifier: workspace:0.1.0
+        specifier: workspace:0.2.0
         version: link:../components/message-kit
       '@grindstone/utils':
         specifier: workspace:0.5.0
