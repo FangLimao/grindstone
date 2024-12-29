@@ -28,3 +28,12 @@ setModId(id: string): void
 ~~~
 
 设置的模组的ID与名称。
+
+## 模组版本
+你可以通过`set/getModVersion()`来获取模组的版本：
+
+~~~ts
+setModVersion("1.14.514");
+getModVersion(); // return '1.14.514'
+~~~
+

@@ -7,6 +7,16 @@ sendWelcomeMessage(
 ~~~
 在玩家进入时显示一条欢迎消息。
 
+## 升级消息
+~~~ts
+sendUpdateMessage(
+  message: string | RawMessage | (string | RawMessage)[]
+): void
+~~~
+在模组版本变化时时显示一条更新提示。
+
+注意：**如果没有通过`initializeMod()`和`setModVersion()`函数设置模组版本，该函数将抛出错误。**
+
 ## Alert、Confirm和Prompt
 ~~~ts
 modAlert(

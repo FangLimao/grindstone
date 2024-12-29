@@ -6,7 +6,13 @@ import {
   ModalFormData,
   ModalFormResponse,
 } from "@minecraft/server-ui";
-import { getModId, getModName } from "@grindstone/core";
+import {
+  getModId,
+  getModName,
+  getModVersion,
+  initializeMod,
+  setModVersion,
+} from "@grindstone/core";
 
 /**
  * Post a message to world.
@@ -64,6 +70,27 @@ export function sendWelcomeMessage(
   world.afterEvents.playerSpawn.subscribe((event) => {
     if (event.initialSpawn) {
       event.player.sendMessage(message);
+    }
+  });
+}
+
+/**
+ * Send a message when mod's version have changed.
+ *
+ * **IMPORTANT: please use {@link initializeMod} and {@link setModVersion} function before use this function.**
+ * @param message The update message to send.
+ */
+export function sendUpdateMessage(
+  message: string | RawMessage | (string | RawMessage)[]
+): void {
+  world.afterEvents.playerSpawn.subscribe((event) => {
+    const version = event.player.getDynamicProperty(`${getModId()}:version`);
+    if (version === "0.0.0") {
+      throw new Error("Invalid mod version!");
+    }
+    if (version !== getModVersion()) {
+      event.player.sendMessage(message);
+      event.player.setDynamicProperty(`${getModId()}:version`, getModVersion());
     }
   });
 }
