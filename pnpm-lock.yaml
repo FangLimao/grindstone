@@ -12,6 +12,18 @@ importers:
         specifier: ^3.3.3
         version: 3.4.2
 
+  components/article-kit:
+    dependencies:
+      '@grindstone/core':
+        specifier: workspace:0.3.0
+        version: link:../grindstone-core
+      '@minecraft/server':
+        specifier: ^1.16.0
+        version: 1.16.0
+      '@minecraft/server-ui':
+        specifier: ^1.3.0
+        version: 1.3.0
+
   components/debugger-kit:
     dependencies:
       '@grindstone/core':
@@ -23,6 +35,12 @@ importers:
       '@minecraft/server-ui':
         specifier: ^1.3.0
         version: 1.3.0
+
+  components/grindstone-common:
+    dependencies:
+      '@minecraft/server':
+        specifier: ^1.16.0
+        version: 1.16.0
 
   components/grindstone-core:
     dependencies:

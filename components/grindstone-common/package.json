@@ -1,0 +1,21 @@
+{
+  "name": "@grindstone/common",
+  "version": "0.1.0",
+  "description": "Grindstone common data",
+  "main": "src/index.ts",
+  "keywords": [
+    "Minecraft",
+    "sapi",
+    "mcbe"
+  ],
+  "contributors": [
+    "FangLimao <mucigames@outlook.com>",
+    "RawDiamondMC <RawDiamondMC@outlook.com>"
+  ],
+  "scripts": {},
+  "license": "MIT",
+  "author": "CTN Studios",
+  "dependencies": {
+    "@minecraft/server": "^1.16.0"
+  }
+}
