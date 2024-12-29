@@ -5,17 +5,13 @@ import { ItemStack } from "@minecraft/server";
  */
 export interface DisplayCondition {
   /**
-   * Default condition like simple articles.
+   * Default condition.
    */
   default?: boolean;
   /**
    * Display article when player use the item.
    */
   itemStack?: ItemStack;
-  /**
-   * Display article when player send the command.
-   */
-  command?: string | string[];
   /**
    * Display article when the world first load.
    */
