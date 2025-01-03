@@ -78,7 +78,7 @@ importers:
   grindstone-mc:
     dependencies:
       '@grindstone/article-kit':
-        specifier: workspace:0.1.0
+        specifier: workspace:0.2.0
         version: link:../components/article-kit
       '@grindstone/common':
         specifier: workspace:0.1.0
