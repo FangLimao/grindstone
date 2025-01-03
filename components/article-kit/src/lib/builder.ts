@@ -2,9 +2,12 @@ import { Player, RawMessage, world } from "@minecraft/server";
 import { ActionFormData, MessageFormData } from "@minecraft/server-ui";
 import { DisplayCondition } from "@grindstone/common";
 
+export let articleList: (ArticleCollectionBuilder | ArticleBuilder)[] = [];
+export let articleIdList: string[] = [];
+
 /**
  * Registried article collection's display.
- * @param item 
+ * @param item
  */
 function registriesDisplay(item: ArticleCollectionBuilder) {
   if (item.displayCondition.default === true) {
@@ -80,6 +83,8 @@ export class ArticleBuilder {
    * Build the article.
    */
   build(): void {
+    articleList.push(this);
+    articleIdList.push(this.id);
     world.afterEvents.itemUse.subscribe((event) => {
       if (event.itemStack.typeId === this.id) this.display(event.source);
     });
@@ -195,6 +200,8 @@ export class ArticleCollectionBuilder {
    * Build the article collection.
    */
   build(): void {
+    articleList.push(this);
+    articleIdList.push(this.id);
     registriesDisplay(this);
   }
 }

@@ -104,3 +104,15 @@ collection.build()
 article.nothing.title=无解锁文章
 article.nothing.body=没有任何文章解锁，你可以得到并阅读一篇文章来解锁它。
 ~~~
+
+## 文章管理
+你可以通过ArticleManager来管理文章：
+
+~~~ts
+// 获取所有文章
+ArticleManager.getAllArticle();
+// 获取所有文章ID
+ArticleManager.getAllArticleId();
+// 获取特定文章ID
+ArticleManager.getArticle("id");
+~~~
