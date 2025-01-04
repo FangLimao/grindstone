@@ -5,7 +5,6 @@ import {
   RawMessage,
   world,
 } from "@minecraft/server";
-import { getModId } from "@grindstone/core";
 import {
   ActionFormData,
   ActionFormResponse,
@@ -13,11 +12,8 @@ import {
 } from "@minecraft/server-ui";
 import { ItemData, EntityData, DisplayCondition } from "@grindstone/common";
 import { getItemAmountInContainer, giveItem } from "@grindstone/utils";
+import {QuestManager } from "./lib/manager";
 
-/**
- * Namespace of Quest Complete Tag.
- */
-let questNameSpace: string = getModId();
 
 /**
  * Create a Quest.
@@ -83,7 +79,7 @@ export class Quest {
    * @param player
    */
   complete(player: Player): void {
-    player.addTag(`${questNameSpace}:${this.id}`);
+    player.addTag(`${QuestManager.getNameSpace()}:${this.id}`);
     player.addLevels(this.options.award.level ?? 0);
     player.addExperience(this.options.award.exp ?? 0);
     if (this.options.award?.item?.itemStack)
@@ -98,7 +94,7 @@ export class Quest {
    * @param player
    */
   isCompleted(player: Player): boolean {
-    return player.hasTag(`${questNameSpace}:${this.id}`);
+    return player.hasTag(`${QuestManager.getNameSpace()}:${this.id}`);
   }
   set body(content: string | RawMessage) {
     this._body = content;
@@ -346,14 +342,6 @@ export class QuestBoard {
       this.books[response.selection].display(player);
     });
   }
-}
-
-/**
- * Set the namespace of Quest Complete Tag
- * @param str the namespace
- */
-export function setQuestNameSpace(str: string) {
-  questNameSpace = str;
 }
 
 /**
