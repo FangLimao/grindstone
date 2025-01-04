@@ -49,6 +49,119 @@ findBlocks(
 - `dimension`：搜寻方块的维度
 - `radius`：搜寻方块的半径
 
+## 实体函数
+### clearEffect
+~~~ts
+clearEffect(
+    entity: Entity,
+    effectType: EffectType | EffectType[] | string | string[] | EffectGroups,
+  ): void
+~~~
+移除实体的状态效果，可填状态效果组：
+
+~~~ts
+enum EffectGroups {
+    good, // 正面效果
+    bad, // 负面效果
+    nutral, // 中性效果
+    all, //全部效果
+  }
+~~~
+
+### addEffect
+~~~ts
+addEffect(
+    entity: Entity,
+    effectType: EffectType | EffectType[] | string | string[] | EffectGroups,
+    duration: number,
+    options?: EntityEffectOptions,
+  ): void
+~~~
+向实体添加状态效果，可填状态效果组：
+
+~~~ts
+enum EffectGroups {
+    good, // 正面效果
+    bad, // 负面效果
+    nutral, // 中性效果
+    all, //全部效果
+  }
+~~~
+
+### getContainer
+~~~ts
+getContainer(entity: Entity): Container | undefined
+~~~
+获取实体的背包。
+
+### setSlot
+~~~ts
+setSlot(entity: Entity, slot: number, item?: ItemStack): void
+~~~
+设置实体对应物品栏的物品，若不填物品，则会清空对应的槽位。
+
+### giveItem
+~~~ts
+giveItem(entity: Entity[] | Entity, item: ItemStack): void
+~~~
+给予实体特定物品，若实体背包已满，则在实体所在的位置生成对应的物品实体。
+
+### clearSlot
+~~~ts
+clearSlot(entity: Entity[] | Entity): void
+~~~
+清除指定实体的背包。
+
+### getEquipmentItem
+~~~ts
+getEquipmentItem(
+    entity: Entity,
+    slot = EquipmentSlot.Mainhand,
+  ): ItemStack | undefined
+~~~
+获取指定槽位的物品，若不指定默认获取主手物品。
+
+### setEquipmentItem
+~~~ts
+setEquipmentItem(
+    entity: Entity,
+    item?: ItemStack,
+    slot: EquipmentSlot = EquipmentSlot.Mainhand,
+  ): boolean | undefined
+~~~
+设置指定槽位的物品，若不指定默认设置主手物品。
+
+### damageEntities
+~~~ts
+damageEntities(
+    dimension: Dimension,
+    damageOption: EntityQueryOptions,
+    amount: number,
+  ): void
+~~~
+对某维度符合条件的实体施加伤害。
+
+### affectEntities
+~~~ts
+affectEntities(
+    dimension: Dimension,
+    affectOption: EntityQueryOptions,
+    effectType: EffectType | string,
+    duration: number,
+    effectOption?: EntityEffectOptions,
+  ): void
+~~~
+对某维度符合条件的实体添加状态效果。
+
+### tryOperateEntity
+~~~ts
+tryOperateEntity(
+    entity: Entity,
+    operate: (entity: Entity) => void,
+  ): boolean
+~~~
+先检查实体是否可操作，再进行操作。
+
 ## 物品函数
 ### replaceItemStack
 ~~~ts
