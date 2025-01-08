@@ -1,6 +1,6 @@
 {
   "include": [
-    "src/*",
+    "src/*", "src/lib/interface.ts", "src/main/QuestBookBuilder.ts",
   ],
   "exclude": [
     "./out"
