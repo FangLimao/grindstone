@@ -1,4 +1,4 @@
-import { RawMessage } from "@minecraft/server";
+import { Player, RawMessage } from "@minecraft/server";
 import { Quest } from "../main/Quest";
 import { EntityData, ItemData } from "@grindstone/common";
 
@@ -78,6 +78,11 @@ export interface QuestAward {
    * The specific point will be given to the player.
    */
   exp?: number;
+  /**
+   * The custom award.
+   * @param player 
+   */
+  custom?: (player: Player)=>void;
 }
 /**
  * Conditions of a quest.

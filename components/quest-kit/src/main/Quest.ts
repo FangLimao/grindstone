@@ -78,6 +78,8 @@ export class Quest {
     player.addExperience(this.options.award.exp ?? 0);
     if (this.options.award?.item?.itemStack)
       giveItem([player], this.options.award?.item?.itemStack);
+    if(this.options.award.custom)
+      this.options.award.custom(player);
     player.playSound("random.levelup");
     player.sendMessage({
       translate: "quest.finished",
