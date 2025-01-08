@@ -25,7 +25,7 @@ export interface QuestChapter {
    * @example texture/gui/example_pic
    */
   iconPath?: string;
-}/**
+} /**
  * Options of a quest.
  */
 
@@ -49,22 +49,10 @@ export interface QuestOptions {
    */
   iconPath?: string;
 }
-export interface QuestBookOptions {
-  /**
-   * Quests of the Questbook.
-   */
-  readonly quests: Quest[];
-  /**
-   * The icon of the Quest Book.
-   * It should be the path from the root of the resource pack.
-   * @example texture/gui/example_pic
-   */
-  iconPath?: string;
-}
+
 /**
  * Award of a quest.
  */
-
 export interface QuestAward {
   /**
    * Player will get these items when the quest is finished.
@@ -80,9 +68,9 @@ export interface QuestAward {
   exp?: number;
   /**
    * The custom award.
-   * @param player 
+   * @param player
    */
-  custom?: (player: Player)=>void;
+  custom?: (player: Player) => void;
 }
 /**
  * Conditions of a quest.
@@ -110,4 +98,3 @@ export interface QuestCondition {
    */
   quests?: Quest[];
 }
-

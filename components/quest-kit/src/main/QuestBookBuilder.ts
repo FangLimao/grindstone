@@ -1,13 +1,11 @@
 import { RawMessage, Player, world } from "@minecraft/server";
 import { ActionFormData, ActionFormResponse } from "@minecraft/server-ui";
 import { Quest } from "./Quest";
-import { QuestBookOptions } from "../lib/interface";
 import { QuestBoardBuilder } from "./QuestBoardBuilder";
 import { QuestBookCategory } from "./QuestBookCategory";
 
 /**
  * Create a quest book.
- * @category Need Registry
  */
 
 export class QuestBookBuilder {
@@ -15,7 +13,7 @@ export class QuestBookBuilder {
    * @param id The unique id of the quest book.
    * @param title  Title of the quest book.
    * @param body Body of the quest book.
-   * @param options Options of the quest book.
+   * @param quests Quests of the quest book.
    * @param iconPath
    * The icon of the book.
    * It should be the path from the root of the resource pack, like `texture/gui/example_pic`
@@ -24,7 +22,7 @@ export class QuestBookBuilder {
     public readonly id: string,
     public title: string | RawMessage,
     public body: string | RawMessage,
-    public options: QuestBookOptions,
+    public quests: Quest[],
     public iconPath?: string
   ) { }
   /**
@@ -37,7 +35,7 @@ export class QuestBookBuilder {
     backTo?: QuestBookCategory | QuestBoardBuilder
   ): void {
     const FORM = new ActionFormData().title(this.title).body(this.body);
-    this.options.quests.forEach((quest: Quest) => {
+    this.quests.forEach((quest: Quest) => {
       let rawTitle: RawMessage = {
         rawtext: [
           typeof quest.title === "string" ? { text: quest.title } : quest.title,
@@ -49,7 +47,7 @@ export class QuestBookBuilder {
     FORM.show(player).then((response: ActionFormResponse) => {
       if (response.canceled || response.selection === undefined) {
         backTo?.display(player);
-      } else this.options.quests[response.selection].display(player, this);
+      } else this.quests[response.selection].display(player, this);
     });
   }
   /**
@@ -58,7 +56,7 @@ export class QuestBookBuilder {
    * @param message Optional information will be sent to world.
    */
   addQuest(quest: Quest, message?: string | RawMessage): void {
-    this.options.quests.push(quest);
+    this.quests.push(quest);
     if (message) {
       world.sendMessage(message);
     }
@@ -68,13 +66,13 @@ export class QuestBookBuilder {
    * @param id
    */
   getQuest(id: string): Quest | undefined {
-    return this.options.quests.find((quest: Quest) => quest.id === id);
+    return this.quests.find((quest: Quest) => quest.id === id);
   }
   /**
    * Get all quests.
    */
   getQuests(): Quest[] {
-    return this.options.quests;
+    return this.quests;
   }
   /**
    * Build this quest book.
