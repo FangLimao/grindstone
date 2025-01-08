@@ -7,3 +7,5 @@ export * from "@grindstone/debugger-kit";
 export * as debuggerKit from "@grindstone/debugger-kit";
 export * from "@grindstone/article-kit";
 export * as articleKit from "@grindstone/article-kit";
+export * from "@grindstone/quest-kit";
+export * as questKit from "@grindstone/quest-kit";

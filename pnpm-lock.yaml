@@ -113,6 +113,9 @@ importers:
       '@grindstone/message-kit':
         specifier: workspace:0.2.0
         version: link:../components/message-kit
+      '@grindstone/quest-kit':
+        specifier: workspace:0.1.0
+        version: link:../components/quest-kit
       '@grindstone/utils':
         specifier: workspace:0.6.0
         version: link:../components/grindstone-utils
