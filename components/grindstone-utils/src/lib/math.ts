@@ -59,3 +59,12 @@ export function randomDecimal(
     return random;
   }
 }
+
+/**
+ * Check whether the number is a percentage.
+ * @param num The number to check.
+ * @return Return true if the number is a percentage.
+ */
+export function checkPercent(num: number): boolean {
+  return !(num > 1 || num < 0);
+}
