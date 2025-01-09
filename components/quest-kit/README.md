@@ -1,6 +1,30 @@
 # Grindstone Quest Kit
 这是一个帮助构建简单任务的工具包。
 
+## 设置语言文件
+在开始之前，你需要在语言文件中添加以下内容：
+~~~
+api.unexpected_error.quest=任务系统出现未知错误
+quest.finished=你完成了一个任务！
+quest.done=任务已完成
+quest.check=尝试提交任务
+quest.not_enough.item=材料不足，你需要 %1 个 %2 才能完成这个任务
+quest.not_enough.level=你需要 %1 级经验才能完成这个任务
+quest.not_enough.xp=你需要 %1 点经验才能完成这个任务
+quest.not_enough.entity=你还需要 %1 个特定任务才能完成这个任务
+quest.not_enough.entity=你需要杀死 %1 才能完成这个任务
+quest.condition=§e完成条件§r：
+quest.award=§e完成奖励§r：
+quest.item=%1 个 %2;
+quest.xp=%1 点经验
+quest.level=%1 级经验
+quest.quests=完成 %1 个特定任务
+quest.entity=杀死 %1
+quest.reward.none=无奖励
+quest.condition.none=无条件
+quest.tips=§4提示§r：
+~~~
+
 ## 定义任务
 你可以通过Quest类来定义一个任务：
 
