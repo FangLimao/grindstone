@@ -1,39 +1,11 @@
 import { ItemStack, Player, world } from "@minecraft/server";
 import {
-  giveItem,
   withPercentChance,
   withWeightChance,
   WeightChanceData,
   setEquipmentItem,
 } from "@grindstone/utils";
-
-/**
- * Some useful functions for Gift Api.
- * @category Utils
- */
-export class GiftUtils {
-  /**
-   * Give reward to a player.
-   * @param player
-   * @param giftReward
-   * @param sound Plays a sound when player receive the reward.
-   */
-  static giveReward(player: Player, giftReward: RewardType, sound?: string) {
-    if (giftReward.items) {
-      const ITEMS = giftReward.items;
-      ITEMS.forEach((item) => {
-        giveItem(player, item);
-      });
-    }
-    if (giftReward.exp) {
-      player.addExperience(giftReward.exp);
-    }
-    if (giftReward.level) {
-      player.addExperience(giftReward.level);
-    }
-    player.playSound(sound ?? "random.levelup");
-  }
-}
+import { GiftUtils } from "../utils";
 
 /**
  * Define a gift item.

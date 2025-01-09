@@ -18,6 +18,6 @@
   "dependencies": {
     "@minecraft/server": "^1.16.0",
     "@minecraft/server-ui": "^1.3.0",
-    "@grindstone/common": "workspace:^0.3.0"
+    "@grindstone/common": "workspace:^0.4.0"
   }
 }
