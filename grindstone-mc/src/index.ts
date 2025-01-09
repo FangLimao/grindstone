@@ -9,3 +9,5 @@ export * from "@grindstone/article-kit";
 export * as articleKit from "@grindstone/article-kit";
 export * from "@grindstone/quest-kit";
 export * as questKit from "@grindstone/quest-kit";
+export * from "@grindstone/item-kit";
+export * as itemKit from "@grindstone/item-kit";
