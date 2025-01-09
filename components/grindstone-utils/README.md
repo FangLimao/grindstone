@@ -277,6 +277,12 @@ randomDecimal(
 
 注意：**若max < min，该函数会抛出RangeError。**
 
+### checkPercent
+~~~ts
+checkPercent(num: number): boolean
+~~~
+检查给定数值是否为小数。
+
 ## 其他函数
 ### generateUUID
 ~~~ts
