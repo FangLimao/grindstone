@@ -2,11 +2,14 @@ import {
   consumeDurability,
   giveItem,
   setEquipmentItem,
+  WeightChanceData,
+  withWeightChance,
 } from "@grindstone/utils";
 import { ItemStack, Entity, GameMode, Player } from "@minecraft/server";
 import { Tool, ToolItem, ToolTag } from "./lib/tool";
 import { RewardType } from "./lib/gift";
 import { DevkitError } from "@grindstone/common";
+import { WeaponTag, WeaponItem, Weapon } from "./lib/weapon";
 
 /**
  * Some useful functions for Item Api.
@@ -44,7 +47,7 @@ export class ToolUtils {
     item: ItemStack,
     tool: Tool
   ) {
-    if(!tool.durabilitySettings?.onHitEntity){
+    if (!tool.durabilitySettings?.onHitEntity) {
       throw new DevkitError();
     }
     if (holder instanceof Player) {
@@ -96,5 +99,76 @@ export class GiftUtils {
       player.addExperience(giftReward.level);
     }
     player.playSound(sound ?? "random.levelup");
+  }
+}
+/**
+ * Some useful functions for Weapon Api.
+ * @category Utils
+ */
+
+export class WeaponUtils {
+  static onUseTrigger(weapon: WeaponTag | WeaponItem |Weapon, player: Player) {
+    if (weapon.getUseSkills() && weapon.getUseSkills().length > 0) {
+      const chanceData: WeightChanceData[] = [];
+      weapon.getUseSkills().forEach((skill) => {
+        chanceData.push({
+          event: () => {
+            skill.unleash(player);
+          },
+          weight: skill.weight,
+        });
+      });
+      let result = withWeightChance(chanceData);
+      console.log(
+        `index: ${result.dataIndex}; sum:${result.weightSum}; rand: ${result.weightRand}`
+      );
+    }
+  }
+  static onHitTrigger(
+    weapon: WeaponTag | WeaponItem|Weapon,
+    hitter: Entity,
+    target: Entity
+  ) {
+    if (weapon.getAtkSkills() && weapon.getAtkSkills().length > 0) {
+      const chanceData: WeightChanceData[] = [];
+      weapon.getAtkSkills().forEach((skill) => {
+        chanceData.push({
+          event: () => {
+            skill.unleash(hitter, target);
+          },
+          weight: skill.weight,
+        });
+      });
+      let result = withWeightChance(chanceData);
+      console.log(
+        `index: ${result.dataIndex}; sum:${result.weightSum}; rand: ${result.weightRand}`
+      );
+    }
+  }
+  static onDurabilityDisposeTrigger(
+    holder: Entity,
+    item: ItemStack,
+    weapon: WeaponItem | WeaponTag|Weapon
+  ) {
+    if (holder instanceof Player) {
+      if (
+        holder.getGameMode() === GameMode.survival ||
+        holder.getGameMode() === GameMode.adventure
+      ) {
+        ItemApiUtils.disposeItem(
+          1,
+          item,
+          holder,
+          weapon.options?.destroyedAfterEvents
+        );
+      }
+    } else {
+      ItemApiUtils.disposeItem(
+        1,
+        item,
+        holder,
+        weapon.options?.destroyedAfterEvents
+      );
+    }
   }
 }
