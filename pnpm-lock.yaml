@@ -15,7 +15,7 @@ importers:
   components/article-kit:
     dependencies:
       '@grindstone/common':
-        specifier: workspace:^0.2.0
+        specifier: workspace:^0.3.0
         version: link:../grindstone-common
       '@grindstone/core':
         specifier: workspace:^0.3.0
@@ -57,7 +57,7 @@ importers:
   components/grindstone-utils:
     dependencies:
       '@grindstone/common':
-        specifier: workspace:^0.2.0
+        specifier: workspace:^0.3.0
         version: link:../grindstone-common
       '@minecraft/server':
         specifier: ^1.16.0
@@ -69,7 +69,7 @@ importers:
   components/item-kit:
     dependencies:
       '@grindstone/common':
-        specifier: workspace:^0.2.0
+        specifier: workspace:^0.3.0
         version: link:../grindstone-common
       '@grindstone/core':
         specifier: workspace:^0.3.0
@@ -99,7 +99,7 @@ importers:
   components/quest-kit:
     dependencies:
       '@grindstone/common':
-        specifier: workspace:^0.2.0
+        specifier: workspace:^0.3.0
         version: link:../grindstone-common
       '@grindstone/core':
         specifier: workspace:^0.3.0
@@ -120,7 +120,7 @@ importers:
         specifier: workspace:0.2.0
         version: link:../components/article-kit
       '@grindstone/common':
-        specifier: workspace:0.2.0
+        specifier: workspace:^0.3.0
         version: link:../components/grindstone-common
       '@grindstone/core':
         specifier: workspace:0.3.0

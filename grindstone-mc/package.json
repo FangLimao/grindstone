@@ -18,7 +18,7 @@
   "dependencies": {
     "@grindstone/core": "workspace:0.3.0",
     "@grindstone/utils": "workspace:0.6.0",
-    "@grindstone/common": "workspace:0.2.0",
+    "@grindstone/common": "workspace:^0.3.0",
     "@grindstone/message-kit": "workspace:0.2.0",
     "@grindstone/debugger-kit": "workspace:0.1.1",
     "@grindstone/article-kit": "workspace:0.2.0",
