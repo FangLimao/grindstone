@@ -63,9 +63,9 @@ export abstract class Weapon {
     return useSkills;
   }
   /**
-   * Automatically consume durability for the tools.
+   * Automatically consume durability for the weapon.
    */
-  listeningDurability() {
+  trigger() {
     world.afterEvents.itemUse.subscribe((event) => {
       const [PLAYER, ITEM] = [event.source, event.itemStack];
       if (this.identify(ITEM)) {
@@ -90,6 +90,12 @@ export abstract class Weapon {
         WeaponUtils.onDurabilityDisposeTrigger(ENTITY, ITEM, this);
       }
     });
+  }
+  /**
+   * Build the weapon.
+   */
+  build(): void {
+    this.trigger();
   }
 }
 
