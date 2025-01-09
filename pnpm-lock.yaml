@@ -129,7 +129,7 @@ importers:
         specifier: workspace:0.1.1
         version: link:../components/debugger-kit
       '@grindstone/item-kit':
-        specifier: workspace:0.5.0
+        specifier: workspace:0.5.1
         version: link:../components/item-kit
       '@grindstone/message-kit':
         specifier: workspace:0.2.0
