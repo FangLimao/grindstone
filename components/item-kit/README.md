@@ -64,3 +64,42 @@ cosnt prop = new NumberLimitedPropBuilder("example_id", {
 
 prop.build();
 ~~~
+
+## 构建礼物
+通过Gift系列可以构造礼物：
+~~~ts
+class GiftItemBuilder {
+  constructor(
+    readonly typeId: string,
+    public reward: RewardType,
+    public sound?: string,
+  ) {}
+}
+
+class PercentGiftItemBuilder extends GiftItemBuilder {
+  constructor(
+    readonly typeId: string,
+    public chance: number,
+    public reward: RewardType,
+    public sound?: string,
+  ) {
+    super(typeId, reward, sound);
+  }
+}
+
+class WeightGiftItemBuilder {
+  constructor(
+    readonly typeId: string,
+    public data: RewardWeightData[],
+    public sound?: string,
+  ) {}
+}
+
+interface RewardType {
+  items?: ItemStack[];
+  level?: number;
+  exp?: number;
+}
+~~~
+
+与其他Builder类似，礼物也需要通过`build()`方法使其在游戏中可用。

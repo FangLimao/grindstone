@@ -1,14 +1,10 @@
-/*
- * Copyright © 2024 CTN Studios Contributors
- * This file is licensed under MIT license
- */
-
-import { ItemStack, Player } from "@minecraft/server";
+import { ItemStack, Player, world } from "@minecraft/server";
 import {
   giveItem,
   withPercentChance,
   withWeightChance,
   WeightChanceData,
+  setEquipmentItem,
 } from "@grindstone/utils";
 
 /**
@@ -41,9 +37,8 @@ export class GiftUtils {
 
 /**
  * Define a gift item.
- * @category Need Registry
  */
-export class GiftItem {
+export class GiftItemBuilder {
   /**
    * @param typeId Identifier of the type of items for the stack. If a namespace is not specified, 'minecraft:' is assumed.
    * @param reward Rewards of the gift.
@@ -55,11 +50,15 @@ export class GiftItem {
     public sound?: string,
   ) {}
   /**
-   * Registry the gift.
-   * @deprecated Use `Register.giftRegistry()` to registry the gift.
+   * Build the gift.
    */
-  protected register(): void {
-    console.warn("[Lazuli] The register method was deprecated!");
+   build(): void {
+    world.afterEvents.itemUse.subscribe((event) => {
+      if (event.itemStack.typeId === this.typeId) {
+        setEquipmentItem(event.source);
+        this.giveReward(event.source);
+      }
+    });
   }
   /**
    * Give reward to a player.
@@ -72,9 +71,8 @@ export class GiftItem {
 
 /**
  * A Percent-Driven random reward gift.
- * @category Need Registry
  */
-export class PercentGiftItem extends GiftItem {
+export class PercentGiftItemBuilder extends GiftItemBuilder {
   /**
    * @param typeId Identifier of the type of items for the stack. If a namespace is not specified, 'minecraft:' is assumed.
    * @param chance The probability of give reward when use the gift, should be a percentage (0~1).
@@ -105,9 +103,8 @@ export class PercentGiftItem extends GiftItem {
 
 /**
  * A Weight-Driven random reward gift.
- * @category Need Registry
  */
-export class WeightGiftItem {
+export class WeightGiftItemBuilder {
   /**
    * @param typeId Identifier of the type of items for the stack. If a namespace is not specified, 'minecraft:' is assumed.
    * @param data Data of the gift, including its reward and weight.
@@ -119,11 +116,15 @@ export class WeightGiftItem {
     public sound?: string,
   ) {}
   /**
-   * Registry the gift.
-   * @deprecated Use `Register.giftRegistry()` to registry the gift.
+   * Build the gift.
    */
-  protected register(): void {
-    console.warn("[Lazuli] The register method was deprecated!");
+  build(): void {
+    world.afterEvents.itemUse.subscribe((event) => {
+      if (event.itemStack.typeId === this.typeId) {
+        setEquipmentItem(event.source);
+        this.giveReward(event.source);
+      }
+    });
   }
   /**
    * Give reward to a player.
