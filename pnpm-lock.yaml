@@ -41,15 +41,6 @@ importers:
 
   components/entity-kit:
     dependencies:
-      '@grindstone/common':
-        specifier: workspace:^0.4.0
-        version: link:../grindstone-common
-      '@grindstone/core':
-        specifier: workspace:^0.3.0
-        version: link:../grindstone-core
-      '@grindstone/utils':
-        specifier: workspace:^0.7.0
-        version: link:../grindstone-utils
       '@minecraft/server':
         specifier: ^1.16.0
         version: 1.16.0
@@ -146,6 +137,9 @@ importers:
       '@grindstone/debugger-kit':
         specifier: workspace:0.1.1
         version: link:../components/debugger-kit
+      '@grindstone/entity-kit':
+        specifier: workspace:0.1.0
+        version: link:../components/entity-kit
       '@grindstone/item-kit':
         specifier: workspace:0.5.1
         version: link:../components/item-kit
