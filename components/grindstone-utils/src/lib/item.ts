@@ -17,29 +17,20 @@ import {
  * @param container the {@link Container} which will be searched.
  */
 export function replaceItemStack(
-  item: ItemStack | string | undefined,
-  newItem: ItemStack | string | undefined,
+  item: ItemStack | undefined,
+  newItem: ItemStack | undefined,
   container: Container
 ): number {
   let amount: number = 0;
-  if (typeof newItem === "string") {
-    newItem = new ItemStack(newItem);
-  }
   for (let slot = 0; slot < container.size; slot++) {
     const itemStack: undefined | ItemStack = container.getItem(slot);
-    if (itemStack === item) {
-      container.setItem(slot, newItem);
-      amount++;
-      continue;
-    }
-    if (itemStack?.typeId === item) {
+    if (itemStack?.typeId === item?.typeId) {
       container.setItem(slot, newItem);
       amount++;
     }
   }
   return amount;
 }
-
 /**
  * Damage an {@link ItemStack}.
  * @param item The {@link ItemStack} to be damaged.
