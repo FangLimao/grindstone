@@ -141,7 +141,7 @@ importers:
         specifier: workspace:0.1.0
         version: link:../components/entity-kit
       '@grindstone/item-kit':
-        specifier: workspace:0.5.1
+        specifier: workspace:0.6.0
         version: link:../components/item-kit
       '@grindstone/message-kit':
         specifier: workspace:0.2.0
