@@ -103,7 +103,7 @@ export function getItemAmountInContainer(
   for (let slot = 0; slot < container.size; slot++) {
     const itemStack: undefined | ItemStack = container.getItem(slot);
     if (itemStack?.typeId === item) {
-      amount++;
+      amount = amount + itemStack.amount;
     }
   }
   return amount;

@@ -11,6 +11,7 @@ import {
   EquipmentSlot,
   ItemStack,
   TicksPerSecond,
+  world,
 } from "@minecraft/server";
 import {
   negativeEffectsId,
@@ -18,6 +19,7 @@ import {
   neutralEffectsId,
   EffectData,
 } from "@grindstone/common";
+import { getItemAmountInContainer } from "./item";
 
 /**
  * Wrapper function for removing effect(s) or effect group.

@@ -1,4 +1,6 @@
-import { Player } from "@minecraft/server";
+import { Container, ItemStack, Player, world } from "@minecraft/server";
+import { getContainer, giveItem } from "./entity";
+import { getItemAmountInContainer } from "./item";
 
 /**
  * Get the required exp points by level.
@@ -25,4 +27,18 @@ export function getAllExp(player: Player): number {
     exp += getExpCost(i);
   }
   return exp + player.xpEarnedAtCurrentLevel;
+}
+
+/**
+ * Give item to all player once.
+ * @param entity The player to give item.
+ * @param item The item to give.
+ */
+export function giveItemOnce(item: ItemStack): void {
+  world.afterEvents.playerSpawn.subscribe(event=>{
+    const contianer = getContainer(event.player) as Container;
+    if(getItemAmountInContainer(contianer,item.typeId)===0){
+      giveItem(event.player,item)
+    }
+  })
 }
