@@ -15,18 +15,8 @@ export abstract class Weapon {
    */
   constructor(
     public token: string,
-    public options?: WeaponOptions,
-    public durabilitySettings?: WeaponDurabilitySettings
-  ) {
-    if (this.durabilitySettings) {
-      if (!this.durabilitySettings.onDiggerBlock) {
-        this.durabilitySettings.onDiggerBlock = 2;
-      }
-      if (!this.durabilitySettings.onHitEntity) {
-        this.durabilitySettings.onHitEntity = 1;
-      }
-    }
-  }
+    public options?: WeaponOptions
+  ) {}
   /**
    * Identify the item.
    * @param item
@@ -76,7 +66,8 @@ export abstract class Weapon {
       const [PLAYER, ITEM] = [event.player, getEquipmentItem(event.player)];
       if (!ITEM) return;
       if (this.identify(ITEM)) {
-        WeaponUtils.onDurabilityDisposeTrigger(PLAYER, ITEM, this);
+        if (this.options?.closeDurabilityTrigger) return;
+        WeaponUtils.onDurabilityDisposeTrigger(PLAYER, ITEM, this, 2);
       }
     });
     world.afterEvents.entityHitEntity.subscribe((event) => {
@@ -87,7 +78,6 @@ export abstract class Weapon {
       if (!ITEM) return;
       if (this.identify(ITEM)) {
         WeaponUtils.onHitTrigger(this, ENTITY, event.hitEntity);
-        WeaponUtils.onDurabilityDisposeTrigger(ENTITY, ITEM, this);
       }
     });
   }
@@ -110,18 +100,9 @@ export class WeaponTag extends Weapon {
    */
   constructor(
     public tag: string,
-    public options?: WeaponOptions,
-    public durabilitySettings?: WeaponDurabilitySettings
+    public options?: WeaponOptions
   ) {
-    super(tag, options, durabilitySettings);
-    if (this.durabilitySettings) {
-      if (!this.durabilitySettings.onDiggerBlock) {
-        this.durabilitySettings.onDiggerBlock = 2;
-      }
-      if (!this.durabilitySettings.onHitEntity) {
-        this.durabilitySettings.onHitEntity = 1;
-      }
-    }
+    super(tag, options);
   }
   identify(item: ItemStack): boolean {
     return item.hasTag(this.tag);
@@ -142,18 +123,9 @@ export class WeaponItem extends Weapon {
    */
   constructor(
     public typeId: string,
-    public options?: WeaponOptions,
-    public durabilitySettings?: WeaponDurabilitySettings
+    public options?: WeaponOptions
   ) {
-    super(typeId, options, durabilitySettings);
-    if (this.durabilitySettings) {
-      if (!this.durabilitySettings.onDiggerBlock) {
-        this.durabilitySettings.onDiggerBlock = 2;
-      }
-      if (!this.durabilitySettings.onHitEntity) {
-        this.durabilitySettings.onHitEntity = 1;
-      }
-    }
+    super(typeId, options);
   }
   identify(item: ItemStack): boolean {
     return item.typeId === this.typeId;
@@ -178,9 +150,5 @@ export interface WeaponOptions {
    * Trigger events when the tool has been destroyed.
    */
   destroyedAfterEvents?: (holder: Entity, item: ItemStack) => void;
-}
-
-export interface WeaponDurabilitySettings {
-  onDiggerBlock?: number;
-  onHitEntity?: number;
+  closeDurabilityTrigger?: boolean;
 }

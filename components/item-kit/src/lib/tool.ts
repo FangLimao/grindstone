@@ -1,16 +1,10 @@
 import { world, ItemStack, GameMode, Entity } from "@minecraft/server";
 import {
-  axeConvertBlockIds,
-  DevkitError,
-  hoeConvertBlockIds,
-  shovelConvertBlockIds,
-} from "@grindstone/common";
-import {
   getEquipmentItem,
   consumeDurability,
   setEquipmentItem,
 } from "@grindstone/utils";
-import { ItemApiUtils, ToolUtils } from "../utils";
+import { ItemApiUtils } from "../utils";
 
 /**
  * The abstract tool.
@@ -18,21 +12,8 @@ import { ItemApiUtils, ToolUtils } from "../utils";
 export abstract class Tool {
   constructor(
     readonly token: string,
-    public options?: ToolOptions,
-    public durabilitySettings?: ToolDurabilitySettings
-  ) {
-    if (this.durabilitySettings) {
-      if (!this.durabilitySettings.onDiggerBlock) {
-        this.durabilitySettings.onDiggerBlock = 1;
-      }
-      if (!this.durabilitySettings.onHitEntity) {
-        this.durabilitySettings.onHitEntity = 2;
-      }
-      if(!this.durabilitySettings.onUseOnBlock){
-        this.durabilitySettings.onUseOnBlock = 1;
-      }
-    }
-  }
+    public options?: ToolOptions
+  ) {}
   /**
    * Identify the item.
    * @param item
@@ -61,30 +42,22 @@ export abstract class Tool {
     world.afterEvents.playerBreakBlock.subscribe((event) => {
       const [PLAYER, ITEM] = [event.player, getEquipmentItem(event.player)];
       if (!ITEM) return;
-      if (!this.durabilitySettings?.onDiggerBlock) throw new DevkitError();
       if (this.identify(ITEM)) {
+        if (this.options?.closeDurabilityTrigger) {
+          return;
+        }
         if (
           PLAYER.getGameMode() === GameMode.survival ||
           PLAYER.getGameMode() === GameMode.adventure
         ) {
           ItemApiUtils.disposeItem(
-            this.durabilitySettings?.onDiggerBlock,
+            1,
             ITEM,
             PLAYER,
             this.options?.destroyedAfterEvents
           );
+          console.log(this.token);
         }
-      }
-    });
-    // On hit entity
-    world.afterEvents.entityHitEntity.subscribe((event) => {
-      const [ENTITY, ITEM] = [
-        event.damagingEntity,
-        getEquipmentItem(event.damagingEntity),
-      ];
-      if (!ITEM) return;
-      if (this.identify(ITEM)) {
-        ToolUtils.onHitEntityDurabilityDisposer(ENTITY, ITEM, this);
       }
     });
   }
@@ -93,20 +66,21 @@ export abstract class Tool {
    */
   shovelDurabilityTrigger() {
     world.afterEvents.itemUseOn.subscribe((event) => {
+      console.log("catch event!");
       const [ITEM, BLOCK, PLAYER] = [
         event.itemStack,
         event.block,
         event.source,
       ];
-      if (!ITEM) return;
-      if (!this.durabilitySettings?.onUseOnBlock) throw new DevkitError();
-      if (this.identify(ITEM) && shovelConvertBlockIds.includes(BLOCK.typeId)) {
-        const newItem = consumeDurability(ITEM, this.durabilitySettings?.onUseOnBlock, PLAYER);
-        setEquipmentItem(PLAYER, newItem);
-        PLAYER.playSound("step.grass");
-        if (!newItem && this.options?.destroyedAfterEvents) {
-          this.options?.destroyedAfterEvents(PLAYER, ITEM);
+      if (this.identify(ITEM)) {
+        if (!this.options?.closeUseDurabilityTrigger) {
+          const newItem = consumeDurability(ITEM, 1, PLAYER);
+          setEquipmentItem(PLAYER, newItem);
+          if (!newItem && this.options?.destroyedAfterEvents) {
+            this.options?.destroyedAfterEvents(PLAYER, ITEM);
+          }
         }
+        PLAYER.playSound("use.grass");
       }
     });
   }
@@ -120,15 +94,15 @@ export abstract class Tool {
         event.block,
         event.source,
       ];
-      if (!ITEM) return;
-      if (!this.durabilitySettings?.onUseOnBlock) throw new DevkitError();
-      if (this.identify(ITEM) && hoeConvertBlockIds.includes(BLOCK.typeId)) {
-        const newItem = consumeDurability(ITEM, this.durabilitySettings?.onUseOnBlock, PLAYER);
-        setEquipmentItem(PLAYER, newItem);
-        PLAYER.playSound("step.gravel");
-        if (!newItem && this.options?.destroyedAfterEvents) {
-          this.options?.destroyedAfterEvents(PLAYER, ITEM);
+      if (this.identify(ITEM)) {
+        if (!this.options?.closeUseDurabilityTrigger) {
+          const newItem = consumeDurability(ITEM, 1, PLAYER);
+          setEquipmentItem(PLAYER, newItem);
+          if (!newItem && this.options?.destroyedAfterEvents) {
+            this.options?.destroyedAfterEvents(PLAYER, ITEM);
+          }
         }
+        PLAYER.playSound("step.gravel");
       }
     });
   }
@@ -142,15 +116,15 @@ export abstract class Tool {
         event.block,
         event.source,
       ];
-      if (!ITEM) return;
-      if (!this.durabilitySettings?.onUseOnBlock) throw new DevkitError();
-      if (this.identify(ITEM) && axeConvertBlockIds.includes(BLOCK.typeId)) {
-        const newItem = consumeDurability(ITEM, this.durabilitySettings?.onUseOnBlock, PLAYER);
-        setEquipmentItem(PLAYER, newItem);
-        PLAYER.playSound("use.wood");
-        if (!newItem && this.options?.destroyedAfterEvents) {
-          this.options?.destroyedAfterEvents(PLAYER, ITEM);
+      if (this.identify(ITEM)) {
+        if (!this.options?.closeUseDurabilityTrigger) {
+          const newItem = consumeDurability(ITEM, 1, PLAYER);
+          setEquipmentItem(PLAYER, newItem);
+          if (!newItem && this.options?.destroyedAfterEvents) {
+            this.options?.destroyedAfterEvents(PLAYER, ITEM);
+          }
         }
+        PLAYER.playSound("use.wood");
       }
     });
   }
@@ -166,18 +140,9 @@ export class ToolTag extends Tool {
    */
   constructor(
     readonly tag: string,
-    public options?: ToolOptions,
-    public durabilitySettings?: ToolDurabilitySettings
+    public options?: ToolOptions
   ) {
-    super(tag, options, durabilitySettings);
-    if (this.durabilitySettings) {
-      if (!this.durabilitySettings.onDiggerBlock) {
-        this.durabilitySettings.onDiggerBlock = 1;
-      }
-      if (!this.durabilitySettings.onHitEntity) {
-        this.durabilitySettings.onHitEntity = 2;
-      }
-    }
+    super(tag, options);
   }
   identify(item: ItemStack): boolean {
     return item.hasTag(this.tag);
@@ -198,18 +163,9 @@ export class ToolItem extends Tool {
    */
   constructor(
     readonly typeId: string,
-    public options?: ToolOptions,
-    public durabilitySettings?: ToolDurabilitySettings
+    public options?: ToolOptions
   ) {
-    super(typeId, options, durabilitySettings);
-    if (this.durabilitySettings) {
-      if (!this.durabilitySettings.onDiggerBlock) {
-        this.durabilitySettings.onDiggerBlock = 1;
-      }
-      if (!this.durabilitySettings.onHitEntity) {
-        this.durabilitySettings.onHitEntity = 2;
-      }
-    }
+    super(typeId, options);
   }
   identify(item: ItemStack): boolean {
     return item.typeId === this.typeId;
@@ -230,10 +186,6 @@ export interface ToolOptions {
    * Trigger events when the tool has been destroyed.
    */
   destroyedAfterEvents?: (holder: Entity, item: ItemStack) => void;
-}
-
-export interface ToolDurabilitySettings {
-  onDiggerBlock?: number;
-  onHitEntity?: number;
-  onUseOnBlock?: number;
+  closeDurabilityTrigger?: boolean;
+  closeUseDurabilityTrigger?: boolean;
 }
