@@ -39,6 +39,15 @@ importers:
         specifier: ^1.3.0
         version: 1.3.0
 
+  components/effect-kit:
+    dependencies:
+      '@minecraft/server':
+        specifier: ^1.16.0
+        version: 1.16.0
+      '@minecraft/server-ui':
+        specifier: ^1.3.0
+        version: 1.3.0
+
   components/entity-kit:
     dependencies:
       '@minecraft/server':
@@ -137,6 +146,9 @@ importers:
       '@grindstone/debugger-kit':
         specifier: workspace:0.1.1
         version: link:../components/debugger-kit
+      '@grindstone/effect-kit':
+        specifier: workspace:0.1.0
+        version: link:../components/effect-kit
       '@grindstone/entity-kit':
         specifier: workspace:0.1.0
         version: link:../components/entity-kit
