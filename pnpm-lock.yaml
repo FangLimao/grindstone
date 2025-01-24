@@ -50,6 +50,9 @@ importers:
 
   components/entity-kit:
     dependencies:
+      '@grindstone/utils':
+        specifier: workspace:^0.7.2
+        version: link:../grindstone-utils
       '@minecraft/server':
         specifier: ^1.16.0
         version: 1.16.0
