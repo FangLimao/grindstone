@@ -1,0 +1,27 @@
+{
+  "name": "@grindstone/format-kit",
+  "version": "0.1.0",
+  "description": "Grindstone format kit",
+  "main": "src/index.ts",
+  "keywords": [
+    "Minecraft",
+    "sapi",
+    "mcbe"
+  ],
+  "contributors": [
+    "FangLimao <mucigames@outlook.com>",
+    "RawDiamondMC <RawDiamondMC@outlook.com>"
+  ],
+  "scripts": {
+    "doc": "typedoc --options typedoc.json"
+  },
+  "license": "MIT",
+  "author": "CTN Studios",
+  "dependencies": {
+    "@minecraft/server": "^1.16.0"
+  },
+  "devDependencies": {
+    "typedoc": "^0.27.6",
+    "typedoc-plugin-markdown": "^4.4.1"
+  }
+}
