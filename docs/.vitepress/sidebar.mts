@@ -37,6 +37,10 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/refs/entity-kit/globals.md"
         },
         {
+          text: "@grindstone/format-kit",
+          link: "/refs/format/globals.md"
+        },
+        {
           text: "@grindstone/item-kit",
           link: "/refs/item-kit/globals.md"
         },
