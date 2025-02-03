@@ -82,51 +82,51 @@ export class Color {
   static white: string = "§f";
   /**
    * 将文本颜色设置为硬币金色
-   * 
+   *
    * 该颜色在PlayStation上无法正常显示，会显示为无格式或透明。
    */
   static minecoinGold: string = "§g";
-    /**
+  /**
    * 将文本颜色设置为石英色
    */
   static materialQuartz: string = "§h";
-      /**
+  /**
    * 将文本颜色设置为铁灰色
    */
   static materialIron: string = "§i";
-    /**
+  /**
    * 将文本颜色设置为下界合金灰色
    */
   static materialNetherite: string = "§j";
-    /**
+  /**
    * 将文本颜色设置为红石色
    */
   static materialRedstone: string = "§m";
-    /**
+  /**
    * 将文本颜色设置为铜橙色
    */
   static materialCopper: string = "§n";
-    /**
+  /**
    * 将文本颜色设置为金色
    */
   static materialGold: string = "§p";
-    /**
+  /**
    * 将文本颜色设置为绿宝石色
    */
   static materialEmerald: string = "§q";
-    /**
+  /**
    * 将文本颜色设置为钻石色
    */
   static materialDiamond: string = "§s";
-    /**
+  /**
    * 将文本颜色设置为青金石色
    */
   static materialLapis: string = "§t";
-    /**
+  /**
    * 将文本颜色设置为水晶紫色
    */
   static materialAmethyst: string = "§u";
-    /**
+  /**
    * 将文本颜色设置为树脂橙色
    */
   static materialResin: string = "§v";
@@ -156,7 +156,7 @@ export class Format {
    */
   static strikeThrough: string = "§m";
   /**
-   * 将文本格式设置为随机字符，在脚本表单下会显示为`.......`
+   * 将文本格式设置为随机字符，在部分情况下会显示为`.......`
    */
   static random: string = "§k";
   /**
@@ -164,7 +164,7 @@ export class Format {
    */
   static reset: string = "§r";
   /**
-   * 
+   * 换行
    */
   static newLine: string = "\n";
 }
