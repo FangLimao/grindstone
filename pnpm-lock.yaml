@@ -239,7 +239,7 @@ importers:
         specifier: workspace:0.2.0
         version: link:../components/entity-kit
       '@grindstone/format-kit':
-        specifier: workspace:^0.1.0
+        specifier: workspace:^1.0.0
         version: link:../components/format-kit
       '@grindstone/item-kit':
         specifier: workspace:0.6.0
