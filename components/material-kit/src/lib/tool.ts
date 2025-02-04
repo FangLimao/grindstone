@@ -19,12 +19,12 @@ import {
  *
  * 为一些特定种类的工具与方块交互时添加音效和动画的功能只有在添加了对应的标签后才可以正常使用（如`minecraft:is_axe`）
  * @example
- * new ToolMaterial("hy:custom_tools").addTrigger(
- *   ToolEventType.attack,
- *   (data: EntityHitBlockAfterEvent) => {
- *      data.damagingEntity.applyDamage(1);
- *  });
- *
+ * const tool = new ToolMaterial("hy:custom_tools", true);
+ * tool.onHitEntity((callback)=>{
+ *  console.log("击中实体！")
+ * })
+ * @since GDK v0.16.0
+ * @since Material Kit v0.1.0
  */
 export class ToolMaterial {
   /**
@@ -63,6 +63,7 @@ export class ToolMaterial {
       const component = newItem?.getComponent(
         "durability"
       ) as ItemDurabilityComponent;
+      console.log("工具材料类型：" + this.tag);
       console.log("该工具现在的损坏值：" + component?.damage);
     }
   }
@@ -90,34 +91,32 @@ export class ToolMaterial {
     return (this.options = options);
   }
   /**
-   * 添加工具材料监听器
-   * @param type 监听器类型
-   * @param trigger
+   * 当工具材料对应的工具损坏时触发的事件监听器
+   * @param callback
    */
-  addTrigger(
-    type: ToolEventType,
-    trigger: (
-      data:
-        | ToolBreakAfterEvent
-        | ItemUseAfterEvent
-        | PlayerBreakBlockAfterEvent
-        | EntityHitEntityAfterEvent
-    ) => void
-  ) {
-    switch (type) {
-      case ToolEventType.attack:
-        this.eventTriggers.attackAfterEvents = trigger;
-        break;
-      case ToolEventType.use:
-        this.eventTriggers.useAfterEvents = trigger;
-        break;
-      case ToolEventType.breakBlock:
-        this.eventTriggers.breakBlockAfterEvents = trigger;
-        break;
-      case ToolEventType.destroyed:
-        this.eventTriggers.destroyedAfterEvents = trigger;
-        break;
-    }
+  onToolBreak(callback: (data: ToolBreakAfterEvent) => void) {
+    this.eventTriggers.destroyedAfterEvents = callback;
+  }
+  /**
+   * 当工具材料对应的工具使用时触发的事件监听器
+   * @param callback
+   */
+  onToolUse(callback: (data: ItemUseAfterEvent) => void) {
+    this.eventTriggers.useAfterEvents = callback;
+  }
+  /**
+   * 当工具材料对应的工具挖掘方块时触发的事件监听器
+   * @param callback
+   */
+  onToolBreakBlock(callback: (data: PlayerBreakBlockAfterEvent) => void) {
+    this.eventTriggers.breakBlockAfterEvents = callback;
+  }
+  /**
+   * 当工具材料对应的工具击打实体时触发的事件监听器
+   * @param callback
+   */
+  onHitEntity(callback: (data: EntityHitEntityAfterEvent) => void) {
+    this.eventTriggers.attackAfterEvents = callback;
   }
   /**
    * 当物品给原木剥皮时的事件
@@ -126,11 +125,12 @@ export class ToolMaterial {
     world.afterEvents.itemUseOn.subscribe((event) => {
       const [ITEM, PLAYER] = [event.itemStack, event.source];
       if (ITEM.hasTag(this.tag) && ITEM.hasTag("minecraft:is_axe")) {
+        PLAYER.playSound("use.wood");
         if (!this.options?.closeUseDurabilityTrigger) {
+          if (PLAYER.getGameMode() === GameMode.creative) return;
           const breakEvent = this.eventTriggers.destroyedAfterEvents;
           this.disposeItem(1, ITEM, PLAYER, breakEvent);
         }
-        PLAYER.playSound("use.wood");
       }
     });
   }
@@ -141,11 +141,12 @@ export class ToolMaterial {
     world.afterEvents.itemUseOn.subscribe((event) => {
       const [ITEM, PLAYER] = [event.itemStack, event.source];
       if (ITEM.hasTag(this.tag) && ITEM.hasTag("minecraft:is_shovel")) {
+        PLAYER.playSound("use.grass");
         if (!this.options?.closeUseDurabilityTrigger) {
+          if (PLAYER.getGameMode() === GameMode.creative) return;
           const breakEvent = this.eventTriggers.destroyedAfterEvents;
           this.disposeItem(1, ITEM, PLAYER, breakEvent);
         }
-        PLAYER.playSound("use.grass");
       }
     });
   }
@@ -155,12 +156,13 @@ export class ToolMaterial {
   hoeTrigger() {
     world.afterEvents.itemUseOn.subscribe((event) => {
       const [ITEM, PLAYER] = [event.itemStack, event.source];
-      if (ITEM.hasTag(this.tag) && ITEM.hasTag("minecraft:is_shovel")) {
+      if (ITEM.hasTag(this.tag) && ITEM.hasTag("minecraft:is_hoe")) {
+        PLAYER.playSound("step.gravel");
         if (!this.options?.closeUseDurabilityTrigger) {
+          if (PLAYER.getGameMode() === GameMode.creative) return;
           const breakEvent = this.eventTriggers.destroyedAfterEvents;
           this.disposeItem(1, ITEM, PLAYER, breakEvent);
         }
-        PLAYER.playSound("step.gravel");
       }
     });
   }
@@ -175,13 +177,9 @@ export class ToolMaterial {
         if (this.eventTriggers.breakBlockAfterEvents)
           this.eventTriggers.breakBlockAfterEvents(event);
         if (this.options?.closeDurabilityTrigger) return;
-        if (
-          PLAYER.getGameMode() === GameMode.survival ||
-          PLAYER.getGameMode() === GameMode.adventure
-        ) {
-          const breakEvent = this.eventTriggers.destroyedAfterEvents;
-          this.disposeItem(1, ITEM, PLAYER, breakEvent);
-        }
+        if (PLAYER.getGameMode() === GameMode.creative) return;
+        const breakEvent = this.eventTriggers.destroyedAfterEvents;
+        this.disposeItem(1, ITEM, PLAYER, breakEvent);
       }
     });
   }
