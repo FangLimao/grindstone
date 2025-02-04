@@ -1,12 +1,10 @@
 import {
   Entity,
-  EntityHitBlockAfterEvent,
   EntityHitEntityAfterEvent,
   GameMode,
   ItemDurabilityComponent,
   ItemStack,
   ItemUseAfterEvent,
-  Player,
   PlayerBreakBlockAfterEvent,
   world,
 } from "@minecraft/server";
@@ -55,22 +53,28 @@ export class ToolMaterial {
   ): void {
     const newItem = consumeDurability(item, durability, entity);
     setEquipmentItem(entity, newItem);
-    const component = newItem?.getComponent(
-      "durability"
-    ) as ItemDurabilityComponent;
-    console.log(component.damage);
     if (!newItem && event) {
       event({
         itemStack: item,
         source: entity,
       });
     }
+    if (this.debug) {
+      const component = newItem?.getComponent(
+        "durability"
+      ) as ItemDurabilityComponent;
+      console.log("该工具现在的损坏值：" + component?.damage);
+    }
   }
   /**
    * 初始化该工具材料
    * @param tag 工具材料具有的标签
+   * @param debug 是否开启调试模式，若开启，则在一些情况下会发送日志以方便调试
    */
-  constructor(readonly tag: string) {
+  constructor(
+    readonly tag: string,
+    public debug: boolean = false
+  ) {
     this.axeTrigger();
     this.shovelTrigger();
     this.hoeTrigger();
@@ -259,13 +263,11 @@ export class ToolBreakAfterEvent {
   /**
    * @remarks
    * 损坏的物品
-   *
    */
   itemStack!: ItemStack;
   /**
    * @remarks
    * 引发事件的玩家
-   *
    */
   readonly source!: Entity;
 }
