@@ -1,6 +1,6 @@
 {
   "name": "@grindstone/material-kit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Grindstone material kit",
   "main": "src/index.ts",
   "keywords": [

@@ -270,7 +270,7 @@ importers:
         specifier: workspace:0.6.0
         version: link:../components/item-kit
       '@grindstone/material-kit':
-        specifier: workspace:^0.1.0
+        specifier: workspace:^0.2.0
         version: link:../components/material-kit
       '@grindstone/message-kit':
         specifier: workspace:0.2.0
