@@ -7,7 +7,8 @@ import {
 import { ItemApiUtils } from "../utils";
 
 /**
- * The abstract tool.
+ * 工具抽象类
+ * @deprecated 请使用`MaterialKit.ToolMaterial`替代此类
  */
 export abstract class Tool {
   constructor(
@@ -131,7 +132,8 @@ export abstract class Tool {
 }
 
 /**
- * Define a tool tag.
+ * 定义一个工具标签
+ * @deprecated 请使用`MaterialKit.ToolMaterial`替代此类
  */
 export class ToolTag extends Tool {
   /**
@@ -150,8 +152,8 @@ export class ToolTag extends Tool {
 }
 
 /**
- * Define a tool.
- * @category Need Registry
+ * 定义一个工具物品
+ * @deprecated 请使用`MaterialKit.ToolMaterial`替代此类
  */
 export class ToolItem extends Tool {
   /**
@@ -173,10 +175,15 @@ export class ToolItem extends Tool {
 }
 
 /**
- * Type of the tool.
+ * 工具类型
+ * @deprecated `MaterialKit.ToolMaterial`已经可以替代此类型所对应的`Tool`，且无需显性指定工具类型
  */
 export type ToolType = "axe" | "shovel" | "hoe" | "pickaxe" | "custom";
 
+/**
+ * 工具选项
+ * @deprecated `MaterialKit.ToolMaterial`已经可以替代此选项所对应的`Tool`
+ */
 export interface ToolOptions {
   /**
    * Type of the tool.
