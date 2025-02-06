@@ -1,18 +1,12 @@
 import {
-  Entity,
   EntityHitEntityAfterEvent,
   GameMode,
-  ItemDurabilityComponent,
-  ItemStack,
   ItemUseAfterEvent,
   PlayerBreakBlockAfterEvent,
   world,
 } from "@minecraft/server";
-import {
-  consumeDurability,
-  getEquipmentItem,
-  setEquipmentItem,
-} from "@grindstone/utils";
+import { getEquipmentItem } from "@grindstone/utils";
+import { disposeItem, ItemBreakAfterEvent } from "./common";
 
 /**
  * 创建一个工具材料，这将为其自动监听耐久事件，并在一些特定种类的工具与方块交互时添加音效和动画
@@ -38,35 +32,6 @@ export class ToolMaterial {
    * 工具材料的相关监听器
    */
   protected eventTriggers: ToolEventTrigger = {};
-  /**
-   * 当工具的耐久值应当发生变化时，处理手持的物品
-   * @param durability 应当消耗的耐久
-   * @param item 手持的物品
-   * @param entity 持有工具的实体
-   * @param event 工具若损坏，触发的事件
-   */
-  protected disposeItem(
-    durability: number,
-    item: ItemStack,
-    entity: Entity,
-    event?: (eventData: ToolBreakAfterEvent) => void
-  ): void {
-    const newItem = consumeDurability(item, durability, entity);
-    setEquipmentItem(entity, newItem);
-    if (!newItem && event) {
-      event({
-        itemStack: item,
-        source: entity,
-      });
-    }
-    if (this.debug) {
-      const component = newItem?.getComponent(
-        "durability"
-      ) as ItemDurabilityComponent;
-      console.log("工具材料类型：" + this.tag);
-      console.log("该工具现在的损坏值：" + component?.damage);
-    }
-  }
   /**
    * 初始化该工具材料
    * @param tag 工具材料具有的标签
@@ -94,7 +59,7 @@ export class ToolMaterial {
    * 当工具材料对应的工具损坏时触发的事件监听器
    * @param callback
    */
-  onToolBreak(callback: (data: ToolBreakAfterEvent) => void) {
+  onToolBreak(callback: (data: ItemBreakAfterEvent) => void) {
     this.eventTriggers.destroyedAfterEvents = callback;
   }
   /**
@@ -129,7 +94,7 @@ export class ToolMaterial {
         if (!this.options?.closeUseDurabilityTrigger) {
           if (PLAYER.getGameMode() === GameMode.creative) return;
           const breakEvent = this.eventTriggers.destroyedAfterEvents;
-          this.disposeItem(1, ITEM, PLAYER, breakEvent);
+          disposeItem(1, ITEM, PLAYER, breakEvent, this.debug);
         }
       }
     });
@@ -145,7 +110,7 @@ export class ToolMaterial {
         if (!this.options?.closeUseDurabilityTrigger) {
           if (PLAYER.getGameMode() === GameMode.creative) return;
           const breakEvent = this.eventTriggers.destroyedAfterEvents;
-          this.disposeItem(1, ITEM, PLAYER, breakEvent);
+          disposeItem(1, ITEM, PLAYER, breakEvent, this.debug);
         }
       }
     });
@@ -161,7 +126,7 @@ export class ToolMaterial {
         if (!this.options?.closeUseDurabilityTrigger) {
           if (PLAYER.getGameMode() === GameMode.creative) return;
           const breakEvent = this.eventTriggers.destroyedAfterEvents;
-          this.disposeItem(1, ITEM, PLAYER, breakEvent);
+          disposeItem(1, ITEM, PLAYER, breakEvent, this.debug);
         }
       }
     });
@@ -179,7 +144,7 @@ export class ToolMaterial {
         if (this.options?.closeDurabilityTrigger) return;
         if (PLAYER.getGameMode() === GameMode.creative) return;
         const breakEvent = this.eventTriggers.destroyedAfterEvents;
-        this.disposeItem(1, ITEM, PLAYER, breakEvent);
+        disposeItem(1, ITEM, PLAYER, breakEvent, this.debug);
       }
     });
   }
@@ -225,7 +190,7 @@ export interface ToolEventTrigger {
   /**
    * 工具耐久耗尽后触发的事件
    */
-  destroyedAfterEvents?: (eventData: ToolBreakAfterEvent) => void;
+  destroyedAfterEvents?: (eventData: ItemBreakAfterEvent) => void;
   /**
    * 工具使用后触发的事件
    * @param eventData 事件数据
@@ -251,21 +216,4 @@ export enum ToolEventType {
   use = "use",
   breakBlock = "breakBlock",
   attack = "attack",
-}
-
-/**
- * 工具损坏后触发的事件
- */
-export class ToolBreakAfterEvent {
-  private constructor() {}
-  /**
-   * @remarks
-   * 损坏的物品
-   */
-  itemStack!: ItemStack;
-  /**
-   * @remarks
-   * 引发事件的玩家
-   */
-  readonly source!: Entity;
 }
