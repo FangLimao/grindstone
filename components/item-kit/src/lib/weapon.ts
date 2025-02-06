@@ -5,7 +5,8 @@ import { WeaponUtils } from "../utils";
 import { WeaponAtkSkill } from "./weaponSkill";
 
 /**
- * The abstract weapon.
+ * 武器抽象类
+ * @deprecated 请使用`MaterialKit.WeaponMaterial`替代此类
  */
 export abstract class Weapon {
   /**
@@ -90,7 +91,9 @@ export abstract class Weapon {
 }
 
 /**
- * Define a tool tag.
+ * 定义一个武器标签
+ * 
+ * @deprecated 请使用`MaterialKit.WeaponMaterial`替代此类
  */
 export class WeaponTag extends Weapon {
   /**
@@ -110,7 +113,9 @@ export class WeaponTag extends Weapon {
 }
 
 /**
- * Define a tool.
+ * 定义一个工具物品
+ * 
+ * @deprecated 请使用`MaterialKit.WeaponMaterial`替代此类
  */
 export class WeaponItem extends Weapon {
   /**
@@ -133,10 +138,14 @@ export class WeaponItem extends Weapon {
 }
 
 /**
- * Type of the weapon.
+ * 工具类型
+ * @deprecated `MaterialKit.WeaponMaterial`已经替代此类型所属的类
  */
 export type WeaponType = "sword" | "custom";
 
+/**
+ * @deprecated
+ */
 export interface WeaponOptions {
   /**
    * Type of the tool.

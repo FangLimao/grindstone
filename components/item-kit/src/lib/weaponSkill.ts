@@ -5,9 +5,14 @@ import { ItemApiUtils } from "../utils";
 
 /**
  * Type to the weapon skill.
+ * 
+ * @deprecated
  */
 export type WeaponSkillType = "attack" | "use" | "none";
 
+/**
+ * @deprecated
+ */
 export interface RangeEffectOptions {
   effect: EffectData;
   range: number;
@@ -15,6 +20,8 @@ export interface RangeEffectOptions {
 
 /**
  * This event fires when the {@link WeaponSkill} is unleashed.
+ * 
+ * @deprecated
  */
 export interface WeaponSkillEvent {
   /**
@@ -47,6 +54,8 @@ export interface WeaponSkillEvent {
 
 /**
  * This event fires when the {@link WeaponAtkSkill} is unleashed.
+ * 
+ * @deprecated
  */
 export interface WeaponSkillAtkEvent extends WeaponSkillEvent {
   /**
@@ -108,6 +117,7 @@ export class WeaponSkillUtils {
 /**
  * Define a weapon attack skill without trigger.
  * Please use {@link WeaponAtkSkill} or {@link WeaponUseSkill}.
+ * @deprecated
  */
 export class WeaponSkill {
   /**
@@ -145,6 +155,9 @@ export class WeaponSkill {
   }
 }
 
+/**
+ * @deprecated
+ */
 export class WeaponAtkSkill extends WeaponSkill {
   /**
    * @param weight The probability to triggered when multiple skills are added to a weapon.
@@ -190,6 +203,9 @@ export class WeaponAtkSkill extends WeaponSkill {
   }
 }
 
+/**
+ * @deprecated 
+ */
 export class WeaponUseSkill extends WeaponSkill {
   /**
    * @param weight The probability to triggered when multiple skills are added to a weapon.
