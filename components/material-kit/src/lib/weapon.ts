@@ -1,7 +1,5 @@
 import {
   world,
-  ItemStack,
-  Entity,
   PlayerBreakBlockAfterEvent,
   GameMode,
 } from "@minecraft/server";
@@ -136,6 +134,9 @@ export class WeaponMaterial {
       );
     });
   }
+  /**
+   * 当武器击中实体时的事件
+   */
   protected hitTrigger() {
     if (this.getAtkSkills().length === 0) return;
     world.afterEvents.entityHitEntity.subscribe((event) => {
