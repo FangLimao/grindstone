@@ -38,10 +38,19 @@ export class WeaponMaterial {
   }
   /**
    * 向武器材料添加技能
-   * @param skill
+   * @param skills
    */
-  addSkill(skill: WeaponAtkSkill | WeaponUseSkill) {
-    this.skills?.push(skill);
+  addSkill(...skills: (WeaponAtkSkill | WeaponUseSkill)[]) {
+    skills.forEach(skill=>{
+      this.skills?.push(skill);
+    })
+  }
+  /**
+   * 设置该武器材料的选项
+   * @param option 
+   */
+  setOption(option: WeaponMaterialOptions){
+    this.options = option;
   }
   /**
    * 获取该武器材料所有技能
@@ -111,10 +120,10 @@ export class WeaponMaterial {
    * 当武器使用时的事件
    */
   protected useTrigger() {
-    if (this.getUseSkills().length === 0) return;
     world.afterEvents.itemUse.subscribe((event) => {
       const [player, item] = [event.source, event.itemStack];
       if (!item.hasTag(this.tag)) return;
+      if (this.getUseSkills().length === 0) return;
       const chanceData: WeightChanceData[] = [];
       this.getUseSkills().forEach((skill) => {
         if (skill.ignoreOtherSkills) {
@@ -129,8 +138,8 @@ export class WeaponMaterial {
         });
       });
       let result = withWeightChance(chanceData);
-      console.log(
-        `index: ${result.dataIndex}; sum:${result.weightSum}; rand: ${result.weightRand}`
+      if(this.debug)console.log(
+        `选中权重: ${result.dataIndex}; 权重之和:${result.weightSum}; 权重随机数: ${result.weightRand}`
       );
     });
   }
@@ -138,8 +147,7 @@ export class WeaponMaterial {
    * 当武器击中实体时的事件
    */
   protected hitTrigger() {
-    if (this.getAtkSkills().length === 0) return;
-    world.afterEvents.entityHitEntity.subscribe((event) => {
+    world.afterEvents.entityHitEntity.subscribe((event) => {   
       const [atker, target, item] = [
         event.damagingEntity,
         event.hitEntity,
@@ -147,8 +155,9 @@ export class WeaponMaterial {
       ];
       if (!item) return;
       if (!item.hasTag(this.tag)) return;
+      if (this.getAtkSkills().length === 0) return;
       const chanceData: WeightChanceData[] = [];
-      this.getUseSkills().forEach((skill) => {
+      this.getAtkSkills().forEach((skill) => {
         if (skill.ignoreOtherSkills) {
           skill.release(atker, target);
           return;
@@ -161,8 +170,8 @@ export class WeaponMaterial {
         });
       });
       let result = withWeightChance(chanceData);
-      console.log(
-        `index: ${result.dataIndex}; sum:${result.weightSum}; rand: ${result.weightRand}`
+      if(this.debug) console.log(
+        `选中权重: ${result.dataIndex}; 权重之和:${result.weightSum}; 权重随机数: ${result.weightRand}`
       );
     });
   }

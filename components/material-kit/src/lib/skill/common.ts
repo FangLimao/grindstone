@@ -83,7 +83,7 @@ export class SkillOnReleaseAfterEvent {
   /**
    * 释放技能的生物
    */
-  releaser: Entity;
+  releaser!: Entity;
   /**
    * 受到技能影响的生物，在部分类型的技能中可能为`undefined`
    */
