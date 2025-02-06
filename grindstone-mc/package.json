@@ -1,6 +1,6 @@
 {
   "name": "@grindstone/devkit",
-  "version": "0.16.2",
+  "version": "0.16.3",
   "description": "Grindstone Devkit for Minecraft Bedrock Edition",
   "main": "src/index.ts",
   "keywords": [
