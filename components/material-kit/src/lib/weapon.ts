@@ -15,6 +15,9 @@ import { disposeItem, ItemBreakAfterEvent } from "./common";
  * 创建一个武器材料，这将为其自动监听耐久事件，同时也可以为其添加武器技能
  *
  * *如果想监听该武器的使用和击打事件，请为其添加使用/攻击技能*
+ * 
+ * @since GDK v0.16.4
+ * @since v0.4.0
  */
 export class WeaponMaterial {
   protected skills?: (WeaponAtkSkill | WeaponUseSkill)[] = [];

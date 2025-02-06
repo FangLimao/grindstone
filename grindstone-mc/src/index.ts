@@ -13,3 +13,4 @@ export * from "@grindstone/item-kit";
 export * as itemKit from "@grindstone/item-kit";
 export * from "@grindstone/format-kit";
 export * as formatKit from "@grindstone/format-kit";
+export * as materialKit from "@grindstone/material-kit";
