@@ -50,6 +50,7 @@ export class EntityUtils {
               location: entity.location,
               minDistance: 0,
               maxDistance: skill.radius,
+              excludeTypes: [entity.typeId]
             }),
             entity
           );
