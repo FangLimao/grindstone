@@ -47,6 +47,7 @@ export class Boss {
    * Build the boss.
    */
   build():void{
+    EntityUtils.registriesBossDeadEvent(this);
     world.afterEvents.entitySpawn.subscribe((event) => {
       const ENTITY = event.entity;
       EntityUtils.registriesBoss(this, ENTITY);

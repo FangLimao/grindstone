@@ -68,4 +68,12 @@ export class EntityUtils {
       });
     }
   }
+  static registriesBossDeadEvent(boss: Boss) {
+    world.afterEvents.entityDie.subscribe((event) => {
+      if (event.deadEntity.typeId === boss.typeId) {
+        if(!boss.dieEvent) return;
+        boss.dieEvent(event);
+      }
+    })
+  }
 }
