@@ -17,3 +17,6 @@ npm install @grindstone/devkit
 
 ## 打包
 你需要一个支持将依赖递归打包进输出文件的脚本打包器，例如Esbuild。
+
+## 功能
+请到`components/`目录下各工具包的`README.md`文件中查看。
