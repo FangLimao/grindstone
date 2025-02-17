@@ -65,5 +65,5 @@ export default defineConfig({
   sitemap: {
     hostname: 'https://fanglimao.codeberg.page/addon-encyclopedia',
   },
-  base: '/'
+  base: '/grindstone/'
 });
