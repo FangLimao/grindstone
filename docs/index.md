@@ -6,7 +6,7 @@
 在`.npmrc`文件中添加以下内容：
 
 ~~~
-@grindstone:registry=https://codeberg.org/api/packages/lazuli/npm/
+@grindstone:registry=https://codeberg.org/api/packages/grindstone/npm/
 ~~~
 
 接着运行以下命令：
