@@ -1,12 +1,14 @@
 import { world, WorldInitializeAfterEvent } from "@minecraft/server";
+import { GrindstoneError } from "./error";
 import { modData } from "./meta";
 
 /**
- * Initialize the mod.
- * @param id Id of the mod.
- * @param name Name of the mod.
- * @param event This event fires when the script environment is initialized on a world.
- * @throws Error if mod id is `default`.
+ * 初始化模组
+ * @param id 模组ID
+ * @param name 模组名称
+ * @param event 当脚本环境初始化时触发的事件
+ * @throws 如果模组ID为`default`则会抛出错误
+ * @category stable
  */
 export function initializeMod(
   id: string,
@@ -14,7 +16,7 @@ export function initializeMod(
   event?: (arg: WorldInitializeAfterEvent) => void
 ): void {
   if (id === "default") {
-    throw new Error("'Default' is an invaild mod id!");
+    throw new GrindstoneError("'Default' 不是一个合法的模组ID！");
   }
   modData.id = id;
   modData.name = name;

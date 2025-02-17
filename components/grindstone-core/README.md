@@ -8,6 +8,9 @@ initializeMod(
 ): void
 ~~~
 
+> [!IMPORTANT]
+> 如果模组ID为`default`则会抛出错误
+
 你可以使用这个函数来初始化模组的信息：
 
 - `id`：模组的ID

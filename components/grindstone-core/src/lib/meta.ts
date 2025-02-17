@@ -1,55 +1,55 @@
 /**
- * Metadata of the mod.
+ * 模组元信息
  */
-export let modData: ModBaseData = {
+export let modData: ModMetaData = {
   id: "default",
   name: "Default Mod Name",
 };
 
 /**
- * Get the mod's name.
- * @return Name of the mod.
+ * 获取模组名称
+ * @return 模组名称
+ * @category stable
  */
 export function getModName(): string {
   return modData.name;
 }
 
 /**
- * Get the mod's id.
- * @return Id of the mod.
+ * 获取模组ID
+ * @return 模组ID
  */
 export function getModId(): string {
   return modData.id;
 }
 
 /**
- * Get the mod's name.
- * @param name New mod name.
+ * 设置模组名称
+ * @param name 新的模组名称
  */
 export function setModName(name: string): void {
   modData.name = name;
 }
 
 /**
- * Set the mod's id.
- * @param id New mod id.
+ * 设置模组ID
+ * @param id 新的模组ID
  */
 export function setModId(id: string): void {
   modData.id = id;
 }
 
 /**
- * Base data of the mod.
+ * 模组的元信息
+ * @category stable
  */
-export interface ModBaseData {
+export interface ModMetaData {
   /**
-   * The mod id.
+   * 模组ID
    */
   id: string;
   /**
-   * Name of the mod, default is `Minecraft`
-   *
-   * i18n is not supported.
+   * 模组名称，默认是`minecraft`，**不支持本地化**
    */
   name: string;
 }
