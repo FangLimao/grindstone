@@ -1,21 +1,19 @@
-[**@grindstone/core v0.3.0**](../README.md)
-
-***
-
 [@grindstone/core](../globals.md) / getModVersion
 
 # Function: getModVersion()
 
 > **getModVersion**(): `string`
 
-Defined in: version.ts:18
+Defined in: version.ts:20
 
-Get the mod version.
-
-If you don't set the mod's version, it will return `0.0.0`.
+获取模组版本，若没有设置，则返回 `0.0.0`
 
 ## Returns
 
 `string`
 
-The mod's version.
+当前模组版本
+
+## Since
+
+1.0.0

@@ -1,16 +1,12 @@
-[**@grindstone/core v0.3.0**](../README.md)
-
-***
-
 [@grindstone/core](../globals.md) / setModName
 
 # Function: setModName()
 
 > **setModName**(`name`): `void`
 
-Defined in: meta.ts:29
+Defined in: meta.ts:35
 
-Get the mod's name.
+设置模组名称
 
 ## Parameters
 
@@ -18,8 +14,12 @@ Get the mod's name.
 
 `string`
 
-New mod name.
+新的模组名称
 
 ## Returns
 
 `void`
+
+## Since
+
+1.0.0

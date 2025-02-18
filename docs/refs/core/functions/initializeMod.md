@@ -1,16 +1,12 @@
-[**@grindstone/core v0.3.0**](../README.md)
-
-***
-
 [@grindstone/core](../globals.md) / initializeMod
 
 # Function: initializeMod()
 
 > **initializeMod**(`id`, `name`, `event`?): `void`
 
-Defined in: initialize.ts:11
+Defined in: initialize.ts:14
 
-Initialize the mod.
+初始化模组
 
 ## Parameters
 
@@ -18,19 +14,19 @@ Initialize the mod.
 
 `string`
 
-Id of the mod.
+模组ID
 
 ### name
 
 `string`
 
-Name of the mod.
+模组名称
 
 ### event?
 
 (`arg`) => `void`
 
-This event fires when the script environment is initialized on a world.
+当脚本环境初始化时触发的事件
 
 ## Returns
 
@@ -38,4 +34,8 @@ This event fires when the script environment is initialized on a world.
 
 ## Throws
 
-Error if mod id is `default`.
+如果模组ID为`default`则会抛出错误
+
+## Since
+
+1.0.0

@@ -1,19 +1,19 @@
-[**@grindstone/core v0.3.0**](../README.md)
-
-***
-
 [@grindstone/core](../globals.md) / getModId
 
 # Function: getModId()
 
 > **getModId**(): `string`
 
-Defined in: meta.ts:21
+Defined in: meta.ts:25
 
-Get the mod's id.
+获取模组ID
 
 ## Returns
 
 `string`
 
-Id of the mod.
+模组ID
+
+## Since
+
+1.0.0

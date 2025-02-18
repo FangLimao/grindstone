@@ -1,19 +1,12 @@
-[**@grindstone/core v0.3.0**](README.md)
+# @grindstone/core v1.0.0
 
-***
-
-# @grindstone/core v0.3.0
-
-## Interfaces
-
-- [ModBaseData](interfaces/ModBaseData.md)
-
-## Variables
+## Other
 
 - [modData](variables/modData.md)
 
-## Functions
+## Stable
 
+- [ModMetaData](interfaces/ModMetaData.md)
 - [getModId](functions/getModId.md)
 - [getModName](functions/getModName.md)
 - [getModVersion](functions/getModVersion.md)

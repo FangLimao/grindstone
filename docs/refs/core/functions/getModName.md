@@ -1,19 +1,19 @@
-[**@grindstone/core v0.3.0**](../README.md)
-
-***
-
 [@grindstone/core](../globals.md) / getModName
 
 # Function: getModName()
 
 > **getModName**(): `string`
 
-Defined in: meta.ts:13
+Defined in: meta.ts:15
 
-Get the mod's name.
+获取模组名称
 
 ## Returns
 
 `string`
 
-Name of the mod.
+模组名称
+
+## Since
+
+1.0.0

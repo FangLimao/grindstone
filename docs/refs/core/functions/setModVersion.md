@@ -1,16 +1,12 @@
-[**@grindstone/core v0.3.0**](../README.md)
-
-***
-
 [@grindstone/core](../globals.md) / setModVersion
 
 # Function: setModVersion()
 
 > **setModVersion**(`version`): `string`
 
-Defined in: version.ts:8
+Defined in: version.ts:10
 
-Set the mod's version.
+设置模组版本
 
 ## Parameters
 
@@ -18,10 +14,14 @@ Set the mod's version.
 
 `string`
 
-Version to set.
+将要设置的版本
 
 ## Returns
 
 `string`
 
-The new mod version.
+新的模组版本
+
+## Since
+
+1.0.0

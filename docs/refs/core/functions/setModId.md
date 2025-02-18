@@ -1,16 +1,12 @@
-[**@grindstone/core v0.3.0**](../README.md)
-
-***
-
 [@grindstone/core](../globals.md) / setModId
 
 # Function: setModId()
 
 > **setModId**(`id`): `void`
 
-Defined in: meta.ts:37
+Defined in: meta.ts:45
 
-Set the mod's id.
+设置模组ID
 
 ## Parameters
 
@@ -18,8 +14,12 @@ Set the mod's id.
 
 `string`
 
-New mod id.
+新的模组ID
 
 ## Returns
 
 `void`
+
+## Since
+
+1.0.0

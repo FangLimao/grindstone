@@ -1,7 +1,3 @@
-**@grindstone/core v0.3.0**
-
-***
-
 # Grindstone Kit Core
 ## 初始化函数
 ~~~ts
@@ -11,6 +7,9 @@ initializeMod(
   event?: (arg: WorldInitializeAfterEvent) => void
 ): void
 ~~~
+
+> [!IMPORTANT]
+> 如果模组ID为`default`则会抛出错误
 
 你可以使用这个函数来初始化模组的信息：
 

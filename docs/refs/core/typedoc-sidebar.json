@@ -1,0 +1,30 @@
+[
+  {
+    "text": "Other",
+    "collapsed": true,
+    "items": [{ "text": "modData", "link": "/refs/core/variables/modData.md" }]
+  },
+  {
+    "text": "Stable",
+    "collapsed": true,
+    "items": [
+      { "text": "ModMetaData", "link": "/refs/core/interfaces/ModMetaData.md" },
+      { "text": "getModId", "link": "/refs/core/functions/getModId.md" },
+      { "text": "getModName", "link": "/refs/core/functions/getModName.md" },
+      {
+        "text": "getModVersion",
+        "link": "/refs/core/functions/getModVersion.md"
+      },
+      {
+        "text": "initializeMod",
+        "link": "/refs/core/functions/initializeMod.md"
+      },
+      { "text": "setModId", "link": "/refs/core/functions/setModId.md" },
+      { "text": "setModName", "link": "/refs/core/functions/setModName.md" },
+      {
+        "text": "setModVersion",
+        "link": "/refs/core/functions/setModVersion.md"
+      }
+    ]
+  }
+]
