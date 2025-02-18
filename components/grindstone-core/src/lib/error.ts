@@ -1,6 +1,7 @@
 /**
  * Grindstone 脚本实例的错误
- * @category stable
+ * @category Stable
+ * @since 1.0.0
  */
 export class GrindstoneError extends Error {
   constructor(message?: string) {

@@ -8,7 +8,8 @@ import { modData } from "./meta";
  * @param name 模组名称
  * @param event 当脚本环境初始化时触发的事件
  * @throws 如果模组ID为`default`则会抛出错误
- * @category stable
+ * @category Stable
+ * @since 1.0.0
  */
 export function initializeMod(
   id: string,

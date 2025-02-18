@@ -18,7 +18,8 @@
   "license": "MIT",
   "author": "CTN Studios",
   "dependencies": {
-    "@minecraft/server": "^1.16.0"
+    "@minecraft/server": "^1.16.0",
+    "typedoc-vitepress-theme": "^1.1.2"
   },
   "devDependencies": {
     "typedoc": "^0.27.6",

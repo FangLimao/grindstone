@@ -2,6 +2,6 @@
     "$schema": "https://typedoc-plugin-markdown.org/schema.json",
     "entryPoints": ["./src/index.ts"],
     "out": "docs",
-    "plugin": ["typedoc-plugin-markdown"],
+    "plugin": ["typedoc-plugin-markdown", "typedoc-vitepress-theme"],
     "includeVersion": true
 }

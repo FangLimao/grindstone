@@ -9,7 +9,8 @@ export let modData: ModMetaData = {
 /**
  * 获取模组名称
  * @return 模组名称
- * @category stable
+ * @category Stable
+ * @since 1.0.0
  */
 export function getModName(): string {
   return modData.name;
@@ -18,6 +19,8 @@ export function getModName(): string {
 /**
  * 获取模组ID
  * @return 模组ID
+ * @category Stable
+ * @since 1.0.0
  */
 export function getModId(): string {
   return modData.id;
@@ -26,6 +29,8 @@ export function getModId(): string {
 /**
  * 设置模组名称
  * @param name 新的模组名称
+ * @category Stable
+ * @since 1.0.0
  */
 export function setModName(name: string): void {
   modData.name = name;
@@ -34,6 +39,8 @@ export function setModName(name: string): void {
 /**
  * 设置模组ID
  * @param id 新的模组ID
+ * @category Stable
+ * @since 1.0.0
  */
 export function setModId(id: string): void {
   modData.id = id;
@@ -41,7 +48,7 @@ export function setModId(id: string): void {
 
 /**
  * 模组的元信息
- * @category stable
+ * @since 1.0.0
  */
 export interface ModMetaData {
   /**
