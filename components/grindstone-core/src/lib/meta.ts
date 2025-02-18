@@ -48,6 +48,7 @@ export function setModId(id: string): void {
 
 /**
  * 模组的元信息
+ * @category Stable
  * @since 1.0.0
  */
 export interface ModMetaData {

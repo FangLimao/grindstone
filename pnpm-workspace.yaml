@@ -1,3 +1,4 @@
 packages:
   - 'components/*'
   - 'grindstone-mc'
+  - 'grindstone-mc-stable'

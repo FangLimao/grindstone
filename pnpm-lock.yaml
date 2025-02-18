@@ -18,8 +18,8 @@ importers:
         specifier: workspace:^0.4.0
         version: link:../grindstone-common
       '@grindstone/core':
-        specifier: workspace:^0.3.0
-        version: link:../grindstone-core
+        specifier: ^0.3.0
+        version: 0.3.0
       '@minecraft/server':
         specifier: ^1.16.0
         version: 1.16.0
@@ -40,8 +40,8 @@ importers:
   components/debugger-kit:
     dependencies:
       '@grindstone/core':
-        specifier: workspace:0.3.0
-        version: link:../grindstone-core
+        specifier: 0.3.0
+        version: 0.3.0
       '@minecraft/server':
         specifier: ^1.16.0
         version: 1.16.0
@@ -179,8 +179,8 @@ importers:
         specifier: workspace:^0.4.0
         version: link:../grindstone-common
       '@grindstone/core':
-        specifier: workspace:^0.3.0
-        version: link:../grindstone-core
+        specifier: ^0.3.0
+        version: 0.3.0
       '@grindstone/utils':
         specifier: workspace:^0.7.2
         version: link:../grindstone-utils
@@ -207,8 +207,8 @@ importers:
         specifier: workspace:^0.4.0
         version: link:../grindstone-common
       '@grindstone/core':
-        specifier: workspace:^0.3.0
-        version: link:../grindstone-core
+        specifier: ^0.3.0
+        version: 0.3.0
       '@grindstone/utils':
         specifier: workspace:^0.7.2
         version: link:../grindstone-utils
@@ -232,8 +232,8 @@ importers:
   components/message-kit:
     dependencies:
       '@grindstone/core':
-        specifier: workspace:0.3.0
-        version: link:../grindstone-core
+        specifier: 0.3.0
+        version: 0.3.0
       '@minecraft/server':
         specifier: ^1.16.0
         version: 1.16.0
@@ -257,8 +257,8 @@ importers:
         specifier: workspace:^0.4.0
         version: link:../grindstone-common
       '@grindstone/core':
-        specifier: workspace:^0.3.0
-        version: link:../grindstone-core
+        specifier: ^0.3.0
+        version: 0.3.0
       '@grindstone/utils':
         specifier: workspace:^0.7.2
         version: link:../grindstone-utils
@@ -288,7 +288,7 @@ importers:
         specifier: workspace:^0.4.0
         version: link:../components/grindstone-common
       '@grindstone/core':
-        specifier: workspace:0.3.0
+        specifier: workspace:1.0.0
         version: link:../components/grindstone-core
       '@grindstone/debugger-kit':
         specifier: workspace:0.1.1
@@ -332,6 +332,9 @@ packages:
 
   '@gerrit0/mini-shiki@1.27.2':
     resolution: {integrity: sha512-GeWyHz8ao2gBiUW4OJnQDxXQnFgZQwwQk05t/CVVgNBN7/rK8XZ7xY6YhLVv9tH3VppWWmr9DCl3MwemB/i+Og==}
+
+  '@grindstone/core@0.3.0':
+    resolution: {integrity: sha512-hpxt7Y8EopcpEz0aVw69w/NQAAW0oRjLKxo0ZUb2m/sRqi8wUTU+i9M2pPRtiaSE9+kAB+4wv+gkfNz3aBiQxQ==, tarball: https://codeberg.org/api/packages/grindstone/npm/%40grindstone%2Fcore/-/0.3.0/core-0.3.0.tgz}
 
   '@minecraft/common@1.2.0':
     resolution: {integrity: sha512-JdmEq4P3Z/FtoBzhLijFgMSVFnFRrUoLwY8DHHrgtFo0mfLTOLTB1RErYjLMsA6b7BGVNxkX/pfFRiH7QZ0XwQ==}
@@ -434,6 +437,11 @@ snapshots:
       '@shikijs/engine-oniguruma': 1.29.1
       '@shikijs/types': 1.29.1
       '@shikijs/vscode-textmate': 10.0.1
+
+  '@grindstone/core@0.3.0':
+    dependencies:
+      '@minecraft/server': 1.16.0
+      '@minecraft/server-ui': 1.3.0
 
   '@minecraft/common@1.2.0': {}
 

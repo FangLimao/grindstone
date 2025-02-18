@@ -26,8 +26,8 @@ getModName(): string
 获取模组设置的ID与名称。
 
 ~~~ts
-setModName(name: string): void
-setModId(id: string): void
+setModName(name: string): string
+setModId(id: string): string
 ~~~
 
 设置的模组的ID与名称。
