@@ -26,4 +26,5 @@ export function initializeMod(
       event(arg);
     });
   }
+  console.log(`[Grindstone] ${id} (${name}) 已初始化！`);
 }
