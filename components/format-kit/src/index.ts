@@ -1,5 +1,7 @@
 /**
  * 快速给文本添加颜色的工具，灵感来自于 LeviLamina - LegacyScriptEngine
+ * @category Stable
+ * @since 1.0.0
  * @example
  * world.getAllPlayers().forEach((player) => {
  * player.sendMessage(Color.black + "将文本设置为黑色！");
@@ -10,9 +12,8 @@
  * player.sendMessage({
  *   // 将本地化字符串设置为黑色！
  *   rawtext: [{ text: Color.black }, { translate: "example.translate_string" }],
+ *  });
  * });
-});
-
  */
 export class Color {
   private constructor() {}
@@ -134,6 +135,8 @@ export class Color {
 
 /**
  * 快速格式化文本工具，灵感来自于 LeviLamina - LegacyScriptEngine
+ * @category Stable
+ * @since 1.0.0
  */
 export class Format {
   private constructor() {}
