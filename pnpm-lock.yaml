@@ -81,7 +81,7 @@ importers:
   components/entity-kit:
     dependencies:
       '@grindstone/utils':
-        specifier: workspace:^0.7.2
+        specifier: workspace:^1.0.0
         version: link:../grindstone-utils
       '@minecraft/server':
         specifier: ^1.16.0
@@ -121,9 +121,6 @@ importers:
       '@minecraft/server':
         specifier: ^1.16.0
         version: 1.16.0
-      typedoc-vitepress-theme:
-        specifier: ^1.1.2
-        version: 1.1.2(typedoc-plugin-markdown@4.4.1(typedoc@0.27.6(typescript@5.7.3)))
     devDependencies:
       typedoc:
         specifier: ^0.27.6
@@ -131,6 +128,9 @@ importers:
       typedoc-plugin-markdown:
         specifier: ^4.4.1
         version: 4.4.1(typedoc@0.27.6(typescript@5.7.3))
+      typedoc-vitepress-theme:
+        specifier: ^1.1.2
+        version: 1.1.2(typedoc-plugin-markdown@4.4.1(typedoc@0.27.6(typescript@5.7.3)))
 
   components/grindstone-core:
     dependencies:
@@ -185,7 +185,7 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0
       '@grindstone/utils':
-        specifier: workspace:^0.7.2
+        specifier: workspace:^1.0.0
         version: link:../grindstone-utils
       '@minecraft/server':
         specifier: ^1.16.0
@@ -213,7 +213,7 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0
       '@grindstone/utils':
-        specifier: workspace:^0.7.2
+        specifier: workspace:^1.0.0
         version: link:../grindstone-utils
       '@minecraft/server':
         specifier: ^1.16.0
@@ -263,7 +263,7 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0
       '@grindstone/utils':
-        specifier: workspace:^0.7.2
+        specifier: workspace:^1.0.0
         version: link:../grindstone-utils
       '@minecraft/server':
         specifier: ^1.16.0
@@ -284,12 +284,18 @@ importers:
 
   grindstone-mc:
     dependencies:
+      '@grindstone/common':
+        specifier: workspace:^1.0.0
+        version: link:../components/grindstone-common
       '@grindstone/core':
         specifier: workspace:1.0.1
         version: link:../components/grindstone-core
       '@grindstone/format-kit':
         specifier: workspace:1.0.1
         version: link:../components/format-kit
+      '@grindstone/utils':
+        specifier: workspace:^1.0.0
+        version: link:../components/grindstone-utils
     devDependencies:
       typedoc:
         specifier: ^0.27.6
@@ -337,7 +343,7 @@ importers:
         specifier: workspace:0.2.0
         version: link:../components/quest-kit
       '@grindstone/utils':
-        specifier: workspace:^0.7.2
+        specifier: workspace:^1.0.0
         version: link:../components/grindstone-utils
     devDependencies:
       typedoc:
