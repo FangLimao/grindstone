@@ -96,19 +96,19 @@ export function consumeAmount(
 /**
  * 获取容器中指定物品的数量
  * @param container 容器对象
- * @param item 要获取的物品ID
+ * @param typeId 要获取的物品ID
  * @returns 容器中指定物品的数量
  * @category Stable
  * @since 1.0.0
  */
 export function getItemAmountInContainer(
   container: Container,
-  item: string // @TODO: 改为typeId
+  typeId: string
 ): number {
   let amount: number = 0;
   for (let slot = 0; slot < container.size; slot++) {
     const itemStack: undefined | ItemStack = container.getItem(slot);
-    if (itemStack?.typeId === item) {
+    if (itemStack?.typeId === typeId) {
       amount = amount + itemStack.amount;
     }
   }
@@ -118,19 +118,19 @@ export function getItemAmountInContainer(
 /**
  * 从容器中移除指定数量的物品
  * @param container 容器对象
- * @param itemId 物品ID
+ * @param typeId 物品ID
  * @param amount 要移除物品的数量
  * @category Stable
  * @since 1.0.0
  */
 export function removeItemInContainer(
   container: Container,
-  itemId: string, // @TODO: 改为typeId
+  typeId: string,
   amount: number
 ): void {
   for (let slot = 0; slot < container.size; slot++) {
     const itemStack: undefined | ItemStack = container.getItem(slot);
-    if (itemStack?.typeId === itemId) {
+    if (itemStack?.typeId === typeId) {
       if (itemStack.amount > amount) {
         itemStack.amount -= amount;
         container.setItem(slot, itemStack);
