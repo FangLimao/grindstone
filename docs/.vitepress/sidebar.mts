@@ -4,7 +4,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
   tutorials: [
     {
       text: "快速开始",
-      link: "/tutorials/start.md"
+      link: "/tutorials/start.md",
     },
     {
       text: "核心脚本",
@@ -17,9 +17,9 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         {
           text: "获取模组信息",
           link: "/tutorials/core/meta.md",
-        }
-      ]
-    }
+        },
+      ],
+    },
   ],
   refs: [
     {
@@ -91,6 +91,16 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         {
           text: "@grindstone/format-kit",
           link: "/refs/format-kit/globals.md",
+          items: [
+            {
+              text: "Stable",
+              collapsed: true,
+              items: [
+                { text: "Color", link: "/refs/format-kit/classes/Color.md" },
+                { text: "Format", link: "/refs/format-kit/classes/Format.md" },
+              ],
+            },
+          ],
         },
         {
           text: "@grindstone/item-kit",

@@ -1,10 +1,6 @@
-[**@grindstone/format-kit v0.1.0**](README.md)
+# @grindstone/format-kit v1.0.0
 
-***
-
-# @grindstone/format-kit v0.1.0
-
-## Classes
+## Stable
 
 - [Color](classes/Color.md)
 - [Format](classes/Format.md)
