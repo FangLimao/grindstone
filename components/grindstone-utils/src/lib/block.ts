@@ -1,11 +1,13 @@
 import { Block, Dimension, Vector3 } from "@minecraft/server";
 
 /**
- * Find blocks around the given location with specific radius.
- * @param blockId The {@link Block.typeId} to be searched.
- * @param location
- * @param dimension
- * @param radius
+ * 在给定的范围内查找指定类型的方块
+ * @param blockId 要查找的方块ID
+ * @param location 查找的起始位置
+ * @param dimension 查找的维度
+ * @param radius 查找的半径
+ * @category Stable
+ * @since 1.0.0
  */
 export function findBlocks(
   blockId: string,

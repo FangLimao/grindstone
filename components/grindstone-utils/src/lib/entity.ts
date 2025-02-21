@@ -10,8 +10,6 @@ import {
   EntityQueryOptions,
   EquipmentSlot,
   ItemStack,
-  TicksPerSecond,
-  world,
 } from "@minecraft/server";
 import {
   negativeEffectsId,
@@ -19,13 +17,13 @@ import {
   neutralEffectsId,
   EffectData,
 } from "@grindstone/common";
-import { getItemAmountInContainer } from "./item";
 
 /**
- * Wrapper function for removing effect(s) or effect group.
- * @param entity The entity to be removed effect.
- * @param effectType The effect(s) to remove, use {@link EffectGroups} to remove group effects.
- * @throws — This function can throw errors.
+ * 向实体移除状态效果
+ * @param entity 要清除效果的实体.
+ * @param effectType 状态效果类型，可以是单个效果类型、效果类型数组、字符串、字符串数组或{@link EffectGroups}枚举值
+ * @category Stable
+ * @since 1.0.0
  */
 export function clearEffect(
   entity: Entity,
@@ -68,15 +66,16 @@ export function clearEffect(
 }
 
 /**
- * Wrapper function for adding effect(s) or effect group.
- * @param entity The entity to add effect.
- * @param effectType the effect(s) to add, use {@link EffectGroups} to add group effects.
- * @param duration
- * Amount of time, in ticks, for the effect to apply.
- * There are 20 ticks per second. Use {@link TicksPerSecond} constant to convert between ticks and seconds.
- * The value must be within he range [0, 20000000].
- * @param options Additional options for the effect.
- * @throws This function can throw errors.
+ * 向实体添加状态效果
+ * @param entity 要添加状态效果实体对象
+ * @param effectType 状态效果类型，可以是单个效果类型、效果类型数组、字符串、字符串数组或{@link EffectGroups}枚举值
+ * @param duration 
+ * 状态效果持续时间，以刻为单位 *（20刻=1秒）*
+ *
+ * 其值必须在范围`[0, 20000000]`内
+ * @param options 状态效果选项
+ * @category Stable
+ * @since 1.0.0
  */
 export function addEffect(
   entity: Entity,
@@ -121,8 +120,11 @@ export function addEffect(
 }
 
 /**
- * Get an entity's container.
- * @param entity
+ * 获取实体的容器
+ * @param entity 要获取容器的实体
+ * @return 实体的容器，如果没有则返回`undefined`
+ * @category Stable
+ * @since 1.0.0
  */
 export function getContainer(entity: Entity): Container | undefined {
   const inventory = entity.getComponent(
@@ -132,26 +134,27 @@ export function getContainer(entity: Entity): Container | undefined {
 }
 
 /**
- * Set an item stack within a particular slot.
- * @param entity
- * @param slot Zero-based index of the slot to set an item at.
- * @param item Stack of items to place within the specified slot.
+ * 设置实体的槽位物品
+ * @param entity 要设置槽位物品的实体
+ * @param slot 槽位索引，从0开始依次递增
+ * @param item 要设置的物品
+ * @category Stable
+ * @since 1.0.0
  */
 export function setSlot(entity: Entity, slot: number, item?: ItemStack): void {
   getContainer(entity)?.setItem(slot, item);
 }
 
 /**
- * Give entities item.
- * @param entity The entities to give item.
- * @param item The item(s) to give
+ * 给予实体物品
+ * @param entity 要给予物品的实体
+ * @param item 要给予的物品
+ * @category Stable
+ * @since 1.0.0
  */
 export function giveItem(entity: Entity[] | Entity, item: ItemStack): void {
   if (Array.isArray(entity)) {
     entity.forEach((entity) => {
-      /**
-       * Entity's container.
-       */
       const container = getContainer(entity);
       if (container?.emptySlotsCount && container?.emptySlotsCount > 0) {
         container.addItem(item);
@@ -160,9 +163,6 @@ export function giveItem(entity: Entity[] | Entity, item: ItemStack): void {
       }
     });
   } else {
-    /**
-     * Entity's container.
-     */
     const container = getContainer(entity);
     if (container?.emptySlotsCount && container?.emptySlotsCount > 0) {
       container.addItem(item);
@@ -173,8 +173,10 @@ export function giveItem(entity: Entity[] | Entity, item: ItemStack): void {
 }
 
 /**
- * Clear entities' slot.
- * @param entity The entities to clear slot.
+ * 清空实体的容器
+ * @param entity 要清空容器的实体
+ * @category Stable
+ * @since 1.0.0
  */
 export function clearSlot(entity: Entity[] | Entity): void {
   if (Array.isArray(entity)) {
@@ -187,10 +189,12 @@ export function clearSlot(entity: Entity[] | Entity): void {
 }
 
 /**
- * Get a slot's item.
- * @param entity The owner of the slot.
- * @param slot The slot to get item stack.
- * @return Item of the slot, default is {@link EquipmentSlot.Mainhand}.
+ * 获取给定实体的指定槽位物品
+ * @param entity 要获取槽位的实体
+ * @param slot 要获取的槽位，默认为 {@link EquipmentSlot.Mainhand}
+ * @return 槽位中的物品
+ * @category Stable
+ * @since 1.0.0
  */
 export function getEquipmentItem(
   entity: Entity,
@@ -203,10 +207,12 @@ export function getEquipmentItem(
 }
 
 /**
- * Replaces the item in the given EquipmentSlot.
- * @param entity The owner of the slot.
- * @param item The item to equip. If undefined, clears the slot.
- * @param slot The slot to set item stack, default is {@link EquipmentSlot.Mainhand}.
+ * 设置给定实体的指定槽位物品
+ * @param entity 要设置槽位的实体
+ * @param item 要设置的物品，如果为undefined则清空该槽位
+ * @param slot 要设置的槽位，默认为 {@link EquipmentSlot.Mainhand}
+ * @category Stable
+ * @since 1.0.0
  */
 export function setEquipmentItem(
   entity: Entity,
@@ -219,10 +225,12 @@ export function setEquipmentItem(
   return equipment?.setEquipment(slot, item);
 }
 /**
- * Damage entities within an area.
- * @param dimension Area's dimension.
- * @param damageOption Contains options for selecting entities within an area.
- * @param amount Amount of damage to apply.
+ * 对指定维度中的实体施加伤害
+ * @param dimension 实体所处的维度
+ * @param damageOption 实体查询选项
+ * @param amount 伤害大小
+ * @category Stable
+ * @since 1.0.0
  */
 export function damageEntities(
   dimension: Dimension,
@@ -236,15 +244,17 @@ export function damageEntities(
 }
 
 /**
- * Affect entities within an area.
- * @param dimension Area's dimension.
- * @param affectOption Contains options for selecting entities within an area.
- * @param effectType Type of effect to add to the entity.
- * @param duration
- * Amount of time, in ticks, for the effect to apply.
- * There are 20 ticks per second. Use TicksPerSecond constant to convert between ticks and seconds.
- * The value must be within the range [0, 20000000].
- * @param effectOption Additional options for the effect.
+ * 对指定维度中的实体施加效果
+ * @param dimension 实体所处的维度
+ * @param affectOption 实体查询选项
+ * @param effectType 状态效果类型
+ * @param duration 
+ * 效果持续时间，以刻为单位 *（20刻=1秒）*
+ *
+ * 其值必须在范围`[0, 20000000]`内
+ * @param effectOption 实体效果选项
+ * @category Stable
+ * @since 1.0.0
  */
 export function affectEntities(
   dimension: Dimension,
@@ -260,9 +270,12 @@ export function affectEntities(
 }
 
 /**
- * Apply {@link EffectData} to an entity.
- * @param entity
- * @param data
+ * 将 {@link EffectData} 应用到实体上
+ * @param entity 要应用 {@link EffectData} 的实体
+ * @param data 要应用的 {@link EffectData}
+ * @returns 应用后的状态效果
+ * @category Stable
+ * @since 1.0.0
  */
 export function applyEffectData(
   entity: Entity,
@@ -287,10 +300,12 @@ export function applyEffectData(
 }
 
 /**
- * Try to operate an entity.
- * @param entity
- * @param operate
- * @return True if the entity is valid.
+ * 尝试对实体进行操作
+ * @param entity 要操作的实体
+ * @param operate 操作函数，接受一个实体作为参数
+ * @returns 操作是否成功
+ * @category Stable
+ * @since 1.0.0
  */
 export function tryOperateEntity(
   entity: Entity,
@@ -305,23 +320,26 @@ export function tryOperateEntity(
 }
 
 /**
- * Groups of the effects.
+ * 状态效果组
+ * @category Stable
+ * @since 1.0.0
+ * @see https://zh.minecraft.wiki/w/状态效果
  */
 export enum EffectGroups {
   /**
-   * Positive(good) effects.
+   * 正面效果
    */
   good,
   /**
-   * Negative(bad) effects.
+   * 负面效果
    */
   bad,
   /**
-   * Nutral effects.
+   * 中性效果
    */
   nutral,
   /**
-   * All effects.
+   * 所有效果
    */
   all,
 }

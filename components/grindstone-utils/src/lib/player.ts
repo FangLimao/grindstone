@@ -3,8 +3,10 @@ import { getContainer, giveItem } from "./entity";
 import { getItemAmountInContainer } from "./item";
 
 /**
- * Get the required exp points by level.
- * @param level
+ * 根据玩家等级计算经验消耗
+ * @param level 玩家等级
+ * @category Stable
+ * @since 1.0.0
  */
 export function getExpCost(level: number): number {
   if (level >= 30) {
@@ -17,8 +19,10 @@ export function getExpCost(level: number): number {
 }
 
 /**
- * Get the exp in all.
+ * 获取玩家得到的所有经验值
  * @param player
+ * @category Stable
+ * @since 1.0.0
  */
 export function getAllExp(player: Player): number {
   const level: number = player.level;
@@ -30,9 +34,10 @@ export function getAllExp(player: Player): number {
 }
 
 /**
- * Give item to all player once.
- * @param entity The player to give item.
- * @param item The item to give.
+ * 给予玩家一次物品
+ * @param item 要给予的物品
+ * @category Stable
+ * @since 1.0.0
  */
 export function giveItemOnce(item: ItemStack): void {
   world.afterEvents.playerSpawn.subscribe(event=>{

@@ -19,8 +19,8 @@
   "author": "CTN Studios",
   "dependencies": {
     "@grindstone/article-kit": "workspace:0.2.0",
-    "@grindstone/common": "workspace:^0.4.0",
-    "@grindstone/core": "workspace:1.0.0",
+    "@grindstone/common": "workspace:^1.0.0",
+    "@grindstone/core": "workspace:1.0.1",
     "@grindstone/debugger-kit": "workspace:0.1.1",
     "@grindstone/effect-kit": "workspace:0.1.0",
     "@grindstone/entity-kit": "workspace:0.2.2",

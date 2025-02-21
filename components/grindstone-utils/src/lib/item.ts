@@ -1,3 +1,4 @@
+import { GrindstoneError } from "@grindstone/core";
 import {
   Container,
   Entity,
@@ -9,12 +10,12 @@ import {
 } from "@minecraft/server";
 
 /**
- * Replace {@link ItemStack} in a {@link Container}
- * @param item The {@link ItemStack} or {@link ItemStack.typeId} to be replaced.
- * if it's undefined, every empty slot will be filled.
- * @param newItem the new {@link ItemStack}.
- * if it's undefined, the matched slot will be cleared.
- * @param container the {@link Container} which will be searched.
+ * 在容器中查找替换物品
+ * @param item 要替换的物品，如果为`undefined`，则替换所有空槽
+ * @param newItem 替换后的物品，如果为`undefined`，则清空所有物品
+ * @param container 要搜索的容器
+ * @category Stable
+ * @since 1.0.0
  */
 export function replaceItemStack(
   item: ItemStack | undefined,
@@ -32,11 +33,13 @@ export function replaceItemStack(
   return amount;
 }
 /**
- * Damage an {@link ItemStack}.
- * @param item The {@link ItemStack} to be damaged.
- * @param value The durability to be removed.
- * @param entity The optional {@link Entity} which breaks this tool.
- * @returns the damaged {@link ItemStack}.
+ * 添加物品的损坏值，即消耗其耐久
+ * @param item 要添加损坏值的物品
+ * @param value 要添加的损坏值
+ * @param entity 当物品损坏时，向手持物品的实体播放声音
+ * @returns 添加损坏值的 {@link ItemStack}
+ * @category Stable
+ * @since 1.0.0
  */
 export function consumeDurability(
   item: ItemStack,
@@ -63,12 +66,13 @@ export function consumeDurability(
 }
 
 /**
- * Edit the amount of an {@link ItemStack}.
- * @param item The {@link ItemStack}.
- * @param value The amount to be removed.
- * @returns the new {@link ItemStack}.
- * @throws SapiError if amount is not enough to be removed.
- * @throws SapiError if max amount is not high enough.
+ * 消耗物品的数量
+ * @param item 要消耗物品的数量
+ * @param value 要消耗的数量
+ * @returns 消耗后的物品堆
+ * @throws 如果物品数量不足，则抛出错误
+ * @category Stable
+ * @since 1.0.0
  */
 export function consumeAmount(
   item: ItemStack,
@@ -77,12 +81,12 @@ export function consumeAmount(
   const amount: number = item.amount;
   if (amount === value) return undefined;
   if (amount - value < 0)
-    throw new Error(
-      `ItemStack ${item.typeId} doesn't have enough amount to be removed! Current: ${amount}.`
+    throw new GrindstoneError(
+      `物品 ${item.typeId} 数量不足！当前数量： ${amount}，要移除的数量：${value}`
     );
   if (amount - value > item.maxAmount)
-    throw new Error(
-      `ItemStack ${item.typeId}'s max amount is not high enough!`
+    throw new GrindstoneError(
+      `物品 ${item.typeId} 最大数量不足！`
     );
   const newItem: ItemStack = item.clone();
   newItem.amount = amount - value;
@@ -90,14 +94,16 @@ export function consumeAmount(
 }
 
 /**
- * Get item's amount in container.
- * @param container
- * @param item
- * @returns
+ * 获取容器中指定物品的数量
+ * @param container 容器对象
+ * @param item 要获取的物品ID
+ * @returns 容器中指定物品的数量
+ * @category Stable
+ * @since 1.0.0
  */
 export function getItemAmountInContainer(
   container: Container,
-  item: string
+  item: string // @TODO: 改为typeId
 ): number {
   let amount: number = 0;
   for (let slot = 0; slot < container.size; slot++) {
@@ -110,14 +116,16 @@ export function getItemAmountInContainer(
 }
 
 /**
- * Remove items in container.
- * @param container
- * @param itemId
- * @param amount
+ * 从容器中移除指定数量的物品
+ * @param container 容器对象
+ * @param itemId 物品ID
+ * @param amount 要移除物品的数量
+ * @category Stable
+ * @since 1.0.0
  */
 export function removeItemInContainer(
   container: Container,
-  itemId: string,
+  itemId: string, // @TODO: 改为typeId
   amount: number
 ): void {
   for (let slot = 0; slot < container.size; slot++) {
@@ -135,10 +143,12 @@ export function removeItemInContainer(
 }
 
 /**
- * Push a lore to the item.
- * @param loreText The lore to push.
- * @param item The item to push lore.
- * @return The item that pushed lore.
+ * 向物品添加新的Lore
+ * @param loreText 要添加的Lore文本
+ * @param item 要添加Lore文本的物品
+ * @returns 更新Lore后的物品
+ * @category Stable
+ * @since 1.0.0
  */
 export function pushLore(loreText: string, item: ItemStack): ItemStack {
   let lore = item.getLore();

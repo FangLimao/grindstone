@@ -1,6 +1,6 @@
 {
   "name": "@grindstone/common",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "Grindstone common data",
   "main": "src/index.ts",
   "keywords": [

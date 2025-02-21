@@ -18,7 +18,7 @@
   "license": "MIT",
   "author": "CTN Studios",
   "dependencies": {
-    "@grindstone/core": "workspace:1.0.0",
+    "@grindstone/core": "workspace:1.0.1",
     "@grindstone/format-kit": "workspace:1.0.1"
   },
   "devDependencies": {

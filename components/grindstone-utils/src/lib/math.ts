@@ -1,10 +1,12 @@
 /**
- * Generate a random integer.
- * @param max The maximum value. Decimals will be parsed as integers.
- * @param min The minimum value. Decimals will be parsed as integers. Default value is 0.
- * @param inclusive Whether min and max are included.
- * @return A random integer between min and max.
- * @throws RangeError if max < min
+ * 生成随机整数
+ * @param max 最大值，小数部分将被解析为整数
+ * @param min 最小值，小数部分将被解析为整数，默认为0
+ * @param inclusive 生成的随机数是否包含最小值和最大值，默认为true
+ * @return 在最小值和最大值之间的一个随机整数
+ * @throws 如果 max < min，则抛出 RangeError
+ * @category Stable
+ * @since 1.0.0
  */
 export function randomInteger(
   max: number,
@@ -26,13 +28,15 @@ export function randomInteger(
 }
 
 /**
- * Generate a random decimal.
- * @param max The maximum value. Decimals will be parsed as integers.
- * @param min The minimum value. Decimals will be parsed as integers, default value is 0.
- * @param fixed Reserved decimal digit, default value is 2.
- * @param inclusive Whether min and max are included.
- * @return A random decimal between min and max.
- * @throws RangeError if max < min
+ * 生成随机小数
+ * @param max 最大值，小数部分将被解析为整数
+ * @param min 最小值，小数部分将被解析为整数，默认为0
+ * @param fixed 保留的小数位数。默认为2
+ * @param inclusive 生成的随机数是否包含最小值和最大值，默认为true
+ * @return 在最小值和最大值之间的一个随机小数
+ * @throws 如果 max < min，则抛出 RangeError
+ * @category Stable
+ * @since 1.0.0
  */
 export function randomDecimal(
   max: number,
@@ -61,9 +65,11 @@ export function randomDecimal(
 }
 
 /**
- * Check whether the number is a percentage.
- * @param num The number to check.
- * @return Return true if the number is a percentage.
+ * 检查数字是否为百分数
+ * @param num 要检查的数字
+ * @return 如果数字是百分比，则返回`true`，否则返回`false`
+ * @category Stable
+ * @since 1.0.0
  */
 export function checkPercent(num: number): boolean {
   return !(num > 1 || num < 0);

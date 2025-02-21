@@ -1,15 +1,17 @@
-import { DevkitError } from "@grindstone/common";
+import { GrindstoneError } from "@grindstone/core";
 import { checkPercent, randomInteger } from "./math";
 import { ascendingSort } from "./misc";
 
 /**
- * Percentage-Driven random event trigger.
- * @param data The event and chance data.
- * @return A boolean of whether the event will be triggered.
+ * 基于百分数随机事件触发器
+ * @param data 事件和触发概率
+ * @return 一个表示事件是否被触发的布尔值
+ * @category Stable
+ * @since 1.0.0
  */
 export function withPercentChance(data: PercentChanceData): boolean {
   if (!checkPercent(data.chance)) {
-    throw new DevkitError("Passing in an illegal value:"+ data.chance)
+    throw new GrindstoneError("给定的概率值应当在[0, 1]之间：]，实际给定的值：" + data.chance);
   }
   if (randomInteger(100, 1) <= data.chance * 100) {
     if (data.event) {
@@ -22,9 +24,11 @@ export function withPercentChance(data: PercentChanceData): boolean {
 }
 
 /**
- * Weight-Driven random event trigger.
- * @param data The event and weight data.
- * @return The Trigger result.
+ * 给予权重的随机事件触发器
+ * @param data 事件和触发权重
+ * @return 触发结果
+ * @category Stable
+ * @since 1.0.0
  */
 export function withWeightChance(data: WeightChanceData[]): WeightChanceResult {
   let weights: number[] = [];
@@ -38,7 +42,7 @@ export function withWeightChance(data: WeightChanceData[]): WeightChanceResult {
     sum += weight;
     cumulativeWeights.push(sum);
   }
-  const random =  Math.floor(Math.random() * sum);
+  const random = Math.floor(Math.random() * sum);
   for (let i = 0; i < cumulativeWeights.length; i++) {
     if (random < cumulativeWeights[i]) {
       if (data[i]?.event) {
@@ -51,51 +55,57 @@ export function withWeightChance(data: WeightChanceData[]): WeightChanceResult {
       };
     }
   }
-  throw new Error("Could not find matched data.");
+  throw new GrindstoneError("无法匹配触发事件！");
 }
 
 /**
- * The event and weight data for {@link withWeightChance}.
+ * {@link withWeightChance} 的权重和事件数据
+ * @category Stable
+ * @since 1.0.0
  */
 export interface WeightChanceData {
   /**
-   * The weight to trigger the event.
+   * 触发该事件的权重
    */
   weight: number;
   /**
-   * The event.
+   * 要触发的事件
    */
   event?: () => void;
 }
 
 /**
- * The event and chance data for {@link withPercentChance}.
+ * {@link withPercentChance} 的概率和事件数据
+ * @category Stable
+ * @since 1.0.0
  */
 export interface PercentChanceData {
   /**
-   * The trigger probability, should be a percentage (0~1).
+   * 触发该事件的概率，应该是一个百分数(0~1).
    */
   chance: number;
   /**
-   * The event.
+   * 要触发的事件
    */
   event?: () => void;
 }
 
 /**
- * The Trigger result for {@link withWeightChance}.
+ * {@link withWeightChance} 的触发结果
+ * @category Stable
+ * @since 1.0.0
  */
 export interface WeightChanceResult {
   /**
-   * Sum of weights.
+   * 权重之和
    */
   weightSum: number;
   /**
-   * Random generated weight random number
+   * 生成的随机数
    */
   weightRand: number;
   /**
-   * Index of Triggered data.
+   * 被触发的事件索引
    */
   dataIndex: number;
 }
