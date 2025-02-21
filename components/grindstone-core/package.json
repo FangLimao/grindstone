@@ -1,6 +1,6 @@
 {
   "name": "@grindstone/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Grindstone core script",
   "main": "src/index.ts",
   "keywords": [
