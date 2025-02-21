@@ -1,16 +1,3 @@
 export * from "@grindstone/core";
-export * from "@grindstone/utils";
-export * from "@grindstone/common";
-export * from "@grindstone/message-kit";
-export * as messageKit from "@grindstone/message-kit";
-export * from "@grindstone/debugger-kit";
-export * as debuggerKit from "@grindstone/debugger-kit";
-export * from "@grindstone/article-kit";
-export * as articleKit from "@grindstone/article-kit";
-export * from "@grindstone/quest-kit";
-export * as questKit from "@grindstone/quest-kit";
-export * from "@grindstone/item-kit";
-export * as itemKit from "@grindstone/item-kit";
 export * from "@grindstone/format-kit";
 export * as formatKit from "@grindstone/format-kit";
-export * as materialKit from "@grindstone/material-kit";

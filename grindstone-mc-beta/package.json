@@ -1,0 +1,39 @@
+{
+  "name": "@grindstone/devkit-beta",
+  "version": "0.17.0",
+  "description": "Grindstone Devkit for Minecraft Bedrock Edition",
+  "main": "src/index.ts",
+  "keywords": [
+    "Minecraft",
+    "sapi",
+    "mcbe"
+  ],
+  "contributors": [
+    "FangLimao <mucigames@outlook.com>",
+    "RawDiamondMC <RawDiamondMC@outlook.com>"
+  ],
+  "scripts": {
+    "doc": "typedoc --options typedoc.json"
+  },
+  "license": "MIT",
+  "author": "CTN Studios",
+  "dependencies": {
+    "@grindstone/article-kit": "workspace:0.2.0",
+    "@grindstone/common": "workspace:^0.4.0",
+    "@grindstone/core": "workspace:1.0.0",
+    "@grindstone/debugger-kit": "workspace:0.1.1",
+    "@grindstone/effect-kit": "workspace:0.1.0",
+    "@grindstone/entity-kit": "workspace:0.2.2",
+    "@grindstone/format-kit": "workspace:1.0.1",
+    "@grindstone/item-kit": "workspace:^0.7.0",
+    "@grindstone/material-kit": "workspace:^0.4.0",
+    "@grindstone/message-kit": "workspace:0.2.0",
+    "@grindstone/quest-kit": "workspace:0.2.0",
+    "@grindstone/utils": "workspace:^0.7.2"
+  },
+  "devDependencies": {
+    "typedoc": "^0.27.6",
+    "typedoc-plugin-markdown": "^4.4.1",
+    "typedoc-vitepress-theme": "^1.1.2"
+  }
+}

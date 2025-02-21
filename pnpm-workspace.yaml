@@ -1,4 +1,4 @@
 packages:
   - 'components/*'
   - 'grindstone-mc'
-  - 'grindstone-mc-stable'
+  - 'grindstone-mc-beta'

@@ -281,6 +281,25 @@ importers:
 
   grindstone-mc:
     dependencies:
+      '@grindstone/core':
+        specifier: workspace:1.0.0
+        version: link:../components/grindstone-core
+      '@grindstone/format-kit':
+        specifier: workspace:1.0.1
+        version: link:../components/format-kit
+    devDependencies:
+      typedoc:
+        specifier: ^0.27.6
+        version: 0.27.6(typescript@5.7.3)
+      typedoc-plugin-markdown:
+        specifier: ^4.4.1
+        version: 4.4.1(typedoc@0.27.6(typescript@5.7.3))
+      typedoc-vitepress-theme:
+        specifier: ^1.1.2
+        version: 1.1.2(typedoc-plugin-markdown@4.4.1(typedoc@0.27.6(typescript@5.7.3)))
+
+  grindstone-mc-beta:
+    dependencies:
       '@grindstone/article-kit':
         specifier: workspace:0.2.0
         version: link:../components/article-kit
@@ -300,7 +319,7 @@ importers:
         specifier: workspace:0.2.2
         version: link:../components/entity-kit
       '@grindstone/format-kit':
-        specifier: workspace:^1.0.0
+        specifier: workspace:1.0.1
         version: link:../components/format-kit
       '@grindstone/item-kit':
         specifier: workspace:^0.7.0
@@ -317,9 +336,6 @@ importers:
       '@grindstone/utils':
         specifier: workspace:^0.7.2
         version: link:../components/grindstone-utils
-      typedoc-vitepress-theme:
-        specifier: ^1.1.2
-        version: 1.1.2(typedoc-plugin-markdown@4.4.1(typedoc@0.27.6(typescript@5.7.3)))
     devDependencies:
       typedoc:
         specifier: ^0.27.6
@@ -327,6 +343,9 @@ importers:
       typedoc-plugin-markdown:
         specifier: ^4.4.1
         version: 4.4.1(typedoc@0.27.6(typescript@5.7.3))
+      typedoc-vitepress-theme:
+        specifier: ^1.1.2
+        version: 1.1.2(typedoc-plugin-markdown@4.4.1(typedoc@0.27.6(typescript@5.7.3)))
 
 packages:
 
