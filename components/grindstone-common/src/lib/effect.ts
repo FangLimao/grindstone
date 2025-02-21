@@ -1,5 +1,7 @@
 /**
- * All of the nutral effects.
+ * 所有中性效果的ID
+ * @category Stable
+ * @since 1.0.0
  */
 export const neutralEffectsId: string[] = [
   "bad_omen",
@@ -8,7 +10,9 @@ export const neutralEffectsId: string[] = [
 ];
 
 /**
- * All of the negative(bad) effects.
+ * 所有负面效果的ID
+ * @category Stable
+ * @since 1.0.0
  */
 export const negativeEffectsId: string[] = [
   "slowness",
@@ -30,7 +34,9 @@ export const negativeEffectsId: string[] = [
 ];
 
 /**
- * All of the positive(good) effects.
+ * 所有正面效果的ID
+ * @category Stable
+ * @since 1.0.0
  */
 export const positiveEffectsId: string[] = [
   "speed",

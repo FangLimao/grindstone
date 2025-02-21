@@ -1,71 +1,79 @@
 import { EffectType, ItemStack, RawMessage } from "@minecraft/server";
 
 /**
- * Display condition of articles/quests.
+ * 控制何时展示界面的条件
+ * @category Stable
+ * @since 1.0.0
  */
 export interface DisplayCondition {
   /**
-   * Default condition.
+   * 默认情况
    */
   default?: boolean;
   /**
-   * Display article when player use the item.
+   * 当玩家使用物品时显示界面
    */
   itemStack?: ItemStack;
   /**
-   * Display article when the world first load.
+   * 当世界加载后显示界面
    */
   firstLoad?: boolean;
 }
 
 /**
- * Effect data.
+ * 状态效果数据
+ * @category Stable
+ * @since 1.0.0
  */
 export interface EffectData {
   /**
-   * Type of effect to add to the entity.
+   * 状态效果类型
    */
   effectType: EffectType | string;
   /**
-   * Amount of time, in ticks, for the effect to apply.
-   * There are 20 ticks per second. Use {@link TicksPerSecond} constant to convert between ticks and seconds.
-   * The value must be within he range [0, 20000000].
+   * 状态效果持续时间，以刻为单位 *（20刻=1秒）*
+   * 
+   * 其值必须在范围`[0, 20000000]`内
    */
   duration: number;
   /**
-   * The strength of the effect.
+   * 状态效果等级
    */
   amplifier?: number;
   /**
-   * If true, will show particles when effect is on the entity.
+   * 是否展示状态效果粒子
    */
   showParticles?: boolean;
 }
 
 /**
- * Item data, including the item and its name.
+ * 物品数据，包括其名称和物品堆
+ * @category Stable
+ * @since 1.0.0
  */
 export interface ItemData {
   /**
-   * Name of the item.
+   * 物品名称
    */
   name: RawMessage;
   /**
-   * The item.
+   * 物品堆
    */
   itemStack: ItemStack;
 }
 
 /**
- * Entity data, including the entity's type id and its name.
+ * 实体数据，包括其名称和物品堆
+ * @category Stable
+ * @since 1.0.0
  */
 export interface EntityData {
   /**
-   * Name of the entity.
+   * 实体名称
    */
   name: string;
   /**
-   * The entity's type id.
+   * 实体ID
    */
   typeId: string;
 }

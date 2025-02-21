@@ -1,5 +1,7 @@
 /**
- * All block ids that shovel can convert.
+ * 可以被锹转换的方块ID
+ * @deprecated
+ * @category Deprecated
  */
 export const shovelConvertBlockIds: string[] = [
   "grass_block",
@@ -11,7 +13,9 @@ export const shovelConvertBlockIds: string[] = [
 ];
 
 /**
- * All block ids that axe can convert.
+ * 可以被斧转换的方块ID
+ * @deprecated
+ * @category Deprecated
  */
 export const axeConvertBlockIds: string[] = [
   "oak_wood",
@@ -38,7 +42,9 @@ export const axeConvertBlockIds: string[] = [
 ];
 
 /**
- * All block ids that hoe can convert.
+ * 可以被锄转换的方块ID
+ * @deprecated
+ * @category Deprecated
  */
 export const hoeConvertBlockIds: string[] = [
   "dirt",
