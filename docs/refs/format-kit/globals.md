@@ -1,4 +1,4 @@
-# @grindstone/format-kit v1.0.0
+# @grindstone/format-kit v1.0.1
 
 ## Stable
 
