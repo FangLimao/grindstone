@@ -1,14 +1,14 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / WeightChanceResult
 
 # Interface: WeightChanceResult
 
-Defined in: chance.ts:88
+Defined in: chance.ts:98
 
-The Trigger result for [withWeightChance](../functions/withWeightChance.md).
+[withWeightChance](../functions/withWeightChance.md) 的触发结果
+
+## Since
+
+1.0.0
 
 ## Properties
 
@@ -16,9 +16,9 @@ The Trigger result for [withWeightChance](../functions/withWeightChance.md).
 
 > **dataIndex**: `number`
 
-Defined in: chance.ts:100
+Defined in: chance.ts:110
 
-Index of Triggered data.
+被触发的事件索引
 
 ***
 
@@ -26,9 +26,9 @@ Index of Triggered data.
 
 > **weightRand**: `number`
 
-Defined in: chance.ts:96
+Defined in: chance.ts:106
 
-Random generated weight random number
+生成的随机数
 
 ***
 
@@ -36,6 +36,6 @@ Random generated weight random number
 
 > **weightSum**: `number`
 
-Defined in: chance.ts:92
+Defined in: chance.ts:102
 
-Sum of weights.
+权重之和

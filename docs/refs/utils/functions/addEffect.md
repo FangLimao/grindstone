@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / addEffect
 
 # Function: addEffect()
 
 > **addEffect**(`entity`, `effectType`, `duration`, `options`?): `void`
 
-Defined in: entity.ts:81
+Defined in: entity.ts:80
 
-Wrapper function for adding effect(s) or effect group.
+向实体添加状态效果
 
 ## Parameters
 
@@ -18,11 +14,11 @@ Wrapper function for adding effect(s) or effect group.
 
 `Entity`
 
-The entity to add effect.
+要添加状态效果实体对象
 
 ### effectType
 
-the effect(s) to add, use [EffectGroups](../enumerations/EffectGroups.md) to add group effects.
+状态效果类型，可以是单个效果类型、效果类型数组、字符串、字符串数组或[EffectGroups](../enumerations/EffectGroups.md)枚举值
 
 `string` | `string`[] | `EffectType` | `EffectType`[] | [`EffectGroups`](../enumerations/EffectGroups.md)
 
@@ -30,20 +26,20 @@ the effect(s) to add, use [EffectGroups](../enumerations/EffectGroups.md) to add
 
 `number`
 
-Amount of time, in ticks, for the effect to apply.
-There are 20 ticks per second. Use TicksPerSecond constant to convert between ticks and seconds.
-The value must be within he range [0, 20000000].
+状态效果持续时间，以刻为单位 *（20刻=1秒）*
+
+其值必须在范围`[0, 20000000]`内
 
 ### options?
 
 `EntityEffectOptions`
 
-Additional options for the effect.
+状态效果选项
 
 ## Returns
 
 `void`
 
-## Throws
+## Since
 
-This function can throw errors.
+1.0.0

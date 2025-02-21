@@ -1,14 +1,14 @@
-[**@grindstone/common v0.4.0**](../README.md)
-
-***
-
 [@grindstone/common](../globals.md) / EffectData
 
 # Interface: EffectData
 
-Defined in: components/grindstone-common/src/lib/kit.ts:24
+Defined in: components/grindstone-common/src/lib/kit.ts:28
 
-Effect data.
+状态效果数据
+
+## Since
+
+1.0.0
 
 ## Properties
 
@@ -16,9 +16,9 @@ Effect data.
 
 > `optional` **amplifier**: `number`
 
-Defined in: components/grindstone-common/src/lib/kit.ts:38
+Defined in: components/grindstone-common/src/lib/kit.ts:42
 
-The strength of the effect.
+状态效果等级
 
 ***
 
@@ -26,11 +26,11 @@ The strength of the effect.
 
 > **duration**: `number`
 
-Defined in: components/grindstone-common/src/lib/kit.ts:34
+Defined in: components/grindstone-common/src/lib/kit.ts:38
 
-Amount of time, in ticks, for the effect to apply.
-There are 20 ticks per second. Use TicksPerSecond constant to convert between ticks and seconds.
-The value must be within he range [0, 20000000].
+状态效果持续时间，以刻为单位 *（20刻=1秒）*
+
+其值必须在范围`[0, 20000000]`内
 
 ***
 
@@ -38,9 +38,9 @@ The value must be within he range [0, 20000000].
 
 > **effectType**: `string` \| `EffectType`
 
-Defined in: components/grindstone-common/src/lib/kit.ts:28
+Defined in: components/grindstone-common/src/lib/kit.ts:32
 
-Type of effect to add to the entity.
+状态效果类型
 
 ***
 
@@ -48,6 +48,6 @@ Type of effect to add to the entity.
 
 > `optional` **showParticles**: `boolean`
 
-Defined in: components/grindstone-common/src/lib/kit.ts:42
+Defined in: components/grindstone-common/src/lib/kit.ts:46
 
-If true, will show particles when effect is on the entity.
+是否展示状态效果粒子

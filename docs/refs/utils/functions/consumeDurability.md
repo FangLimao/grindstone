@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / consumeDurability
 
 # Function: consumeDurability()
 
 > **consumeDurability**(`item`, `value`, `entity`?): `ItemStack` \| `undefined`
 
-Defined in: item.ts:41
+Defined in: item.ts:44
 
-Damage an ItemStack.
+添加物品的损坏值，即消耗其耐久
 
 ## Parameters
 
@@ -18,22 +14,26 @@ Damage an ItemStack.
 
 `ItemStack`
 
-The ItemStack to be damaged.
+要添加损坏值的物品
 
 ### value
 
 `number`
 
-The durability to be removed.
+要添加的损坏值
 
 ### entity?
 
 `Entity`
 
-The optional Entity which breaks this tool.
+当物品损坏时，向手持物品的实体播放声音
 
 ## Returns
 
 `ItemStack` \| `undefined`
 
-the damaged ItemStack.
+添加损坏值的 ItemStack
+
+## Since
+
+1.0.0

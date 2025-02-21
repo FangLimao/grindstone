@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / getItemAmountInContainer
 
 # Function: getItemAmountInContainer()
 
-> **getItemAmountInContainer**(`container`, `item`): `number`
+> **getItemAmountInContainer**(`container`, `typeId`): `number`
 
-Defined in: item.ts:98
+Defined in: item.ts:104
 
-Get item's amount in container.
+获取容器中指定物品的数量
 
 ## Parameters
 
@@ -18,10 +14,20 @@ Get item's amount in container.
 
 `Container`
 
-### item
+容器对象
+
+### typeId
 
 `string`
+
+要获取的物品ID
 
 ## Returns
 
 `number`
+
+容器中指定物品的数量
+
+## Since
+
+1.0.0

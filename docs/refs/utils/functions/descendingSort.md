@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / descendingSort
 
 # Function: descendingSort()
 
 > **descendingSort**(`arr`): `void`
 
-Defined in: misc.ts:43
+Defined in: misc.ts:52
 
-Sort an number array in descending order.
+以降序对数字数组进行排序
 
 ## Parameters
 
@@ -18,8 +14,12 @@ Sort an number array in descending order.
 
 `number`[]
 
-The array to sort.
+要排序的数组
 
 ## Returns
 
 `void`
+
+## Since
+
+1.0.0

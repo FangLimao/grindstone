@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / getExpCost
 
 # Function: getExpCost()
 
 > **getExpCost**(`level`): `number`
 
-Defined in: player.ts:9
+Defined in: player.ts:11
 
-Get the required exp points by level.
+根据玩家等级计算经验消耗
 
 ## Parameters
 
@@ -18,6 +14,12 @@ Get the required exp points by level.
 
 `number`
 
+玩家等级
+
 ## Returns
 
 `number`
+
+## Since
+
+1.0.0

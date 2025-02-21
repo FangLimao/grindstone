@@ -1,13 +1,11 @@
-[**@grindstone/common v0.4.0**](../README.md)
-
-***
-
 [@grindstone/common](../globals.md) / shovelConvertBlockIds
 
-# Variable: shovelConvertBlockIds
+# Variable: ~~shovelConvertBlockIds~~
 
 > `const` **shovelConvertBlockIds**: `string`[]
 
-Defined in: components/grindstone-common/src/lib/block.ts:4
+Defined in: components/grindstone-common/src/lib/block.ts:6
 
-All block ids that shovel can convert.
+可以被锹转换的方块ID
+
+## Deprecated

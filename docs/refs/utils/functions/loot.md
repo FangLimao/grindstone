@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / loot
 
 # Function: loot()
 
 > **loot**(`dimension`, `location`, `path`, `toolType`?): `void`
 
-Defined in: dimension.ts:12
+Defined in: dimension.ts:20
 
-Drops the given loot table into the dimension.
+在指定位置生成战利品
 
 ## Parameters
 
@@ -18,26 +14,30 @@ Drops the given loot table into the dimension.
 
 `Dimension`
 
-The dimension to drop loot.
+要生成战利品的维度
 
 ### location
 
 `Vector3`
 
-Location to drop loot.
+生成战利品的位置
 
 ### path
 
 `string`
 
-Path to loot table.
+战利品表的路径，如`entity/zombie`
 
 ### toolType?
 
 `string`
 
-Specifies a tool to be used to simulatively kill or loot.
+生成战利品的工具类型
 
 ## Returns
 
 `void`
+
+## Since
+
+1.0.0

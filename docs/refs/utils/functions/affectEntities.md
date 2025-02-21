@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / affectEntities
 
 # Function: affectEntities()
 
 > **affectEntities**(`dimension`, `affectOption`, `effectType`, `duration`, `effectOption`?): `void`
 
-Defined in: entity.ts:249
+Defined in: entity.ts:259
 
-Affect entities within an area.
+对指定维度中的实体施加效果
 
 ## Parameters
 
@@ -18,17 +14,17 @@ Affect entities within an area.
 
 `Dimension`
 
-Area's dimension.
+实体所处的维度
 
 ### affectOption
 
 `EntityQueryOptions`
 
-Contains options for selecting entities within an area.
+实体查询选项
 
 ### effectType
 
-Type of effect to add to the entity.
+状态效果类型
 
 `string` | `EffectType`
 
@@ -36,16 +32,20 @@ Type of effect to add to the entity.
 
 `number`
 
-Amount of time, in ticks, for the effect to apply.
-There are 20 ticks per second. Use TicksPerSecond constant to convert between ticks and seconds.
-The value must be within the range [0, 20000000].
+效果持续时间，以刻为单位 *（20刻=1秒）*
+
+其值必须在范围`[0, 20000000]`内
 
 ### effectOption?
 
 `EntityEffectOptions`
 
-Additional options for the effect.
+实体效果选项
 
 ## Returns
 
 `void`
+
+## Since
+
+1.0.0

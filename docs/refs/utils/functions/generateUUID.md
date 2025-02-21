@@ -1,19 +1,19 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / generateUUID
 
 # Function: generateUUID()
 
 > **generateUUID**(): `string`
 
-Defined in: misc.ts:7
+Defined in: misc.ts:9
 
-Generate a UUID.
+生成一个UUID
 
 ## Returns
 
 `string`
 
-a UUID
+一个UUID
+
+## Since
+
+1.0.0

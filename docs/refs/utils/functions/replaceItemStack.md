@@ -1,30 +1,24 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / replaceItemStack
 
 # Function: replaceItemStack()
 
 > **replaceItemStack**(`item`, `newItem`, `container`): `number`
 
-Defined in: item.ts:19
+Defined in: item.ts:20
 
-Replace ItemStack in a Container
+在容器中查找替换物品
 
 ## Parameters
 
 ### item
 
-The ItemStack or ItemStack.typeId to be replaced.
-if it's undefined, every empty slot will be filled.
+要替换的物品，如果为`undefined`，则替换所有空槽
 
 `undefined` | `ItemStack`
 
 ### newItem
 
-the new ItemStack.
-if it's undefined, the matched slot will be cleared.
+替换后的物品，如果为`undefined`，则清空所有物品
 
 `undefined` | `ItemStack`
 
@@ -32,8 +26,12 @@ if it's undefined, the matched slot will be cleared.
 
 `Container`
 
-the Container which will be searched.
+要搜索的容器
 
 ## Returns
 
 `number`
+
+## Since
+
+1.0.0

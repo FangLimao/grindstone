@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / insertLoot
 
 # Function: insertLoot()
 
 > **insertLoot**(`dimension`, `blockLocation`, `path`, `toolType`?): `void`
 
-Defined in: dimension.ts:36
+Defined in: dimension.ts:46
 
-Distributes given loot table to a container block.
+向指定维度的容器中生成战利品
 
 ## Parameters
 
@@ -18,26 +14,30 @@ Distributes given loot table to a container block.
 
 `Dimension`
 
-The dimension to drop loot.
+容器所处的维度
 
 ### blockLocation
 
 `Vector3`
 
-Location to the container block.
+容器的位置
 
 ### path
 
 `string`
 
-Path to loot table.
+战利品表的路径，如`entity/zombie`
 
 ### toolType?
 
 `string`
 
-Specifies a tool to be used to simulatively kill or loot.
+生成战利品的工具类型
 
 ## Returns
 
 `void`
+
+## Since
+
+1.0.0

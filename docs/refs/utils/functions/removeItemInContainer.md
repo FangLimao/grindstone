@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / removeItemInContainer
 
 # Function: removeItemInContainer()
 
-> **removeItemInContainer**(`container`, `itemId`, `amount`): `void`
+> **removeItemInContainer**(`container`, `typeId`, `amount`): `void`
 
-Defined in: item.ts:118
+Defined in: item.ts:126
 
-Remove items in container.
+从容器中移除指定数量的物品
 
 ## Parameters
 
@@ -18,14 +14,24 @@ Remove items in container.
 
 `Container`
 
-### itemId
+容器对象
+
+### typeId
 
 `string`
+
+物品ID
 
 ### amount
 
 `number`
 
+要移除物品的数量
+
 ## Returns
 
 `void`
+
+## Since
+
+1.0.0

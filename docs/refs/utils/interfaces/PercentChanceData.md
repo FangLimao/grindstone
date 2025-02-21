@@ -1,14 +1,14 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / PercentChanceData
 
 # Interface: PercentChanceData
 
-Defined in: chance.ts:74
+Defined in: chance.ts:82
 
-The event and chance data for [withPercentChance](../functions/withPercentChance.md).
+[withPercentChance](../functions/withPercentChance.md) 的概率和事件数据
+
+## Since
+
+1.0.0
 
 ## Properties
 
@@ -16,9 +16,9 @@ The event and chance data for [withPercentChance](../functions/withPercentChance
 
 > **chance**: `number`
 
-Defined in: chance.ts:78
+Defined in: chance.ts:86
 
-The trigger probability, should be a percentage (0~1).
+触发该事件的概率，应该是一个百分数(0~1).
 
 ***
 
@@ -26,9 +26,9 @@ The trigger probability, should be a percentage (0~1).
 
 > `optional` **event**: () => `void`
 
-Defined in: chance.ts:82
+Defined in: chance.ts:90
 
-The event.
+要触发的事件
 
 #### Returns
 

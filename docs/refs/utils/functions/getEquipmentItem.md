@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / getEquipmentItem
 
 # Function: getEquipmentItem()
 
 > **getEquipmentItem**(`entity`, `slot`): `ItemStack` \| `undefined`
 
-Defined in: entity.ts:195
+Defined in: entity.ts:199
 
-Get a slot's item.
+获取给定实体的指定槽位物品
 
 ## Parameters
 
@@ -18,16 +14,20 @@ Get a slot's item.
 
 `Entity`
 
-The owner of the slot.
+要获取槽位的实体
 
 ### slot
 
 `EquipmentSlot` = `EquipmentSlot.Mainhand`
 
-The slot to get item stack.
+要获取的槽位，默认为 EquipmentSlot.Mainhand
 
 ## Returns
 
 `ItemStack` \| `undefined`
 
-Item of the slot, default is EquipmentSlot.Mainhand.
+槽位中的物品
+
+## Since
+
+1.0.0

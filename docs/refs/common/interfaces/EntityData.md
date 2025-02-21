@@ -1,14 +1,14 @@
-[**@grindstone/common v0.4.0**](../README.md)
-
-***
-
 [@grindstone/common](../globals.md) / EntityData
 
 # Interface: EntityData
 
-Defined in: components/grindstone-common/src/lib/kit.ts:62
+Defined in: components/grindstone-common/src/lib/kit.ts:70
 
-Entity data, including the entity's type id and its name.
+实体数据，包括其名称和物品堆
+
+## Since
+
+1.0.0
 
 ## Properties
 
@@ -16,9 +16,9 @@ Entity data, including the entity's type id and its name.
 
 > **name**: `string`
 
-Defined in: components/grindstone-common/src/lib/kit.ts:66
+Defined in: components/grindstone-common/src/lib/kit.ts:74
 
-Name of the entity.
+实体名称
 
 ***
 
@@ -26,6 +26,6 @@ Name of the entity.
 
 > **typeId**: `string`
 
-Defined in: components/grindstone-common/src/lib/kit.ts:70
+Defined in: components/grindstone-common/src/lib/kit.ts:78
 
-The entity's type id.
+实体ID

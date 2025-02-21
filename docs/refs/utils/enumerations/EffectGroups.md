@@ -1,14 +1,18 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / EffectGroups
 
 # Enumeration: EffectGroups
 
-Defined in: entity.ts:310
+Defined in: entity.ts:328
 
-Groups of the effects.
+状态效果组
+
+## Since
+
+1.0.0
+
+## See
+
+https://zh.minecraft.wiki/w/状态效果
 
 ## Enumeration Members
 
@@ -16,9 +20,9 @@ Groups of the effects.
 
 > **all**: `3`
 
-Defined in: entity.ts:326
+Defined in: entity.ts:344
 
-All effects.
+所有效果
 
 ***
 
@@ -26,9 +30,9 @@ All effects.
 
 > **bad**: `1`
 
-Defined in: entity.ts:318
+Defined in: entity.ts:336
 
-Negative(bad) effects.
+负面效果
 
 ***
 
@@ -36,9 +40,9 @@ Negative(bad) effects.
 
 > **good**: `0`
 
-Defined in: entity.ts:314
+Defined in: entity.ts:332
 
-Positive(good) effects.
+正面效果
 
 ***
 
@@ -46,6 +50,6 @@ Positive(good) effects.
 
 > **nutral**: `2`
 
-Defined in: entity.ts:322
+Defined in: entity.ts:340
 
-Nutral effects.
+中性效果

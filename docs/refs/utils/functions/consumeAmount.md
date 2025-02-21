@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / consumeAmount
 
 # Function: consumeAmount()
 
 > **consumeAmount**(`item`, `value`): `ItemStack` \| `undefined`
 
-Defined in: item.ts:73
+Defined in: item.ts:77
 
-Edit the amount of an ItemStack.
+消耗物品的数量
 
 ## Parameters
 
@@ -18,24 +14,24 @@ Edit the amount of an ItemStack.
 
 `ItemStack`
 
-The ItemStack.
+要消耗物品的数量
 
 ### value
 
 `number`
 
-The amount to be removed.
+要消耗的数量
 
 ## Returns
 
 `ItemStack` \| `undefined`
 
-the new ItemStack.
+消耗后的物品堆
 
 ## Throws
 
-SapiError if amount is not enough to be removed.
+如果物品数量不足，则抛出错误
 
-## Throws
+## Since
 
-SapiError if max amount is not high enough.
+1.0.0

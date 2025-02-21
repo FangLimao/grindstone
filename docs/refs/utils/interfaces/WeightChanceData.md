@@ -1,14 +1,14 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / WeightChanceData
 
 # Interface: WeightChanceData
 
-Defined in: chance.ts:60
+Defined in: chance.ts:66
 
-The event and weight data for [withWeightChance](../functions/withWeightChance.md).
+[withWeightChance](../functions/withWeightChance.md) 的权重和事件数据
+
+## Since
+
+1.0.0
 
 ## Properties
 
@@ -16,9 +16,9 @@ The event and weight data for [withWeightChance](../functions/withWeightChance.m
 
 > `optional` **event**: () => `void`
 
-Defined in: chance.ts:68
+Defined in: chance.ts:74
 
-The event.
+要触发的事件
 
 #### Returns
 
@@ -30,6 +30,6 @@ The event.
 
 > **weight**: `number`
 
-Defined in: chance.ts:64
+Defined in: chance.ts:70
 
-The weight to trigger the event.
+触发该事件的权重

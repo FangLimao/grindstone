@@ -1,25 +1,25 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / clearSlot
 
 # Function: clearSlot()
 
 > **clearSlot**(`entity`): `void`
 
-Defined in: entity.ts:179
+Defined in: entity.ts:181
 
-Clear entities' slot.
+清空实体的容器
 
 ## Parameters
 
 ### entity
 
-The entities to clear slot.
+要清空容器的实体
 
 `Entity` | `Entity`[]
 
 ## Returns
 
 `void`
+
+## Since
+
+1.0.0

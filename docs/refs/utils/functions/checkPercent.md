@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / checkPercent
 
 # Function: checkPercent()
 
 > **checkPercent**(`num`): `boolean`
 
-Defined in: math.ts:68
+Defined in: math.ts:74
 
-Check whether the number is a percentage.
+检查数字是否为百分数
 
 ## Parameters
 
@@ -18,10 +14,14 @@ Check whether the number is a percentage.
 
 `number`
 
-The number to check.
+要检查的数字
 
 ## Returns
 
 `boolean`
 
-Return true if the number is a percentage.
+如果数字是百分比，则返回`true`，否则返回`false`
+
+## Since
+
+1.0.0

@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / damageEntities
 
 # Function: damageEntities()
 
 > **damageEntities**(`dimension`, `damageOption`, `amount`): `void`
 
-Defined in: entity.ts:227
+Defined in: entity.ts:235
 
-Damage entities within an area.
+对指定维度中的实体施加伤害
 
 ## Parameters
 
@@ -18,20 +14,24 @@ Damage entities within an area.
 
 `Dimension`
 
-Area's dimension.
+实体所处的维度
 
 ### damageOption
 
 `EntityQueryOptions`
 
-Contains options for selecting entities within an area.
+实体查询选项
 
 ### amount
 
 `number`
 
-Amount of damage to apply.
+伤害大小
 
 ## Returns
 
 `void`
+
+## Since
+
+1.0.0

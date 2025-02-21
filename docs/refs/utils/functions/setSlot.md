@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / setSlot
 
 # Function: setSlot()
 
 > **setSlot**(`entity`, `slot`, `item`?): `void`
 
-Defined in: entity.ts:140
+Defined in: entity.ts:144
 
-Set an item stack within a particular slot.
+设置实体的槽位物品
 
 ## Parameters
 
@@ -18,18 +14,24 @@ Set an item stack within a particular slot.
 
 `Entity`
 
+要设置槽位物品的实体
+
 ### slot
 
 `number`
 
-Zero-based index of the slot to set an item at.
+槽位索引，从0开始依次递增
 
 ### item?
 
 `ItemStack`
 
-Stack of items to place within the specified slot.
+要设置的物品
 
 ## Returns
 
 `void`
+
+## Since
+
+1.0.0

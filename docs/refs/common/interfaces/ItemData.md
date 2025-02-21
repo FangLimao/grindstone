@@ -1,14 +1,14 @@
-[**@grindstone/common v0.4.0**](../README.md)
-
-***
-
 [@grindstone/common](../globals.md) / ItemData
 
 # Interface: ItemData
 
-Defined in: components/grindstone-common/src/lib/kit.ts:48
+Defined in: components/grindstone-common/src/lib/kit.ts:54
 
-Item data, including the item and its name.
+物品数据，包括其名称和物品堆
+
+## Since
+
+1.0.0
 
 ## Properties
 
@@ -16,9 +16,9 @@ Item data, including the item and its name.
 
 > **itemStack**: `ItemStack`
 
-Defined in: components/grindstone-common/src/lib/kit.ts:56
+Defined in: components/grindstone-common/src/lib/kit.ts:62
 
-The item.
+物品堆
 
 ***
 
@@ -26,6 +26,6 @@ The item.
 
 > **name**: `RawMessage`
 
-Defined in: components/grindstone-common/src/lib/kit.ts:52
+Defined in: components/grindstone-common/src/lib/kit.ts:58
 
-Name of the item.
+物品名称

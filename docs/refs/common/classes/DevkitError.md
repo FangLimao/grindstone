@@ -1,12 +1,18 @@
-[**@grindstone/common v0.4.0**](../README.md)
-
-***
-
 [@grindstone/common](../globals.md) / DevkitError
 
-# Class: DevkitError
+# Class: ~~DevkitError~~
 
-Defined in: components/grindstone-common/src/lib/error.ts:1
+Defined in: components/grindstone-common/src/lib/error.ts:7
+
+开发包错误
+
+## Deprecated
+
+`core.GrindstoneError`已经代替了此类
+
+## Since
+
+1.0.0
 
 ## Extends
 
@@ -18,7 +24,7 @@ Defined in: components/grindstone-common/src/lib/error.ts:1
 
 > **new DevkitError**(`message`?): [`DevkitError`](DevkitError.md)
 
-Defined in: components/grindstone-common/src/lib/error.ts:2
+Defined in: components/grindstone-common/src/lib/error.ts:8
 
 #### Parameters
 
@@ -36,7 +42,7 @@ Defined in: components/grindstone-common/src/lib/error.ts:2
 
 ## Properties
 
-### message
+### ~~message~~
 
 > **message**: `string`
 
@@ -48,7 +54,7 @@ Defined in: node\_modules/.pnpm/typescript@5.7.3/node\_modules/typescript/lib/li
 
 ***
 
-### name
+### ~~name~~
 
 > **name**: `string`
 
@@ -60,7 +66,7 @@ Defined in: node\_modules/.pnpm/typescript@5.7.3/node\_modules/typescript/lib/li
 
 ***
 
-### stack?
+### ~~stack?~~
 
 > `optional` **stack**: `string`
 

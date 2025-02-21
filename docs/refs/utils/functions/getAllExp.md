@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / getAllExp
 
 # Function: getAllExp()
 
 > **getAllExp**(`player`): `number`
 
-Defined in: player.ts:23
+Defined in: player.ts:27
 
-Get the exp in all.
+获取玩家得到的所有经验值
 
 ## Parameters
 
@@ -21,3 +17,7 @@ Get the exp in all.
 ## Returns
 
 `number`
+
+## Since
+
+1.0.0

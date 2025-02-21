@@ -1,13 +1,13 @@
-[**@grindstone/common v0.4.0**](../README.md)
-
-***
-
 [@grindstone/common](../globals.md) / positiveEffectsId
 
 # Variable: positiveEffectsId
 
 > `const` **positiveEffectsId**: `string`[]
 
-Defined in: components/grindstone-common/src/lib/effect.ts:35
+Defined in: components/grindstone-common/src/lib/effect.ts:41
 
-All of the positive(good) effects.
+所有正面效果的ID
+
+## Since
+
+1.0.0

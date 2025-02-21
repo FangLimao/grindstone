@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / withPercentChance
 
 # Function: withPercentChance()
 
 > **withPercentChance**(`data`): `boolean`
 
-Defined in: chance.ts:10
+Defined in: chance.ts:12
 
-Percentage-Driven random event trigger.
+基于百分数随机事件触发器
 
 ## Parameters
 
@@ -18,10 +14,14 @@ Percentage-Driven random event trigger.
 
 [`PercentChanceData`](../interfaces/PercentChanceData.md)
 
-The event and chance data.
+事件和触发概率
 
 ## Returns
 
 `boolean`
 
-A boolean of whether the event will be triggered.
+一个表示事件是否被触发的布尔值
+
+## Since
+
+1.0.0

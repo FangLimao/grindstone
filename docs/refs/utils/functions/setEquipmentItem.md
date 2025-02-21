@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / setEquipmentItem
 
 # Function: setEquipmentItem()
 
 > **setEquipmentItem**(`entity`, `item`?, `slot`?): `boolean` \| `undefined`
 
-Defined in: entity.ts:211
+Defined in: entity.ts:217
 
-Replaces the item in the given EquipmentSlot.
+设置给定实体的指定槽位物品
 
 ## Parameters
 
@@ -18,20 +14,24 @@ Replaces the item in the given EquipmentSlot.
 
 `Entity`
 
-The owner of the slot.
+要设置槽位的实体
 
 ### item?
 
 `ItemStack`
 
-The item to equip. If undefined, clears the slot.
+要设置的物品，如果为undefined则清空该槽位
 
 ### slot?
 
 `EquipmentSlot` = `EquipmentSlot.Mainhand`
 
-The slot to set item stack, default is EquipmentSlot.Mainhand.
+要设置的槽位，默认为 EquipmentSlot.Mainhand
 
 ## Returns
 
 `boolean` \| `undefined`
+
+## Since
+
+1.0.0

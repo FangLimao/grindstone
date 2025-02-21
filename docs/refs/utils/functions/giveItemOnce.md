@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / giveItemOnce
 
 # Function: giveItemOnce()
 
 > **giveItemOnce**(`item`): `void`
 
-Defined in: player.ts:37
+Defined in: player.ts:42
 
-Give item to all player once.
+给予玩家一次物品
 
 ## Parameters
 
@@ -18,8 +14,12 @@ Give item to all player once.
 
 `ItemStack`
 
-The item to give.
+要给予的物品
 
 ## Returns
 
 `void`
+
+## Since
+
+1.0.0

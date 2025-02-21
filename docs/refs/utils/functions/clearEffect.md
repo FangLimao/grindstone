@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / clearEffect
 
 # Function: clearEffect()
 
 > **clearEffect**(`entity`, `effectType`): `void`
 
-Defined in: entity.ts:30
+Defined in: entity.ts:28
 
-Wrapper function for removing effect(s) or effect group.
+向实体移除状态效果
 
 ## Parameters
 
@@ -18,11 +14,11 @@ Wrapper function for removing effect(s) or effect group.
 
 `Entity`
 
-The entity to be removed effect.
+要清除效果的实体.
 
 ### effectType
 
-The effect(s) to remove, use [EffectGroups](../enumerations/EffectGroups.md) to remove group effects.
+状态效果类型，可以是单个效果类型、效果类型数组、字符串、字符串数组或[EffectGroups](../enumerations/EffectGroups.md)枚举值
 
 `string` | `string`[] | `EffectType` | `EffectType`[] | [`EffectGroups`](../enumerations/EffectGroups.md)
 
@@ -30,6 +26,6 @@ The effect(s) to remove, use [EffectGroups](../enumerations/EffectGroups.md) to 
 
 `void`
 
-## Throws
+## Since
 
-— This function can throw errors.
+1.0.0

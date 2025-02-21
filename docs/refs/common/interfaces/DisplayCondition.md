@@ -1,14 +1,14 @@
-[**@grindstone/common v0.4.0**](../README.md)
-
-***
-
 [@grindstone/common](../globals.md) / DisplayCondition
 
 # Interface: DisplayCondition
 
-Defined in: components/grindstone-common/src/lib/kit.ts:6
+Defined in: components/grindstone-common/src/lib/kit.ts:8
 
-Display condition of articles/quests.
+控制何时展示界面的条件
+
+## Since
+
+1.0.0
 
 ## Properties
 
@@ -16,9 +16,9 @@ Display condition of articles/quests.
 
 > `optional` **default**: `boolean`
 
-Defined in: components/grindstone-common/src/lib/kit.ts:10
+Defined in: components/grindstone-common/src/lib/kit.ts:12
 
-Default condition.
+默认情况
 
 ***
 
@@ -26,9 +26,9 @@ Default condition.
 
 > `optional` **firstLoad**: `boolean`
 
-Defined in: components/grindstone-common/src/lib/kit.ts:18
+Defined in: components/grindstone-common/src/lib/kit.ts:20
 
-Display article when the world first load.
+当世界加载后显示界面
 
 ***
 
@@ -36,6 +36,6 @@ Display article when the world first load.
 
 > `optional` **itemStack**: `ItemStack`
 
-Defined in: components/grindstone-common/src/lib/kit.ts:14
+Defined in: components/grindstone-common/src/lib/kit.ts:16
 
-Display article when player use the item.
+当玩家使用物品时显示界面

@@ -1,7 +1,3 @@
-**@grindstone/utils v0.7.2**
-
-***
-
 # Grindstone Utils Kit
 ## 维度类函数
 ### loot

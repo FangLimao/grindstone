@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / ascendingSort
 
 # Function: ascendingSort()
 
 > **ascendingSort**(`arr`): `void`
 
-Defined in: misc.ts:33
+Defined in: misc.ts:40
 
-Sort an number array in ascending order.
+以升序对数字数组进行排序
 
 ## Parameters
 
@@ -18,8 +14,12 @@ Sort an number array in ascending order.
 
 `number`[]
 
-The array to sort.
+要排序的数组
 
 ## Returns
 
 `void`
+
+## Since
+
+1.0.0

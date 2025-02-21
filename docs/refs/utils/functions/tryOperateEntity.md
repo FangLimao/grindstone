@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / tryOperateEntity
 
 # Function: tryOperateEntity()
 
 > **tryOperateEntity**(`entity`, `operate`): `boolean`
 
-Defined in: entity.ts:295
+Defined in: entity.ts:310
 
-Try to operate an entity.
+尝试对实体进行操作
 
 ## Parameters
 
@@ -18,12 +14,20 @@ Try to operate an entity.
 
 `Entity`
 
+要操作的实体
+
 ### operate
 
 (`entity`) => `void`
+
+操作函数，接受一个实体作为参数
 
 ## Returns
 
 `boolean`
 
-True if the entity is valid.
+操作是否成功
+
+## Since
+
+1.0.0

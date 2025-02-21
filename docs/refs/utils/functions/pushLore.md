@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / pushLore
 
 # Function: pushLore()
 
 > **pushLore**(`loreText`, `item`): `ItemStack`
 
-Defined in: item.ts:143
+Defined in: item.ts:153
 
-Push a lore to the item.
+向物品添加新的Lore
 
 ## Parameters
 
@@ -18,16 +14,20 @@ Push a lore to the item.
 
 `string`
 
-The lore to push.
+要添加的Lore文本
 
 ### item
 
 `ItemStack`
 
-The item to push lore.
+要添加Lore文本的物品
 
 ## Returns
 
 `ItemStack`
 
-The item that pushed lore.
+更新Lore后的物品
+
+## Since
+
+1.0.0

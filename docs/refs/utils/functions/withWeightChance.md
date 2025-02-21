@@ -1,16 +1,12 @@
-[**@grindstone/utils v0.7.2**](../README.md)
-
-***
-
 [@grindstone/utils](../globals.md) / withWeightChance
 
 # Function: withWeightChance()
 
 > **withWeightChance**(`data`): [`WeightChanceResult`](../interfaces/WeightChanceResult.md)
 
-Defined in: chance.ts:29
+Defined in: chance.ts:33
 
-Weight-Driven random event trigger.
+给予权重的随机事件触发器
 
 ## Parameters
 
@@ -18,10 +14,14 @@ Weight-Driven random event trigger.
 
 [`WeightChanceData`](../interfaces/WeightChanceData.md)[]
 
-The event and weight data.
+事件和触发权重
 
 ## Returns
 
 [`WeightChanceResult`](../interfaces/WeightChanceResult.md)
 
-The Trigger result.
+触发结果
+
+## Since
+
+1.0.0

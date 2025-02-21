@@ -1,25 +1,12 @@
-[**@grindstone/utils v0.7.2**](README.md)
+# @grindstone/utils v1.0.0
 
-***
-
-# @grindstone/utils v0.7.2
-
-## Enumerations
+## Stable
 
 - [EffectGroups](enumerations/EffectGroups.md)
-
-## Interfaces
-
 - [PercentChanceData](interfaces/PercentChanceData.md)
 - [WeightChanceData](interfaces/WeightChanceData.md)
 - [WeightChanceResult](interfaces/WeightChanceResult.md)
-
-## Type Aliases
-
 - [LootToolType](type-aliases/LootToolType.md)
-
-## Functions
-
 - [addEffect](functions/addEffect.md)
 - [affectEntities](functions/affectEntities.md)
 - [applyEffectData](functions/applyEffectData.md)

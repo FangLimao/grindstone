@@ -1,13 +1,13 @@
-[**@grindstone/common v0.4.0**](../README.md)
-
-***
-
 [@grindstone/common](../globals.md) / negativeEffectsId
 
 # Variable: negativeEffectsId
 
 > `const` **negativeEffectsId**: `string`[]
 
-Defined in: components/grindstone-common/src/lib/effect.ts:13
+Defined in: components/grindstone-common/src/lib/effect.ts:17
 
-All of the negative(bad) effects.
+所有负面效果的ID
+
+## Since
+
+1.0.0
