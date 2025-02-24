@@ -3,6 +3,8 @@ import { GrindstoneError } from "@grindstone/core";
 
 /**
  * 状态效果类型
+ * @category Stable
+ * @since 1.0.0
  */
 export enum VirtualEffectType {
   /**
@@ -21,6 +23,8 @@ export enum VirtualEffectType {
 
 /**
  * 模拟一个可以添加到实体上的状态效果
+ * @category Stable
+ * @since 1.0.0
  */
 export class VirtualEffect {
   /**
