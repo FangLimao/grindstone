@@ -20,6 +20,10 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         },
       ],
     },
+    {
+      text: "构建模拟状态效果",
+      link: "/tutorials/effect.md",
+    },
   ],
   refs: [
     {
@@ -273,6 +277,32 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         {
           text: "@grindstone/effect-kit",
           link: "/refs/effect-kit/globals.md",
+          items: [
+            {
+              text: "Other",
+              collapsed: true,
+              items: [
+                {
+                  text: "VirtualEffectManager",
+                  link: "/refs/effect-kit/classes/VirtualEffectManager.md",
+                },
+              ],
+            },
+            {
+              text: "Stable",
+              collapsed: true,
+              items: [
+                {
+                  text: "VirtualEffectType",
+                  link: "/refs/effect-kit/enumerations/VirtualEffectType.md",
+                },
+                {
+                  text: "VirtualEffect",
+                  link: "/refs/effect-kit/classes/VirtualEffect.md",
+                },
+              ],
+            },
+          ],
         },
         {
           text: "@grindstone/entity-kit",

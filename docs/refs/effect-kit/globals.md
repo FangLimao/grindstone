@@ -1,13 +1,10 @@
-[**@grindstone/effect-kit v0.1.0**](README.md)
+# @grindstone/effect-kit v1.0.0
 
-***
+## Other
 
-# @grindstone/effect-kit v0.1.0
+- [VirtualEffectManager](classes/VirtualEffectManager.md)
 
-## Classes
+## Stable
 
+- [VirtualEffectType](enumerations/VirtualEffectType.md)
 - [VirtualEffect](classes/VirtualEffect.md)
-
-## Variables
-
-- [vanillaDimensions](variables/vanillaDimensions.md)

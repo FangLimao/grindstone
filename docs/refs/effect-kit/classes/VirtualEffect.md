@@ -1,22 +1,22 @@
-[**@grindstone/effect-kit v0.1.0**](../README.md)
-
-***
-
 [@grindstone/effect-kit](../globals.md) / VirtualEffect
 
 # Class: VirtualEffect
 
-Defined in: core.ts:14
+Defined in: core.ts:29
 
-Simulate an effect *(like poison)* that has been added to an Entity.
+模拟一个可以添加到实体上的状态效果
+
+## Since
+
+1.0.0
 
 ## Constructors
 
 ### new VirtualEffect()
 
-> **new VirtualEffect**(`id`, `maxLevel`, `triggerTick`): [`VirtualEffect`](VirtualEffect.md)
+> **new VirtualEffect**(`id`, `updateTick`, `type`?): [`VirtualEffect`](VirtualEffect.md)
 
-Defined in: core.ts:33
+Defined in: core.ts:45
 
 #### Parameters
 
@@ -24,19 +24,19 @@ Defined in: core.ts:33
 
 `string`
 
-The effect's id.
+状态效果的 ID
 
-##### maxLevel
-
-`number`
-
-The maximum level of the effect.
-
-##### triggerTick
+##### updateTick
 
 `number` = `1`
 
-Interval of the effect trigger.
+设置状态效果更新的间隔，推荐设置的大一些以避免游戏卡顿
+
+##### type?
+
+[`VirtualEffectType`](../enumerations/VirtualEffectType.md)
+
+状态效果的类型（正面、负面、中性）
 
 #### Returns
 
@@ -44,69 +44,43 @@ Interval of the effect trigger.
 
 ## Properties
 
-### effect
-
-> `protected` **effect**: `undefined` \| (`entity`, `level`) => `void`
-
-Defined in: core.ts:15
-
-***
-
 ### id
 
 > `readonly` **id**: `string`
 
-Defined in: core.ts:34
+Defined in: core.ts:46
 
-The effect's id.
-
-***
-
-### maxLevel
-
-> **maxLevel**: `number`
-
-Defined in: core.ts:35
-
-The maximum level of the effect.
+状态效果的 ID
 
 ***
 
-### onLevelUp
+### type?
 
-> `protected` **onLevelUp**: `undefined` \| (`entity`, `newLevel`, `oldLevel`) => `void`
+> `protected` `optional` **type**: [`VirtualEffectType`](../enumerations/VirtualEffectType.md)
 
-Defined in: core.ts:19
+Defined in: core.ts:48
 
-***
-
-### systemId
-
-> `protected` **systemId**: `undefined` \| `number`
-
-Defined in: core.ts:27
-
-The trigger's system id.
+状态效果的类型（正面、负面、中性）
 
 ***
 
-### triggerTick
+### updateTick
 
-> `protected` **triggerTick**: `number` = `1`
+> `protected` **updateTick**: `number` = `1`
 
-Defined in: core.ts:36
+Defined in: core.ts:47
 
-Interval of the effect trigger.
+设置状态效果更新的间隔，推荐设置的大一些以避免游戏卡顿
 
 ## Methods
 
-### addLevel()
+### add()
 
-> **addLevel**(`entity`, `level`): `number`
+> **add**(`entity`, `duration`, `amplifier`): `boolean`
 
-Defined in: core.ts:83
+Defined in: core.ts:57
 
-Add effect level to an entity.
+向实体添加该状态效果
 
 #### Parameters
 
@@ -114,149 +88,55 @@ Add effect level to an entity.
 
 `Entity`
 
-The entity to add level.
+要添加状态效果的实体
 
-##### level
-
-`number` = `1`
-
-The level amount to add, default is 1.
-
-#### Returns
+##### duration
 
 `number`
 
-The new level.
+效果持续时间，以刻为单位 *（20刻=1秒）*
 
-***
-
-### addLevelTemporarily()
-
-> **addLevelTemporarily**(`entity`, `level`, `tick`): `void`
-
-Defined in: core.ts:109
-
-Add effect level to an entity temporarily, it will be restored after a certain time.
-
-#### Parameters
-
-##### entity
-
-`Entity`
-
-The entity to add level.
-
-##### level
-
-`number` = `1`
-
-The level amount to add, default is 1.
-
-##### tick
-
-`number` = `20`
-
-How long it takes to get back to the original level, default is 20.
-
-#### Returns
-
-`void`
-
-***
-
-### getDynamicPropertyToken()
-
-> **getDynamicPropertyToken**(): `string`
-
-Defined in: core.ts:42
-
-Get effect's dynamic property id.
-
-#### Returns
-
-`string`
-
-***
-
-### getLevel()
-
-> **getLevel**(`entity`): `number`
-
-Defined in: core.ts:66
-
-Get an entity's effect level.
-
-#### Parameters
-
-##### entity
-
-`Entity`
-
-#### Returns
-
-`number`
-
-The entity's effect level.
-
-***
-
-### setEffect()
-
-> **setEffect**(`effect`): `void`
-
-Defined in: core.ts:122
-
-Set the trigger effect.
-
-#### Parameters
-
-##### effect
-
-(`entity`, `level`) => `void`
-
-#### Returns
-
-`void`
-
-***
-
-### setLevel()
-
-> **setLevel**(`entity`, `level`): `void`
-
-Defined in: core.ts:51
-
-Set an entity's effect level.
-
-#### Parameters
-
-##### entity
-
-`Entity`
-
-The entity to set level.
-
-##### level
+##### amplifier
 
 `number` = `0`
 
-The level.
+效果的等级（0为代表1级）
 
 #### Returns
 
-`void`
+`boolean`
 
-#### Throws
-
-RangeError when level > maxLevel
+本次添加操作是否成功
 
 ***
 
-### setLevelUp()
+### getAmplifier()
 
-> **setLevelUp**(`event`): `void`
+> **getAmplifier**(`entity`): `undefined` \| `number`
 
-Defined in: core.ts:136
+Defined in: core.ts:127
+
+获取该状态效果的等级
+
+#### Parameters
+
+##### entity
+
+`Entity`
+
+#### Returns
+
+`undefined` \| `number`
+
+实体的状态效果等级
+
+***
+
+### onAddToEntity()
+
+> **onAddToEntity**(`event`): `void`
+
+Defined in: core.ts:105
 
 Set the event when entity's level have changed.
 
@@ -264,7 +144,7 @@ Set the event when entity's level have changed.
 
 ##### event
 
-(`entity`, `newLevel`, `oldLevel`) => `void`
+(`entity`, `amplifier`) => `void`
 
 #### Returns
 
@@ -272,27 +152,19 @@ Set the event when entity's level have changed.
 
 ***
 
-### startTrigger()
+### onUpdate()
 
-> **startTrigger**(): `void`
+> **onUpdate**(`event`): `void`
 
-Defined in: core.ts:161
+Defined in: core.ts:98
 
-Start trigger.
+当状态效果更新时，触发的事件
 
-#### Returns
+#### Parameters
 
-`void`
+##### event
 
-***
-
-### stopTrigger()
-
-> **stopTrigger**(): `void`
-
-Defined in: core.ts:170
-
-Stop trigger.
+(`entity`, `amplifier`) => `void`
 
 #### Returns
 
@@ -300,12 +172,28 @@ Stop trigger.
 
 ***
 
-### trigger()
+### remove()
 
-> `protected` **trigger**(): `void`
+> **remove**(`entity`): `boolean`
 
-Defined in: core.ts:141
+Defined in: core.ts:85
+
+向实体移除该状态效果
+
+#### Parameters
+
+##### entity
+
+`Entity`
+
+要移除效果的实体
 
 #### Returns
 
-`void`
+`boolean`
+
+本次移除操作是否成功
+
+#### Throws
+
+如果 Runner ID 数据类型不是 number 或 undefined，则抛出错误
