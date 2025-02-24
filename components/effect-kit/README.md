@@ -6,8 +6,8 @@
 class VirtualEffect {
   constructor(
     readonly id: string,
-    public maxLevel: number,
-    protected triggerTick: number = 1
+    protected updateTick: number = 1,
+    protected type?: VirtualEffectType
   ) {}
 }
 ~~~

@@ -1,173 +1,135 @@
-import { Dimension, Entity, system, world } from "@minecraft/server";
-/**
- * All vanilla dimensions.
- */
-export const vanillaDimensions: Dimension[] = [
-  world.getDimension("minecraft:overworld"),
-  world.getDimension("minecraft:nether"),
-  world.getDimension("minecraft:the_end"),
-];
+import { Entity, system } from "@minecraft/server";
+import { GrindstoneError } from "@grindstone/core";
 
 /**
- * Simulate an effect *(like poison)* that has been added to an Entity.
+ * 状态效果类型
+ */
+export enum VirtualEffectType {
+  /**
+   * 正面效果
+   */
+  good,
+  /**
+   * 负面效果
+   */
+  bad,
+  /**
+   * 中性效果
+   */
+  neutral,
+}
+
+/**
+ * 模拟一个可以添加到实体上的状态效果
  */
 export class VirtualEffect {
-  protected effect: ((entity: Entity, level: number) => void) | undefined;
   /**
-   * 
+   * 当状态效果更新时的事件
+   * @private
    */
-  protected onLevelUp: ((
-    entity: Entity,
-    newLevel: number,
-    oldLevel: number
-  ) => void) | undefined;
+  private updateEffect?: (entity: Entity, amplifier: number) => void;
   /**
-   * The trigger's system id.
+   * 当状态效果添加到实体时的事件
+   * @private
    */
-  protected systemId: number | undefined;
+  private addToEntityEffect?: (entity: Entity, amplifier: number) => void;
   /**
-   * @param id The effect's id.
-   * @param maxLevel The maximum level of the effect.
-   * @param triggerTick Interval of the effect trigger.
+   * @param id 状态效果的 ID
+   * @param updateTick 设置状态效果更新的间隔，推荐设置的大一些以避免游戏卡顿
+   * @param type 状态效果的类型（正面、负面、中性）
    */
   constructor(
     readonly id: string,
-    public maxLevel: number,
-    protected triggerTick: number = 1
+    protected updateTick: number = 1,
+    protected type?: VirtualEffectType
   ) {}
   /**
-   * Get effect's dynamic property id.
-   * @returns 
+   * 向实体添加该状态效果
+   * @param entity 要添加状态效果的实体
+   * @param duration 效果持续时间，以刻为单位 *（20刻=1秒）*
+   * @param amplifier 效果的等级（0为代表1级）
+   * @return 本次添加操作是否成功
    */
-  getDynamicPropertyToken(): string {
-    return this.id + ":level";
-  }
-  /**
-   * Set an entity's effect level.
-   * @param entity The entity to set level.
-   * @param level The level.
-   * @throws RangeError when level > maxLevel
-   */
-  setLevel(entity: Entity, level: number = 0): void {
-    if (!level) level = 0;
-    if (level > this.maxLevel) {
-      throw new RangeError(
-        "The level to set is bigger than max level! The max level is:" +
-          this.maxLevel
-      );
+  add(entity: Entity, duration: number, amplifier: number = 0): boolean {
+    if (this.getRunnerId(entity)) return false;
+    if (this.addToEntityEffect) {
+      if (!entity.isValid()) return false;
+      this.addToEntityEffect(entity, amplifier);
     }
-    entity.setDynamicProperty(this.getDynamicPropertyToken(), level);
-  }
-  /**
-   * Get an entity's effect level.
-   * @param entity 
-   * @returns The entity's effect level.
-   */
-  getLevel(entity: Entity): number {
-    const level = entity.getDynamicProperty(this.getDynamicPropertyToken());
-    if (!level) {
-      this.setLevel(entity, 0);
-      return 0;
-    }
-    if (typeof level !== "number") {
-      throw new Error();
-    }
-    return level;
-  }
-  /**
-   * Add effect level to an entity. 
-   * @param entity The entity to add level.
-   * @param level The level amount to add, default is 1.
-   * @returns The new level.
-   */
-  addLevel(entity: Entity, level: number = 1): number {
-    const oldLevel = this.getLevel(entity);
-    let newLevel = 0;
-    if (oldLevel + level > this.maxLevel) {
-      this.setLevel(entity, this.maxLevel);
-      if (this.onLevelUp) {
-        this.onLevelUp(entity, oldLevel, newLevel);
-        console.log(this.onLevelUp.toString());
-      }
-      return this.maxLevel;
-    }
-    newLevel = oldLevel + level;
-    this.setLevel(entity, newLevel);
-    if (this.onLevelUp) {
-      this.onLevelUp(entity, oldLevel, newLevel);
-      console.log(this.onLevelUp.toString());
-    }
-    return newLevel;
-  }
-  /**
-   * 
-   * Add effect level to an entity temporarily, it will be restored after a certain time.
-   * @param entity The entity to add level.
-   * @param level The level amount to add, default is 1.
-   * @param tick How long it takes to get back to the original level, default is 20.
-   */
-  addLevelTemporarily(entity: Entity, level: number = 1, tick: number = 20): void {
-    const oldLevel = this.getLevel(entity);
-    this.addLevel(entity, level);
+    const runner = system.runInterval(() => {
+      if (!this.updateEffect) return;
+      if (!entity.isValid()) return;
+      this.updateEffect(entity, amplifier);
+    }, this.updateTick);
+    entity.setDynamicProperty(this.id + ":runner", runner);
+    entity.setDynamicProperty(this.id + ":amplifier", amplifier);
     system.runTimeout(() => {
+      system.clearRun(runner);
       if (entity.isValid()) {
-        this.setLevel(entity, oldLevel);
+        entity.setDynamicProperty(this.id + ":runner", undefined);
+        entity.setDynamicProperty(this.id + ":amplifier", undefined);
       }
-    }, tick);
+    }, duration);
+    return true;
   }
   /**
-   * Set the trigger effect.
-   * @param effect 
+   * 向实体移除该状态效果
+   * @param entity 要移除效果的实体
+   * @return 本次移除操作是否成功
+   * @throws 如果 Runner ID 数据类型不是 number 或 undefined，则抛出错误
    */
-  setEffect(effect: (entity: Entity, level: number) => void) {
-    this.effect = effect;
-    if (this.systemId) {
-      system.clearRun(this.systemId);
-      let num = system.runInterval(() => {
-        this.trigger;
-      }, this.triggerTick);
-      this.systemId = num;
-    }
+  remove(entity: Entity): boolean {
+    if (!entity.isValid()) return false;
+    if (!this.getRunnerId(entity)) return false;
+    const runner = entity.getDynamicProperty(this.id + ":runner");
+    if (typeof runner !== "number") return false;
+    system.clearRun(runner);
+    entity.setDynamicProperty(this.id + ":runner");
+    return false;
+  }
+  /**
+   * 当状态效果更新时，触发的事件
+   * @param event
+   */
+  onUpdate(event: (entity: Entity, amplifier: number) => void): void {
+    this.updateEffect = event;
   }
   /**
    * Set the event when entity's level have changed.
-   * @param event 
+   * @param event
    */
-  setLevelUp(
-    event: (entity: Entity, newLevel: number, oldLevel: number) => void
-  ) {
-    this.onLevelUp = event;
-  }
-  protected trigger() {
-    system.runInterval(() => {
-      vanillaDimensions.forEach((dimension) => {
-        dimension.getEntities().forEach((entity) => {
-          const level = this.getLevel(entity);
-          if (level > 0 && this.effect) {
-            this.effect(entity, level);
-          }
-        });
-      });
-    }, this.triggerTick);
-    world.afterEvents.playerSpawn.subscribe((arg) => {
-      if (!arg.initialSpawn) {
-        this.setLevel(arg.player);
-      }
-    });
+  onAddToEntity(event: (entity: Entity, amplifier: number) => void) {
+    this.addToEntityEffect = event;
   }
   /**
-   * Start trigger.
+   * 获取该状态效果相关的的 SystemRunner ID
+   * @return SystemRunner ID
+   * @private
    */
-  startTrigger() {
-    let num = system.runInterval(() => {
-      this.trigger();
-    }, this.triggerTick);
-    this.systemId = num;
+  private getRunnerId(entity: Entity): number | undefined {
+    const runner = entity.getDynamicProperty(this.id + ":runner");
+    if (!runner) return undefined;
+    if (typeof runner !== "number")
+      throw new GrindstoneError(
+        "Runner ID 数据类型无效，期望的数据类型：number，实际的数据类型：" +
+          typeof runner
+      );
+    return runner;
   }
   /**
-   * Stop trigger.
+   * 获取该状态效果的等级
+   * @return 实体的状态效果等级
    */
-  stopTrigger() {
-    if (this.systemId) system.clearRun(this.systemId);
+  getAmplifier(entity: Entity): number | undefined {
+    const amp = entity.getDynamicProperty(this.id + ":amplifier");
+    if (!amp) return undefined;
+    if (typeof amp !== "number")
+      throw new GrindstoneError(
+        "Amplifier 数据类型无效，期望的数据类型：number，实际的数据类型：" +
+          typeof amp
+      );
+    return amp;
   }
 }
+
+export class VirtualEffectManager {}
