@@ -48,7 +48,7 @@ export function clearEffect(
         entity.removeEffect(effect);
       });
       break;
-    case EffectGroups.nutral:
+    case EffectGroups.neutral:
       neutralEffectsId.forEach((effect) => {
         entity.removeEffect(effect);
       });
@@ -102,7 +102,7 @@ export function addEffect(
         entity.addEffect(effect, duration, options);
       });
       break;
-    case EffectGroups.nutral:
+    case EffectGroups.neutral:
       neutralEffectsId.forEach((effect) => {
         entity.addEffect(effect, duration, options);
       });
@@ -337,8 +337,9 @@ export enum EffectGroups {
   /**
    * 中性效果
    */
-  nutral,
+  neutral,
   /**
+   *
    * 所有效果
    */
   all,
