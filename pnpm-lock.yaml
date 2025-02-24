@@ -293,6 +293,9 @@ importers:
       '@grindstone/core':
         specifier: workspace:1.0.1
         version: link:../components/grindstone-core
+      '@grindstone/effect-kit':
+        specifier: workspace:1.0.0
+        version: link:../components/effect-kit
       '@grindstone/format-kit':
         specifier: workspace:1.0.1
         version: link:../components/format-kit
@@ -325,7 +328,7 @@ importers:
         specifier: workspace:0.1.1
         version: link:../components/debugger-kit
       '@grindstone/effect-kit':
-        specifier: workspace:0.1.0
+        specifier: workspace:1.0.0
         version: link:../components/effect-kit
       '@grindstone/entity-kit':
         specifier: workspace:0.2.2
