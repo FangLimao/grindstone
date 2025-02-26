@@ -1,6 +1,6 @@
 import {
-  ArticleBuilder,
-  ArticleCollectionBuilder,
+  Article,
+  ArticleCollection,
   articleIdList,
   articleList,
 } from "./builder";
@@ -10,7 +10,7 @@ export class ArticleManager {
    * Get all articles.
    * @returns All registried articles.
    */
-  static getAllArticle(): (ArticleCollectionBuilder | ArticleBuilder)[] {
+  static getAllArticle(): (ArticleCollection | Article)[] {
     return articleList;
   }
   /**
@@ -27,7 +27,7 @@ export class ArticleManager {
    */
   static getArticle(
     id: string
-  ): undefined | ArticleBuilder | ArticleCollectionBuilder {
+  ): undefined | Article | ArticleCollection {
     articleList.forEach((article) => {
       if (article.id === id) {
         return article;

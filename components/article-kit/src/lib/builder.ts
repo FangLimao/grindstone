@@ -2,14 +2,14 @@ import { Player, RawMessage, world } from "@minecraft/server";
 import { ActionFormData, MessageFormData } from "@minecraft/server-ui";
 import { DisplayCondition } from "@grindstone/common";
 
-export let articleList: (ArticleCollectionBuilder | ArticleBuilder)[] = [];
+export let articleList: (ArticleCollection | Article)[] = [];
 export let articleIdList: string[] = [];
 
 /**
  * Registried article collection's display.
  * @param item
  */
-function registriesDisplay(item: ArticleCollectionBuilder) {
+function registriesDisplay(item: ArticleCollection) {
   if (item.displayCondition.default === true) {
     world.afterEvents.itemUse.subscribe((event) => {
       if (event.itemStack.typeId === item.id) item.display(event.source);
@@ -31,13 +31,13 @@ function registriesDisplay(item: ArticleCollectionBuilder) {
 /**
  * Create an article.
  */
-export class ArticleBuilder {
+export class Article {
   /**
    * @param id Article's id.
    * @param title Title of the article.
    * @param body Body of the article, support RawMessage.
    * @param iconPath Icon path of the article.
-   * @param needUnlock If true, articles will be unlocked in the {@link ArticleCollectionBuilder} after reading it.
+   * @param needUnlock If true, articles will be unlocked in the {@link ArticleCollection} after reading it.
    */
   constructor(
     public readonly id: string,
@@ -95,14 +95,14 @@ export class ArticleBuilder {
  * Create an article with chapters.
  * @category Need Registry
  */
-export class ChapterArticleBuilder extends ArticleBuilder {
+export class ChapterArticleBuilder extends Article {
   /**
    * @param id Article's id.
    * @param title Title of the article.
    * @param body Body of the article, support RawMessage.
    * @param chapters Chapters of the article.
    * @param iconPath Icon path of the article.
-   * @param needUnlock If true, articles will be unlocked in the {@link ArticleCollectionBuilder} after reading it.
+   * @param needUnlock If true, articles will be unlocked in the {@link ArticleCollection} after reading it.
    */
   constructor(
     public readonly id: string,
@@ -145,7 +145,7 @@ export class ChapterArticleBuilder extends ArticleBuilder {
  * It likes {@link ChapterArticleBuilder}, but support article unlock.
  * @category Need Registry
  */
-export class ArticleCollectionBuilder {
+export class ArticleCollection {
   /**
    * @param id Collection's id.
    * @param title Title of the collection.
@@ -158,13 +158,13 @@ export class ArticleCollectionBuilder {
     public title: string | RawMessage,
     public body: string | RawMessage,
     public displayCondition: DisplayCondition,
-    public articles: (ArticleBuilder | ChapterArticleBuilder)[]
+    public articles: (Article | ChapterArticleBuilder)[]
   ) {}
   /**
    * Display the reading to a player.
    */
   display(player: Player): void {
-    let articleList: (ArticleBuilder | ChapterArticleBuilder)[] = [];
+    let articleList: (Article | ChapterArticleBuilder)[] = [];
     const contentForm = new ActionFormData().title(this.title).body(this.body);
     this.articles.forEach((article) => {
       if (article.checkUnlock(player)) {
