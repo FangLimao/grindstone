@@ -43,21 +43,24 @@ function generateArticleText(
   return text;
 }
 
+/**
+ * 文章文本类型
+ */
 export type ArticleText =
   | string
   | RawMessage
   | ((reader: Player) => string | RawMessage);
 
 /**
- * Create an article.
+ * 创建一个文章
  */
 export class Article {
   /**
-   * @param id Article's id.
-   * @param title Title of the article.
-   * @param body Body of the article, support RawMessage.
-   * @param iconPath Icon path of the article.
-   * @param needUnlock If true, articles will be unlocked in the {@link ArticleCenter} after reading it.
+   * @param id 文章ID
+   * @param title 文章标题
+   * @param body 文章内容，支持字符串、RawMessage 和动态生成
+   * @param iconPath 文章的图标路径
+   * @param needUnlock 是否需要解锁
    */
   constructor(
     public readonly id: string,
@@ -67,9 +70,11 @@ export class Article {
     public needUnlock = true
   ) {}
   /**
-   * Display the reading to a player.
+   * 向玩家展示文章
+   * @param player 要展示文章的玩家
+   * @param backTo 关闭文章后返回的界面
    */
-  display(player: Player): void {
+  display(player: Player, backTo?: ArticleCenter | Article): void {
     if (!this.checkUnlock(player)) this.unlock(player);
     const title = generateArticleText(player, this.title);
     const body = generateArticleText(player, this.body);
@@ -79,19 +84,20 @@ export class Article {
       .button({ translate: "gui.ok" });
     mainForm.show(player).then((response) => {
       if (response.selection === 0 || response.canceled) {
+        backTo?.display(player);
         return;
       }
     });
   }
   /**
-   * Unlock the article to article collection.
+   * 在文章中心里解锁文章
    * @param player
    */
   unlock(player: Player): void {
     player.addTag(`articleUnlock:${this.id}`);
   }
   /**
-   * Check the article whether it is unlocked or not to article collection.
+   * 检查文章是否在文章中心里解锁
    * @param player
    */
   checkUnlock(player: Player): boolean {
@@ -102,13 +108,34 @@ export class Article {
     }
   }
   /**
-   * Build the article.
+   * 向文章管理器中添加文章
    */
-  build(): void {
+  private pushToManager(): void {
     articleList.push(this);
     articleIdList.push(this.id);
+  }
+  /**
+   * 注册文章事件
+   * @param typeId 文章的物品ID
+   */
+  subscribeEvent(typeId: string): void {
+    this.pushToManager();
     world.afterEvents.itemUse.subscribe((event) => {
-      if (event.itemStack.typeId === this.id) this.display(event.source);
+      if (event.itemStack.typeId === typeId) this.display(event.source);
+    });
+  }
+  /**
+   * 将该文章注册为自定义物品组件
+   * @param componentName 自定义组件名称
+   */
+  registryComponent(componentName: string): void {
+    this.pushToManager();
+    world.beforeEvents.worldInitialize.subscribe((arg) => {
+      arg.itemComponentRegistry.registerCustomComponent(componentName, {
+        onUse: (callback) => {
+          this.display(callback.source);
+        },
+      });
     });
   }
 }
