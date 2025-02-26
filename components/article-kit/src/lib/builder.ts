@@ -29,6 +29,26 @@ function registriesDisplay(item: ArticleCenter) {
 }
 
 /**
+ * 根据提供的资源生成文章文本
+ * @param reader 阅读者
+ * @param text 原始的文本资源
+ * @returns
+ */
+function generateArticleText(
+  reader: Player,
+  text: ArticleText
+): string | RawMessage {
+  if (typeof text === "string") return text;
+  if (typeof text === "function") return text(reader);
+  return text;
+}
+
+export type ArticleText =
+  | string
+  | RawMessage
+  | ((reader: Player) => string | RawMessage);
+
+/**
  * Create an article.
  */
 export class Article {
@@ -41,8 +61,8 @@ export class Article {
    */
   constructor(
     public readonly id: string,
-    public title: string | RawMessage,
-    public body: string | RawMessage,
+    public title: ArticleText,
+    public body: ArticleText,
     public iconPath?: string,
     public needUnlock = true
   ) {}
@@ -51,11 +71,13 @@ export class Article {
    */
   display(player: Player): void {
     if (!this.checkUnlock(player)) this.unlock(player);
-    const FORM = new ActionFormData()
-      .title(this.title)
-      .body(this.body)
+    const title = generateArticleText(player, this.title);
+    const body = generateArticleText(player, this.body);
+    const mainForm = new ActionFormData()
+      .title(title)
+      .body(body)
       .button({ translate: "gui.ok" });
-    FORM.show(player).then((response) => {
+    mainForm.show(player).then((response) => {
       if (response.selection === 0 || response.canceled) {
         return;
       }
@@ -106,8 +128,8 @@ export class ChapterArticleBuilder extends Article {
    */
   constructor(
     public readonly id: string,
-    public title: string | RawMessage,
-    public body: string | RawMessage,
+    public title: ArticleText,
+    public body: ArticleText,
     public chapters: ChapterData[],
     public iconPath?: string,
     public needUnlock = true
@@ -119,17 +141,28 @@ export class ChapterArticleBuilder extends Article {
    */
   display(player: Player): void {
     if (!this.checkUnlock(player)) this.unlock(player);
-    const contentsForm = new ActionFormData().title(this.title).body(this.body);
+    const title = generateArticleText(player, this.title);
+    const body = generateArticleText(player, this.body);
+    const contentsForm = new ActionFormData().title(title).body(body);
     this.chapters.forEach((chapter) => {
-      contentsForm.button(chapter.title, chapter.iconPath);
+      const chapterTitle = generateArticleText(player, chapter.title);
+      contentsForm.button(chapterTitle, chapter.iconPath);
     });
     contentsForm.show(player).then((response) => {
       if (response.canceled || response.selection === undefined) {
         return;
       }
+      const chapterTitle = generateArticleText(
+        player,
+        this.chapters[response.selection].title
+      );
+      const chapterBody = generateArticleText(
+        player,
+        this.chapters[response.selection].body
+      );
       const chapterForm = new ActionFormData()
-        .title(this.chapters[response.selection].title)
-        .body(this.chapters[response.selection].body)
+        .title(chapterTitle)
+        .body(chapterBody)
         .button({ translate: "gui.ok" });
       chapterForm.show(player).then((response) => {
         if (response.selection === 0 || response.canceled) {
@@ -168,7 +201,8 @@ export class ArticleCenter {
     const contentForm = new ActionFormData().title(this.title).body(this.body);
     this.articles.forEach((article) => {
       if (article.checkUnlock(player)) {
-        contentForm.button(article.title, article.iconPath);
+        const title = generateArticleText(player, article.title);
+        contentForm.button(title, article.iconPath);
         articleList.push(article);
       }
     });
@@ -213,11 +247,11 @@ export interface ChapterData {
   /**
    * Title of the chapter.
    */
-  title: string | RawMessage;
+  title: ArticleText;
   /**
    * Body of the Chapter.
    */
-  body: string | RawMessage;
+  body: ArticleText;
   /**
    * Icon path of the chapter.
    */
