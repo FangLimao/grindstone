@@ -2,14 +2,14 @@ import { Player, RawMessage, world } from "@minecraft/server";
 import { ActionFormData, MessageFormData } from "@minecraft/server-ui";
 import { DisplayCondition } from "@grindstone/common";
 
-export let articleList: (ArticleCollection | Article)[] = [];
+export let articleList: (ArticleCenter | Article)[] = [];
 export let articleIdList: string[] = [];
 
 /**
  * Registried article collection's display.
  * @param item
  */
-function registriesDisplay(item: ArticleCollection) {
+function registriesDisplay(item: ArticleCenter) {
   if (item.displayCondition.default === true) {
     world.afterEvents.itemUse.subscribe((event) => {
       if (event.itemStack.typeId === item.id) item.display(event.source);
@@ -37,7 +37,7 @@ export class Article {
    * @param title Title of the article.
    * @param body Body of the article, support RawMessage.
    * @param iconPath Icon path of the article.
-   * @param needUnlock If true, articles will be unlocked in the {@link ArticleCollection} after reading it.
+   * @param needUnlock If true, articles will be unlocked in the {@link ArticleCenter} after reading it.
    */
   constructor(
     public readonly id: string,
@@ -102,7 +102,7 @@ export class ChapterArticleBuilder extends Article {
    * @param body Body of the article, support RawMessage.
    * @param chapters Chapters of the article.
    * @param iconPath Icon path of the article.
-   * @param needUnlock If true, articles will be unlocked in the {@link ArticleCollection} after reading it.
+   * @param needUnlock If true, articles will be unlocked in the {@link ArticleCenter} after reading it.
    */
   constructor(
     public readonly id: string,
@@ -145,7 +145,7 @@ export class ChapterArticleBuilder extends Article {
  * It likes {@link ChapterArticleBuilder}, but support article unlock.
  * @category Need Registry
  */
-export class ArticleCollection {
+export class ArticleCenter {
   /**
    * @param id Collection's id.
    * @param title Title of the collection.
