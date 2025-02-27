@@ -1,0 +1,25 @@
+{
+  "include": [
+    "src/*", 
+  ],
+  "exclude": [
+    "./out"
+  ],
+  "Modules": {
+    "resolvePackageJsonExports": true
+  },
+  "compilerOptions": {
+    "noEmit": true,
+    "noEmitOnError": true,
+    "target": "es2022",
+    "lib": ["es2020","dom"],
+    "strict": true,
+    "moduleResolution": "node16",
+    "esModuleInterop": true,
+    "module": "node16",
+    "outDir": ".",
+    "removeComments": true,
+    "newLine": "lf",
+    "resolveJsonModule": true
+  }
+}
