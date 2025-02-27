@@ -269,6 +269,52 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         {
           text: "@grindstone/article-kit",
           link: "/refs/article-kit/globals.md",
+          items: [
+            {
+              text: "Internal",
+              collapsed: true,
+              items: [
+                {
+                  text: "articleIdList",
+                  link: "/refs/article-kit/variables/articleIdList.md",
+                },
+                {
+                  text: "articleList",
+                  link: "/refs/article-kit/variables/articleList.md",
+                },
+              ],
+            },
+            {
+              text: "Stable",
+              collapsed: true,
+              items: [
+                {
+                  text: "Article",
+                  link: "/refs/article-kit/classes/Article.md",
+                },
+                {
+                  text: "ArticleCenter",
+                  link: "/refs/article-kit/classes/ArticleCenter.md",
+                },
+                {
+                  text: "ArticleManager",
+                  link: "/refs/article-kit/classes/ArticleManager.md",
+                },
+                {
+                  text: "BaseArticle",
+                  link: "/refs/article-kit/classes/BaseArticle.md",
+                },
+                {
+                  text: "ChapterData",
+                  link: "/refs/article-kit/interfaces/ChapterData.md",
+                },
+                {
+                  text: "ArticleText",
+                  link: "/refs/article-kit/type-aliases/ArticleText.md",
+                },
+              ],
+            },
+          ],
         },
         {
           text: "@grindstone/debugger-kit",
@@ -329,6 +375,22 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         {
           text: "@grindstone/message-kit",
           link: "/refs/article-kit/globals.md",
+        },
+        {
+          text: "@grindstone/plugin-kit",
+          link: "/refs/plugin-kit/globals.md",
+          items: [
+            {
+              text: "Stable",
+              collapsed: true,
+              items: [
+                {
+                  text: "ArticlePlugin",
+                  link: "/refs/plugin-kit/classes/ArticlePlugin.md",
+                },
+              ],
+            },
+          ],
         },
         {
           text: "@grindstone/quest-kit",

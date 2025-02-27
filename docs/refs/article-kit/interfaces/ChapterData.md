@@ -1,24 +1,24 @@
-[**@grindstone/article-kit v0.2.0**](../README.md)
-
-***
-
 [@grindstone/article-kit](../globals.md) / ChapterData
 
 # Interface: ChapterData
 
-Defined in: builder.ts:212
+Defined in: core.ts:316
 
-Data of chapters.
+文章的章节数据
+
+## Since
+
+1.0.0
 
 ## Properties
 
 ### body
 
-> **body**: `string` \| `RawMessage`
+> **body**: [`ArticleText`](../type-aliases/ArticleText.md)
 
-Defined in: builder.ts:220
+Defined in: core.ts:324
 
-Body of the Chapter.
+章节内容
 
 ***
 
@@ -26,16 +26,16 @@ Body of the Chapter.
 
 > `optional` **iconPath**: `string`
 
-Defined in: builder.ts:224
+Defined in: core.ts:328
 
-Icon path of the chapter.
+章节图标路径
 
 ***
 
 ### title
 
-> **title**: `string` \| `RawMessage`
+> **title**: [`ArticleText`](../type-aliases/ArticleText.md)
 
-Defined in: builder.ts:216
+Defined in: core.ts:320
 
-Title of the chapter.
+章节标题
