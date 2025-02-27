@@ -7,6 +7,8 @@ import { Player } from "@minecraft/server";
  * // 打开指定ID的文章
  * ArticlePlugin.openArticle("article:123", player);
  * 
+ * @category Stable
+ * @since 1.0.0
  */
 export class ArticlePlugin {
   private constructor() {}

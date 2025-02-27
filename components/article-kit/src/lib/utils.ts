@@ -7,6 +7,8 @@ import { Article, ArticleText } from "./core";
  * @param reader 阅读者
  * @param text 原始的文本资源
  * @returns
+ * @category Internal
+ * @since 1.0.0
  */
 export function generateArticleText(
   reader: Player,
@@ -24,6 +26,8 @@ export function generateArticleText(
  * @param rawBody 
  * @param articles 
  * @returns 
+ * @category Internal
+ * @since 1.0.0
  */
 export function generateContentForm(
   player: Player,

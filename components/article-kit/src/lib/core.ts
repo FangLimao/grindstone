@@ -4,7 +4,16 @@ import { GrindstoneError } from "@grindstone/core";
 import { ArticleManager } from "./manager";
 import { generateArticleText, generateContentForm } from "./utils";
 
+/**
+ * @category Internal
+ * @since 1.0.0
+ */
 export let articleList: BaseArticle[] = [];
+
+/**
+ * @category Internal
+ * @since 1.0.0
+ */
 export let articleIdList: string[] = [];
 
 /**
@@ -84,6 +93,8 @@ export abstract class BaseArticle {
 
 /**
  * 创建一个文章
+ * @category Stable
+ * @since 1.0.0
  */
 export class Article extends BaseArticle {
   /**

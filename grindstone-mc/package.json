@@ -1,6 +1,6 @@
 {
   "name": "@grindstone/devkit",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "Grindstone Devkit for Minecraft Bedrock Edition",
   "main": "src/index.ts",
   "keywords": [
@@ -22,7 +22,9 @@
     "@grindstone/utils": "workspace:^1.0.0",
     "@grindstone/common": "workspace:^1.0.0",
     "@grindstone/format-kit": "workspace:1.0.1",
-    "@grindstone/effect-kit": "workspace:1.0.0"
+    "@grindstone/effect-kit": "workspace:1.0.0",
+    "@grindstone/plugin-kit": "workspace:1.0.0",
+    "@grindstone/article-kit": "workspace:1.0.0"
   },
   "devDependencies": {
     "typedoc": "^0.27.6",

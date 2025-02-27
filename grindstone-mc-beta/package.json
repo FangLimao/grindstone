@@ -1,6 +1,6 @@
 {
   "name": "@grindstone/devkit-beta",
-  "version": "0.17.2",
+  "version": "0.17.3",
   "description": "Grindstone Devkit for Minecraft Bedrock Edition",
   "main": "src/index.ts",
   "keywords": [
@@ -18,7 +18,7 @@
   "license": "MIT",
   "author": "CTN Studios",
   "dependencies": {
-    "@grindstone/article-kit": "workspace:0.2.0",
+    "@grindstone/article-kit": "workspace:1.0.0",
     "@grindstone/common": "workspace:^1.0.0",
     "@grindstone/core": "workspace:1.0.1",
     "@grindstone/debugger-kit": "workspace:0.1.1",
@@ -29,7 +29,8 @@
     "@grindstone/material-kit": "workspace:^0.4.0",
     "@grindstone/message-kit": "workspace:0.2.0",
     "@grindstone/quest-kit": "workspace:0.2.0",
-    "@grindstone/utils": "workspace:^1.0.0"
+    "@grindstone/utils": "workspace:^1.0.0",
+    "@grindstone/plugin-kit": "workspace:1.0.0"
   },
   "devDependencies": {
     "typedoc": "^0.27.6",
