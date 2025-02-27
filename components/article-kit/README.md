@@ -1,118 +1,61 @@
 # Grindstone Article Kit
-## 构建文章
-你可以通过`ArticleBuilder`类构建一篇文章： 
 
-~~~ts
-class ArticleBuilder {
-  constructor(
-    public readonly id: string,
-    public title: string | RawMessage,
-    public body: string | RawMessage,
-    public iconPath?: string,
-    public needUnlock = true
-  ) {}
-}
+这是一个用于在 Minecraft 中创建和展示文章的库，其提供了一系列的类和方法，用于创建和管理文章，包括文章的显示、解锁和注册事件。
 
-// 这里的 `id` 需要与物品ID一致
-const article = new ArticleBuilder("id", "测试标题", "测试文章内容")
-~~~
+## 类和方法
+### `Article`类
 
-然后通过`build()`方法使其可以在游戏中被查看：
+`Article`类用于创建一篇文章，有以下属性和方法：
 
-~~~ts
-article.build()
-~~~
+- `id`：文章的唯一标识符；
+- `title`：文章的标题，可以是字符串、`RawMessage`或一个函数；
+- `body`：文章的内容，可以是字符串、`RawMessage`或一个函数；
+- `chapters`：文章的章节列表，每个章节包含标题、内容和图标路径；
+- `iconPath`：文章的图标路径；
+- `needUnlock`：文章是否需要解锁；
+- `display(player: Player, backTo?: ArticleCenter | Article)`：向玩家展示文章；
+- `unlock(player: Player)`：在文章中心里解锁文章；
+- `checkUnlock(player: Player)`：检查文章是否在文章中心里解锁；
+- `subscribeEvent(typeId: string)`：注册文章事件；
+- `registryComponent(componentName: string)`：将文章注册为自定义物品组件。
 
-## 带章节的文章
-你可以通过`ChapterArticleBuilder`类构建一篇带章节的文章： 
+### `ArticleCenter`类
 
-~~~ts
-class ChapterArticleBuilder extends ArticleBuilder {
-  constructor(
-    public readonly id: string,
-    public title: string | RawMessage,
-    public body: string | RawMessage,
-    public chapters: ChapterData[],
-    public iconPath?: string,
-    public needUnlock = true
-  ) {}
-}
+`ArticleCenter`类用于集中显示文章。它有以下属性和方法：
 
-interface ChapterData {
-  title: string | RawMessage;
-  body: string | RawMessage;
-  iconPath?: string;
-}
+- `id`：文章中心的唯一标识符；
+- `title`：文章中心的标题，可以是字符串、`RawMessage`或一个函数；
+- `body`：文章中心的内容，可以是字符串、`RawMessage`或一个函数；
+- `articles`：可用的文章，可以是布尔值、文章列表或文章中心；
+- `display(player: Player)`：向玩家展示文章中心；
+- `subscribeEvent(typeId: string)`：注册文章事件；
+- `registryComponent(componentName: string)`：将文章中心注册为自定义物品组件。
 
+### `ChapterData`接口
 
-// 这里的 `id` 需要与物品ID一致
-const chapterArticle = new ChapterArticleBuilder("id", "测试标题", "测试文章内容",
-  [
-    {
-      title: "章节1",
-      body: "章节内容"
-    }
-  ]
-)
-~~~
+`ChapterData`接口用于定义文章的章节。它有以下属性：
 
-然后通过`build()`方法使其可以在游戏中被查看：
+- `title`：章节的标题，可以是字符串、`RawMessage`或一个函数；
+- `body`：章节的内容，可以是字符串、`RawMessage`或一个函数；
+- `iconPath`：章节的图标路径。
 
-~~~ts
-chapterArticle.build()
-~~~
+## 范例
 
-## 文章收藏集
-~~~ts
-class ArticleCollectionBuilder {
-  constructor(
-    public readonly id: string,
-    public title: string | RawMessage,
-    public body: string | RawMessage,
-    public displayCondition: DisplayCondition,
-    public articles: (ArticleBuilder | ChapterArticleBuilder)[]
-  ) {}
-}
+```typescript
+const articleCenter = new ArticleCenter("article:id", title, body, true);
+articleCenter.display(player); // 显示文章中心给玩家
+articleCenter.subscribeEvent("itemId"); // 注册文章事件
+articleCenter.registryComponent("componentName"); // 注册自定义组件
+```
 
-interface DisplayCondition {
-  default?: boolean;
-  itemStack?: ItemStack;
-  firstLoad?: boolean;
-}
+## 文章管理器
 
-const collection = new ArticleCollectionBuilder("id", "测试标题", "收藏级摘要", {
-  default: true, // 使收藏集可以像普通文章一样打开物品阅读
-  itemStack: new ItemStack("item_id"), // 指定收藏集对应的物品
-  firstLoad: true, // 当玩家首次进入世界时显示收藏集
-}, 
-[ article1, article2, article3 ]
-)
-~~~
+文章管理器（Article Manager）是一个用于管理文章数据的类,提供了获取所有文章和文章ID列表的方法，以及根据ID获取特定文章的功能。
 
-然后通过`build()`方法使其可以在游戏中被查看：
+## 范例
 
-~~~ts
-collection.build()
-~~~
-
-你可以通过修改文章的`needUnlock`属性决定文章是否需要解锁（阅读过该文章）才可以在收藏集中出现。
-
-### 设置语言文件
-文章收藏集需要你在语言文件添加以下内容才可以正常工作：
-
-~~~
-article.nothing.title=无解锁文章
-article.nothing.body=没有任何文章解锁，你可以得到并阅读一篇文章来解锁它。
-~~~
-
-## 文章管理
-你可以通过ArticleManager来管理文章：
-
-~~~ts
-// 获取所有文章
-ArticleManager.getAllArticle();
-// 获取所有文章ID
-ArticleManager.getAllArticleId();
-// 获取特定文章ID
-ArticleManager.getArticle("id");
-~~~
+```typescript
+const allArticles = ArticleManager.getAllArticle(); // 获取所有文章
+const allArticleIds = ArticleManager.getAllArticleId(); // 获取所有文章ID
+const articleById = ArticleManager.getArticle("article:114514"); // 根据ID获取文章
+```
